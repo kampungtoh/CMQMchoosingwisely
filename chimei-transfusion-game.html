@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>有 7 就好 · 輸血闖關｜奇美醫療體系</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#F4F6F3;--panel:#FFFFFF;--ink:#15211D;--ink-soft:#4C5A54;--ink-faint:#7C8880;
+    --garnet:#96223A;--garnet-bg:#F7E9EC;--teal:#1F6E60;--teal-bg:#E4F1ED;
+    --amber:#A96A15;--amber-bg:#F7ECD9;--slate:#4F6A72;--slate-bg:#E7EEF0;
+    --line:#E1E5E0;--line-strong:#CBD2CC;
+    --serif:'Noto Serif TC',serif;--sans:'Noto Sans TC',sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;line-height:1.6}
+  .app{max-width:560px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;padding:0 18px}
+  .hd{display:flex;align-items:center;gap:8px;padding:14px 0 10px;flex-wrap:wrap}
+  .hd .logo{display:flex;align-items:center;gap:7px;font-weight:700;font-size:13px;color:var(--ink-soft)}
+  .hd .logo svg{width:18px;height:18px}
+  .langbar{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+  .langbar button{font-family:var(--sans);font-size:12.5px;font-weight:600;border:1px solid var(--line-strong);
+    background:var(--panel);color:var(--ink-soft);padding:5px 9px;border-radius:8px;cursor:pointer;white-space:nowrap}
+  .langbar button.on{background:var(--garnet);border-color:var(--garnet);color:#fff}
+  .dots{display:flex;gap:6px;justify-content:center;padding:6px 0 14px}
+  .dot{width:22px;height:5px;border-radius:3px;background:var(--line-strong);transition:.3s}
+  .dot.done{background:var(--teal)} .dot.cur{background:var(--garnet)}
+  .stage{flex:1;display:flex;flex-direction:column;justify-content:center;padding:6px 0 30px;animation:in .35s ease}
+  @keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .scene{text-align:center;margin-bottom:18px}
+  .art{width:118px;height:118px;margin:0 auto 12px}
+  .listen{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:13px;font-weight:600;
+    color:var(--teal);background:var(--teal-bg);border:none;padding:6px 13px;border-radius:999px;cursor:pointer;margin-bottom:10px}
+  h2.qt{font-family:var(--serif);font-size:clamp(20px,4.8vw,25px);font-weight:700;line-height:1.4;margin:0 6px}
+  .scn{background:var(--slate-bg);border-radius:12px;padding:12px 16px;font-size:15px;color:#33474E;margin:14px 4px 0;text-align:left}
+  .choices{display:flex;flex-direction:column;gap:11px;margin-top:20px}
+  .ch{display:flex;align-items:center;gap:13px;background:var(--panel);border:2px solid var(--line);
+    border-radius:15px;padding:16px 18px;cursor:pointer;transition:.16s;font-size:17px;font-weight:500;text-align:left;
+    font-family:var(--sans);color:var(--ink);width:100%}
+  .ch:hover{border-color:var(--garnet)} .ch:active{transform:scale(.98)}
+  .ch .ic{width:38px;height:38px;flex:none;display:flex;align-items:center;justify-content:center;background:var(--ground);border-radius:10px;font-size:20px}
+  .ch.right{border-color:var(--teal);background:var(--teal-bg)}
+  .ch.wrong{border-color:var(--garnet);background:var(--garnet-bg);opacity:.85}
+  .ch.dim{opacity:.4}
+  .tf{display:flex;gap:12px;margin-top:20px}
+  .tf button{flex:1;border:2px solid var(--line);background:var(--panel);border-radius:15px;padding:20px 0;
+    font-family:var(--sans);font-size:19px;font-weight:700;cursor:pointer;transition:.16s;color:var(--ink)}
+  .tf button.tRight{border-color:var(--teal);background:var(--teal-bg)}
+  .tf button.tWrong{border-color:var(--garnet);background:var(--garnet-bg)}
+  .tf .em{display:block;font-size:30px;margin-bottom:4px}
+  .qcards{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+  .qcard{display:flex;align-items:center;gap:12px;background:var(--panel);border:2px solid var(--line);
+    border-radius:14px;padding:15px 16px;cursor:pointer;transition:.16s;font-size:16px;font-weight:500;text-align:left;font-family:var(--sans);color:var(--ink);width:100%}
+  .qcard .tick{width:24px;height:24px;border-radius:7px;border:2px solid var(--line-strong);flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px}
+  .qcard.pick{border-color:var(--garnet);background:var(--garnet-bg)}
+  .qcard.pick .tick{background:var(--garnet);border-color:var(--garnet)}
+  .faces{display:flex;gap:8px;justify-content:space-between;margin-top:18px}
+  .face{flex:1;border:2px solid var(--line);background:var(--panel);border-radius:15px;padding:12px 0;cursor:pointer;transition:.16s;text-align:center}
+  .face:hover{border-color:var(--garnet)} .face.on{border-color:var(--garnet);background:var(--garnet-bg)}
+  .face .em{font-size:28px} .face .fl{font-size:11px;color:var(--ink-soft);margin-top:2px;display:block}
+  .fbk{margin-top:18px;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--teal);
+    border-radius:0 13px 13px 0;padding:15px 17px;font-size:15px;color:var(--ink-soft);line-height:1.7;animation:in .3s}
+  .fbk.warn{border-left-color:var(--amber)} .fbk b{color:var(--ink)}
+  .cta{margin-top:18px;width:100%;background:var(--garnet);color:#fff;border:none;font-family:var(--sans);
+    font-size:18px;font-weight:700;padding:16px;border-radius:14px;cursor:pointer}
+  .cta:hover{background:#7d1c30} .cta:disabled{background:var(--line-strong);cursor:default}
+  .center{text-align:center}
+  .big{font-family:var(--serif);font-size:clamp(26px,6.5vw,38px);font-weight:700;letter-spacing:1px}
+  .big .sev{color:var(--garnet)}
+  .lead{color:var(--ink-soft);font-size:16px;margin:12px 14px 0;line-height:1.75}
+  .stars{font-size:32px;letter-spacing:5px;margin:12px 0}
+  .badge{width:120px;height:120px;margin:0 auto 4px}
+  .learned{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:18px;text-align:left}
+  .learned li{font-size:14.5px;color:var(--ink-soft);margin-bottom:8px;list-style:none;padding-left:24px;position:relative;line-height:1.6}
+  .learned li::before{content:"\2713";position:absolute;left:0;color:var(--teal);font-weight:700}
+  .demo{margin-top:16px} .demo p{font-size:15px;font-weight:500;margin:0 0 8px}
+  .miniopts{display:flex;gap:8px}
+  .miniopts button{flex:1;border:2px solid var(--line);background:var(--panel);border-radius:11px;padding:11px 4px;
+    font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--ink-soft);cursor:pointer}
+  .miniopts button.on{border-color:var(--garnet);background:var(--garnet-bg);color:var(--garnet)}
+  .twnote{font-size:12px;color:var(--ink-faint);text-align:center;padding:8px 6px 0;line-height:1.6}
+  .foot{text-align:center;color:var(--ink-faint);font-size:11.5px;padding:10px 0 24px}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="hd">
+    <span class="logo"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0c0-4.5-7-13-7-13Z" fill="#96223A"/></svg><span id="brand"></span></span>
+    <div class="langbar" id="langbar"></div>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="stage" id="stage"></div>
+  <p class="foot" id="foot"></p>
+</div>
+
+<script>
+var STR={
+ zh:{
+  brand:"奇美 · 明智選擇", listen:"🔊 聽",
+  start_title:'有 <span class="sev">7</span> 就好',
+  start_sub:"用玩的，3 分鐘搞懂「我需要輸血嗎」。陪阿嬤一起闖關吧！",
+  start_btn:"開始闖關",
+  p_q:"「有 7 就好」這句話，是在說哪一種血品？",
+  p_a:["紅血球","血小板","血漿"],
+  p_fb:"<b>沒錯，是紅血球。</b>「有 7 就好」只講紅血球。血小板、血漿看的是別的指標，不是這個 7。",
+  t_q:"血紅素要低到多少以下，醫師才會開始考慮輸紅血球？",
+  t_a:["7","9","10"],
+  t_fb:"<b>對，是 7。</b>多數穩定、沒有出血的成人，血紅素低於 7 才開始評估要不要輸血。",
+  s_q:"換你當家：阿嬤血紅素 7.6，穩定、沒出血、也不會不舒服。你覺得呢？",
+  s_scn:"👵 阿嬤：「醫生，我需要輸血嗎？」",
+  s_a:["趕快輸兩袋比較安心","請醫療團隊評估，可以先不輸","一定要補到 10 才行"],
+  s_fb:"<b>這個選擇最穩。</b>7.6、穩定又沒症狀，通常可以先不輸，交給醫療團隊看整體狀況。輸得多不會恢復比較快。",
+  f_q:"對錯快答：血紅素只要低於 7，就『一定』要輸血？",
+  tf_t:"對", tf_f:"錯",
+  f_fb:"<b>答對！這是「錯」的。</b>7 是參考，不是硬開關。低於 7 也要看有沒有症狀、有沒有出血，由醫療團隊一起判斷。",
+  u_q:"如果阿嬤真的需要輸紅血球，輸完第一袋之後，應該？",
+  u_a:["直接再輸第二袋","先重新評估，需要才再輸"],
+  u_fb:"<b>對，先評估再說。</b>一次一袋、輸完再看症狀和血紅素，真的需要才輸下一袋。這就是「一袋再評估」。",
+  a_q:"最後一關！醫師建議輸血時，你會想問哪些話？（可以多選）",
+  a_cards:["我現在為什麼需要輸紅血球？","有沒有先治療貧血或止血的方法？","可以先輸一袋，再看情況嗎？","不用問，聽醫師的就好"],
+  a_fb:"<b>太好了！</b>前面三句都是很棒的問題。問問題不是質疑醫師，是幫你和醫療團隊一起做最適合你的決定。",
+  conf_q:"你有多少信心，開口問醫師這些問題？",
+  conf_faces:["很沒把握","有點怕","還可以","很有信心"],
+  end_title:"闖關成功！",
+  end_sub:"你已經懂了「有 7 就好」的重點。記得：需要時，輸血能救命；不需要時，少輸更安全。",
+  learned_h:"你學會了：",
+  learned:["「有 7 就好」只講紅血球","7 是參考值，不是硬性開關","穩定沒症狀，通常可以先不輸","一袋再評估，不預設兩袋","就醫時可以主動問醫師三個問題"],
+  demo_role_q:"你是？", demo_role:["病人本人","家屬","看護"],
+  demo_age_q:"你的年齡？", demo_age:["39 歲以下","40-64 歲","65 歲以上"],
+  clear_q:"這個闖關，好玩又好懂嗎？", clear_opts:["很好懂","還可以","有點難"],
+  submit:"完成，送出", done_title:"謝謝你！",
+  done_sub:"你的回饋會幫助我們把衛教做得更好。祝你和家人健康。",
+  tw_note:"", foot:"衛教用途，不能取代醫師診療。緊急時請立即就醫。"
+ },
+ nan:{
+  brand:"奇美 · 明智選擇", listen:"🔊 聽看覓",
+  start_title:'有 <span class="sev">7</span> 就好',
+  start_sub:"用耍的來學「我敢需要輸血」，3 分鐘就捌。招阿媽做伙來闖關！",
+  start_btn:"開始闖關",
+  p_q:"「有 7 就好」這句話，是咧講佗一種血品？",
+  p_a:["紅血球","血小板","血漿"],
+  p_fb:"<b>著！是紅血球。</b>「有 7 就好」干焦咧講紅血球。血小板佮血漿看的是別項，毋是這个 7。",
+  t_q:"血紅素愛低到偌濟以下，醫生才會開始考慮輸紅血球？",
+  t_a:["7","9","10"],
+  t_fb:"<b>著，是 7。</b>大部份穩定、無咧流血的大人，血紅素低過 7 才開始看欲輸血無。",
+  s_q:"換你決定：阿媽血紅素 7.6，穩定、無流血、嘛袂艱苦。你感覺按怎？",
+  s_scn:"👵 阿媽：「醫生，我敢需要輸血？」",
+  s_a:["緊輸兩袋較安心","請醫療團隊評估，會使先莫輸","一定愛補到 10 才會使"],
+  s_fb:"<b>這个選擇上穩。</b>7.6 閣穩定、無症頭，通常會使先莫輸，交予醫療團隊看規个狀況。輸較濟嘛袂較緊好。",
+  f_q:"對抑毋著：血紅素干焦低過 7，就『一定』愛輸血？",
+  tf_t:"著", tf_f:"毋著",
+  f_fb:"<b>答著矣！這是「毋著」的。</b>7 是參考，毋是硬性開關。低過 7 嘛愛看有症頭無、有流血無，予醫療團隊做伙判斷。",
+  u_q:"若是阿媽真正需要輸紅血球，輸了第一袋了後，應該？",
+  u_a:["直接閣輸第二袋","先重新評估，需要才閣輸"],
+  u_fb:"<b>著，先評估才閣講。</b>一擺一袋、輸了看症頭佮血紅素，真正需要才輸下一袋。這就是「一袋才閣評估」。",
+  a_q:"上尾關！醫生建議輸血的時，你會想欲問啥物？（會使揀濟項）",
+  a_cards:["我這馬是按怎需要輸紅血球？","敢有先治療貧血抑是止血的法度？","會使先輸一袋，才閣看情形無？","免問，聽醫生的就好"],
+  a_fb:"<b>誠好！</b>頭前三句攏是誠好的問題。問問題毋是咧懷疑醫生，是欲佮醫療團隊做伙做上適合你的決定。",
+  conf_q:"你有偌濟信心，開喙問醫生這寡問題？",
+  conf_faces:["真無把握","有淡薄仔驚","猶會使","真有信心"],
+  end_title:"闖關成功！",
+  end_sub:"你已經捌「有 7 就好」的重點矣。會記得：需要的時，輸血會當救命；無需要的時，較少輸較安全。",
+  learned_h:"你學會的代誌：",
+  learned:["「有 7 就好」干焦咧講紅血球","7 是參考，毋是硬性開關","穩定閣無症頭，通常會使先莫輸","一袋才閣評估，莫先算兩袋","看病的時會使主動問醫生三个問題"],
+  demo_role_q:"你是？", demo_role:["病人本人","家屬","看護"],
+  demo_age_q:"你的歲數？", demo_age:["39 歲以下","40-64 歲","65 歲以上"],
+  clear_q:"這个闖關，好耍閣好捌無？", clear_opts:["真好捌","猶會使","有淡薄仔歹捌"],
+  submit:"完成，送出", done_title:"多謝你！",
+  done_sub:"你的回饋會鬥相共阮共衛教做較好。祝你佮厝內平安健康。",
+  tw_note:"（台語語音建議另外錄真人的聲；這个鈕這馬是用華語唸。）",
+  foot:"衛教用途，袂當取代醫生診療。緊急的時請隨時就醫。"
+ },
+ en:{
+  brand:"Chi Mei · Choosing Wisely", listen:"🔊 Listen",
+  start_title:'A <span class="sev">7</span> is enough',
+  start_sub:"Learn “Do I need a transfusion?” by playing. About 3 minutes. Let's help Grandma!",
+  start_btn:"Start",
+  p_q:"The slogan “a 7 is enough” is about which blood product?",
+  p_a:["Red cells","Platelets","Plasma"],
+  p_fb:"<b>Correct, red cells.</b> “A 7 is enough” is only about red cells. Platelets and plasma use different measures, not this 7.",
+  t_q:"How low must hemoglobin fall before a doctor starts to consider giving red cells?",
+  t_a:["7","9","10"],
+  t_fb:"<b>Right, 7.</b> For most stable adults who are not bleeding, assessment for red cells usually begins below 7.",
+  s_q:"Your call: Grandma's hemoglobin is 7.6, stable, no bleeding, no discomfort. What now?",
+  s_scn:"👵 Grandma: “Doctor, do I need a transfusion?”",
+  s_a:["Give two bags to be safe","Let the team assess, can hold off for now","Must push it up to 10"],
+  s_fb:"<b>Best choice.</b> At 7.6, stable and no symptoms, it is usually fine to hold off and let the team look at the whole picture. More is not faster recovery.",
+  f_q:"Quick true or false: if hemoglobin is below 7, a transfusion is ALWAYS required?",
+  tf_t:"True", tf_f:"False",
+  f_fb:"<b>Right, it's False.</b> 7 is a guide, not a switch. Below 7 still depends on symptoms and bleeding, decided with your care team.",
+  u_q:"If Grandma does need red cells, after the first bag you should?",
+  u_a:["Give a second bag right away","Reassess first, transfuse only if needed"],
+  u_fb:"<b>Yes, reassess first.</b> One bag at a time, then check symptoms and hemoglobin before any next bag.",
+  a_q:"Final stage! If a transfusion is suggested, what would you ask? (pick any)",
+  a_cards:["Why do I need red cells now?","Any way to treat the anemia or bleeding first?","Can we do one bag, then see?","No need to ask, just follow the doctor"],
+  a_fb:"<b>Great!</b> The first three are excellent questions. Asking isn't doubting your doctor, it's deciding together.",
+  conf_q:"How confident are you to ask your doctor these questions?",
+  conf_faces:["Not at all","A little","Okay","Very"],
+  end_title:"You did it!",
+  end_sub:"You've got the idea of “a 7 is enough.” Remember: when needed, blood saves lives; when not, less is safer.",
+  learned_h:"You learned:",
+  learned:["“A 7 is enough” is only about red cells","7 is a guide, not a fixed switch","Stable and no symptoms: often can hold off","One bag, then reassess","Three questions to ask your doctor"],
+  demo_role_q:"You are?", demo_role:["Patient","Family","Caregiver"],
+  demo_age_q:"Your age?", demo_age:["Under 40","40-64","65+"],
+  clear_q:"Was this easy to understand and fun?", clear_opts:["Very clear","Okay","A bit hard"],
+  submit:"Finish", done_title:"Thank you!",
+  done_sub:"Your feedback helps us do better. Wishing you and your family good health.",
+  tw_note:"", foot:"For education only, not a substitute for medical care. In an emergency, seek care immediately."
+ },
+ vi:{
+  brand:"Chi Mei · Choosing Wisely", listen:"🔊 Nghe",
+  start_title:'Đến <span class="sev">7</span> là đủ',
+  start_sub:"Học “Tôi có cần truyền máu không?” bằng cách chơi. Khoảng 3 phút. Cùng giúp bà nhé!",
+  start_btn:"Bắt đầu",
+  p_q:"Câu “đến 7 là đủ” nói về loại chế phẩm máu nào?",
+  p_a:["Hồng cầu","Tiểu cầu","Huyết tương"],
+  p_fb:"<b>Đúng, hồng cầu.</b> “Đến 7 là đủ” chỉ nói về hồng cầu. Tiểu cầu và huyết tương dùng chỉ số khác, không phải số 7 này.",
+  t_q:"Huyết sắc tố phải xuống dưới bao nhiêu thì bác sĩ mới bắt đầu cân nhắc truyền hồng cầu?",
+  t_a:["7","9","10"],
+  t_fb:"<b>Đúng, là 7.</b> Với đa số người lớn ổn định, không chảy máu, việc đánh giá truyền hồng cầu thường bắt đầu khi dưới 7.",
+  s_q:"Bạn quyết định: bà huyết sắc tố 7.6, ổn định, không chảy máu, không khó chịu. Nên làm gì?",
+  s_scn:"👵 Bà: “Bác sĩ ơi, tôi có cần truyền máu không?”",
+  s_a:["Truyền hai túi cho yên tâm","Để nhóm y tế đánh giá, có thể chưa truyền","Phải nâng lên 10 mới được"],
+  s_fb:"<b>Lựa chọn tốt nhất.</b> 7.6, ổn định và không triệu chứng thì thường có thể chưa truyền, để nhóm y tế xem tổng thể. Truyền nhiều không hồi phục nhanh hơn.",
+  f_q:"Đúng hay sai: hễ huyết sắc tố dưới 7 là LUÔN phải truyền máu?",
+  tf_t:"Đúng", tf_f:"Sai",
+  f_fb:"<b>Chính xác, là Sai.</b> 7 là mức tham khảo, không phải công tắc. Dưới 7 còn tùy triệu chứng và chảy máu, do nhóm y tế quyết định.",
+  u_q:"Nếu bà thật sự cần hồng cầu, sau túi đầu tiên nên?",
+  u_a:["Truyền túi thứ hai ngay","Đánh giá lại trước, cần mới truyền tiếp"],
+  u_fb:"<b>Đúng, đánh giá lại trước.</b> Mỗi lần một túi, rồi xem triệu chứng và huyết sắc tố trước khi truyền túi kế.",
+  a_q:"Vòng cuối! Khi được đề nghị truyền máu, bạn sẽ hỏi gì? (chọn nhiều)",
+  a_cards:["Vì sao bây giờ tôi cần hồng cầu?","Có cách trị thiếu máu hay cầm máu trước không?","Truyền một túi rồi xem tiếp được không?","Không cần hỏi, nghe bác sĩ là được"],
+  a_fb:"<b>Tuyệt vời!</b> Ba câu đầu là những câu hỏi rất hay. Hỏi không phải là nghi ngờ bác sĩ, mà là cùng quyết định.",
+  conf_q:"Bạn tự tin đến đâu để hỏi bác sĩ những câu này?",
+  conf_faces:["Không tự tin","Hơi ngại","Tạm được","Rất tự tin"],
+  end_title:"Hoàn thành!",
+  end_sub:"Bạn đã hiểu ý “đến 7 là đủ.” Nhớ nhé: khi cần, truyền máu cứu mạng; khi không cần, truyền ít an toàn hơn.",
+  learned_h:"Bạn đã học:",
+  learned:["“Đến 7 là đủ” chỉ nói về hồng cầu","7 là mức tham khảo, không phải công tắc","Ổn định, không triệu chứng: thường chưa cần truyền","Một túi, rồi đánh giá lại","Ba câu hỏi dành cho bác sĩ"],
+  demo_role_q:"Bạn là?", demo_role:["Bệnh nhân","Người nhà","Người chăm sóc"],
+  demo_age_q:"Tuổi của bạn?", demo_age:["Dưới 40","40-64","65+"],
+  clear_q:"Trò này dễ hiểu và vui không?", clear_opts:["Rất dễ hiểu","Tạm được","Hơi khó"],
+  submit:"Hoàn tất", done_title:"Cảm ơn bạn!",
+  done_sub:"Phản hồi của bạn giúp chúng tôi làm tốt hơn. Chúc bạn và gia đình khỏe mạnh.",
+  tw_note:"", foot:"Chỉ dùng để giáo dục, không thay thế khám chữa bệnh. Khi khẩn cấp hãy đi khám ngay."
+ },
+ id:{
+  brand:"Chi Mei · Choosing Wisely", listen:"🔊 Dengar",
+  start_title:'Angka <span class="sev">7</span> sudah cukup',
+  start_sub:"Belajar “Apakah saya perlu transfusi?” sambil bermain. Sekitar 3 menit. Ayo bantu Nenek!",
+  start_btn:"Mulai",
+  p_q:"Slogan “7 sudah cukup” untuk produk darah yang mana?",
+  p_a:["Sel darah merah","Trombosit","Plasma"],
+  p_fb:"<b>Benar, sel darah merah.</b> “7 sudah cukup” hanya untuk sel darah merah. Trombosit dan plasma memakai ukuran lain, bukan angka 7 ini.",
+  t_q:"Hemoglobin harus turun di bawah berapa sebelum dokter mulai mempertimbangkan sel darah merah?",
+  t_a:["7","9","10"],
+  t_fb:"<b>Benar, 7.</b> Untuk kebanyakan orang dewasa yang stabil dan tidak berdarah, penilaian transfusi sel darah merah biasanya dimulai di bawah 7.",
+  s_q:"Giliran Anda: hemoglobin Nenek 7.6, stabil, tidak berdarah, tidak ada keluhan. Sekarang?",
+  s_scn:"👵 Nenek: “Dokter, apakah saya perlu transfusi?”",
+  s_a:["Beri dua kantong biar aman","Biar tim menilai, bisa ditunda dulu","Harus dinaikkan sampai 10"],
+  s_fb:"<b>Pilihan terbaik.</b> Pada 7.6, stabil dan tanpa gejala, biasanya boleh ditunda dan biar tim menilai keseluruhan. Lebih banyak bukan berarti pulih lebih cepat.",
+  f_q:"Benar atau salah: jika hemoglobin di bawah 7, SELALU harus transfusi?",
+  tf_t:"Benar", tf_f:"Salah",
+  f_fb:"<b>Tepat, itu Salah.</b> 7 adalah acuan, bukan sakelar. Di bawah 7 tetap tergantung gejala dan perdarahan, diputuskan bersama tim medis.",
+  u_q:"Jika Nenek memang perlu sel darah merah, setelah kantong pertama sebaiknya?",
+  u_a:["Langsung beri kantong kedua","Nilai ulang dulu, transfusi bila perlu"],
+  u_fb:"<b>Ya, nilai ulang dulu.</b> Satu kantong dulu, lalu cek gejala dan hemoglobin sebelum kantong berikutnya.",
+  a_q:"Babak terakhir! Bila transfusi disarankan, apa yang akan Anda tanyakan? (boleh banyak)",
+  a_cards:["Kenapa saya perlu sel darah merah sekarang?","Adakah cara atasi anemia atau perdarahan dulu?","Bisa satu kantong dulu, lalu dilihat?","Tak perlu tanya, ikut dokter saja"],
+  a_fb:"<b>Bagus sekali!</b> Tiga pertanyaan pertama sangat baik. Bertanya bukan meragukan dokter, tapi memutuskan bersama.",
+  conf_q:"Seberapa yakin Anda menanyakan ini kepada dokter?",
+  conf_faces:["Tidak yakin","Agak ragu","Lumayan","Sangat yakin"],
+  end_title:"Berhasil!",
+  end_sub:"Anda sudah paham inti “7 sudah cukup.” Ingat: saat perlu, transfusi menyelamatkan; saat tidak, lebih sedikit lebih aman.",
+  learned_h:"Anda belajar:",
+  learned:["“7 sudah cukup” hanya untuk sel darah merah","7 itu acuan, bukan sakelar mutlak","Stabil tanpa gejala: sering boleh ditunda","Satu kantong, lalu nilai ulang","Tiga pertanyaan untuk dokter"],
+  demo_role_q:"Anda adalah?", demo_role:["Pasien","Keluarga","Pengasuh"],
+  demo_age_q:"Usia Anda?", demo_age:["Di bawah 40","40-64","65+"],
+  clear_q:"Apakah ini mudah dipahami dan menyenangkan?", clear_opts:["Sangat jelas","Lumayan","Agak sulit"],
+  submit:"Selesai", done_title:"Terima kasih!",
+  done_sub:"Masukan Anda membantu kami jadi lebih baik. Semoga Anda dan keluarga sehat.",
+  tw_note:"", foot:"Hanya untuk edukasi, bukan pengganti layanan medis. Saat darurat segera ke fasilitas kesehatan."
+ }
+};
+var LANGS=[["zh","🇹🇼 國語"],["nan","🇹🇼 台語"],["en","🇬🇧 English"],["vi","🇻🇳 Tiếng Việt"],["id","🇮🇩 Bahasa"]];
+var SPEECH={zh:"zh-TW",nan:"zh-TW",en:"en-US",vi:"vi-VN",id:"id-ID"};
+var ROLE_VAL=["病人本人","家屬","陪病者／看護"], AGE_VAL=["<40","40-64","65+"];
+
+function getParam(k){try{return new URLSearchParams(location.search).get(k)}catch(e){return null}}
+var URL_RID=getParam('rid'), SRC=getParam('src')||"direct", ENDPOINT="";
+var RID=URL_RID||('r'+Date.now()+Math.random().toString(36).slice(2,8));
+var LANGMAP={"zh-Hant":"zh","zh-Hans":"zh","zh":"zh","nan":"nan","en":"en","vi":"vi","id":"id","ja":"en","ko":"en","th":"en"};
+var _ql=getParam('lang');
+var lang=(_ql&&LANGMAP[_ql])?LANGMAP[_ql]:"zh", step=0, stars=0, currentSpeak="";
+function blank(){return {response_id:RID,source:SRC,ts:new Date().toISOString(),
+  instrument:"game",mode:"post",lang:lang,role:null,age:null,
+  k1:null,k2:null,k3:null,k4:null,k5:null,misconception:null,
+  act1:null,act2:null,self_efficacy:null,clarity:null,questions:[],stars:0};}
+var data=blank();
+function L(){return STR[lang]}
+var VOICES=[];
+function loadVoices(){try{VOICES=window.speechSynthesis.getVoices()||[]}catch(e){VOICES=[]}}
+loadVoices();try{window.speechSynthesis.onvoiceschanged=loadVoices;}catch(e){}
+var VPREF={zh:['zh-tw','zh-hk','zh-cn','zh'],nan:['zh-tw','zh'],en:['en-us','en-gb','en'],vi:['vi-vn','vi'],id:['id-id','id']};
+function pickVoice(lg){var pref=VPREF[lg]||[lg];
+  for(var i=0;i<pref.length;i++){for(var j=0;j<VOICES.length;j++){
+    var vl=(VOICES[j].lang||'').toLowerCase().replace('_','-');
+    if(vl.indexOf(pref[i])===0)return VOICES[j];}}return null;}
+function speak(txt){try{window.speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance((txt||"").replace(/<[^>]+>/g,''));
+  var v=pickVoice(lang);
+  if(v){u.voice=v;u.lang=v.lang;}else{u.lang=SPEECH[lang]||"zh-TW";}
+  u.rate=0.95;u.pitch=1;
+  window.speechSynthesis.speak(u);}catch(e){}}
+
+function bag(color,label){return '<svg class="art" viewBox="0 0 120 120" fill="none"><rect x="34" y="24" width="52" height="72" rx="12" fill="'+color+'" opacity=".16"/><rect x="34" y="24" width="52" height="72" rx="12" stroke="'+color+'" stroke-width="3"/><rect x="50" y="14" width="20" height="14" rx="4" fill="'+color+'"/>'+(label?'<text x="60" y="70" text-anchor="middle" font-family="Noto Serif TC" font-size="26" font-weight="700" fill="'+color+'">'+label+'</text>':'')+'</svg>'}
+function granny(){return '<div class="art" style="font-size:92px;line-height:118px">👵</div>'}
+function trophy(){return '<svg class="badge" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="52" r="34" fill="#F7E9EC" stroke="#96223A" stroke-width="3"/><text x="60" y="64" text-anchor="middle" font-family="Noto Serif TC" font-size="30" font-weight="700" fill="#96223A">7</text><path d="M44 88h32l-4 20H48z" fill="#96223A" opacity=".2" stroke="#96223A" stroke-width="2"/></svg>'}
+
+var stageEl=document.getElementById('stage');
+function renderDots(){var d=document.getElementById('dots'),h='';
+  for(var i=1;i<=6;i++)h+='<span class="dot '+(step>i?'done':step===i?'cur':'')+'"></span>';d.innerHTML=h;}
+function attachListen(){var b=stageEl.querySelector('.listen');if(b)b.onclick=function(){speak(currentSpeak)};}
+function listenHTML(){return '<button class="listen">'+L().listen+'</button>'}
+
+function showStart(){
+  step=0;renderDots();currentSpeak=L().start_sub;
+  stageEl.innerHTML='<div class="center">'+bag("#96223A","7")+
+    '<h2 class="big">'+L().start_title+'</h2><p class="lead">'+L().start_sub+'</p>'+
+    '<button class="cta" style="margin-top:24px" id="go">'+L().start_btn+'</button>'+
+    (lang==="nan"&&L().tw_note?'<p class="twnote">'+L().tw_note+'</p>':'')+'</div>';
+  document.getElementById('go').onclick=function(){step=1;renderStep()};
+}
+function choiceStage(cfg){
+  currentSpeak=cfg.q;
+  var h='<div class="scene">'+cfg.art+listenHTML()+'<h2 class="qt">'+cfg.q+'</h2>'+
+    (cfg.scn?'<div class="scn">'+cfg.scn+'</div>':'')+'</div><div class="choices" id="ch"></div><div id="fbwrap"></div>';
+  stageEl.innerHTML=h;attachListen();
+  var ch=document.getElementById('ch');
+  cfg.opts.forEach(function(o,i){
+    var b=document.createElement('button');b.className='ch';
+    b.innerHTML='<span class="ic">'+(cfg.icons?cfg.icons[i]:'')+'</span>'+o;
+    b.onclick=function(){
+      if(document.getElementById('fbwrap').innerHTML)return;
+      cfg.record(i);
+      ch.querySelectorAll('.ch').forEach(function(x,j){x.classList.add(j===cfg.correct?'right':(j===i?'wrong':'dim'));x.onclick=null;});
+      if(i===cfg.correct)stars++;
+      var warn=(cfg.warnWrong&&i!==cfg.correct);
+      document.getElementById('fbwrap').innerHTML='<div class="fbk'+(warn?' warn':'')+'">'+cfg.fb+'</div><button class="cta" id="nx">▶</button>';
+      document.getElementById('nx').onclick=function(){step++;renderStep()};
+    };
+    ch.appendChild(b);
+  });
+}
+function tfStage(cfg){
+  currentSpeak=cfg.q;
+  stageEl.innerHTML='<div class="scene">'+bag("#A96A15","")+listenHTML()+'<h2 class="qt">'+cfg.q+'</h2></div>'+
+    '<div class="tf" id="tf"><button data-v="true"><span class="em">🙆</span>'+L().tf_t+'</button>'+
+    '<button data-v="false"><span class="em">🙅</span>'+L().tf_f+'</button></div><div id="fbwrap"></div>';
+  attachListen();
+  document.getElementById('tf').querySelectorAll('button').forEach(function(b){
+    b.onclick=function(){
+      if(document.getElementById('fbwrap').innerHTML)return;
+      var v=b.dataset.v,ok=(v===cfg.answer);cfg.record(v);
+      b.classList.add(ok?'tRight':'tWrong');if(ok)stars++;
+      document.getElementById('fbwrap').innerHTML='<div class="fbk warn">'+cfg.fb+'</div><button class="cta" id="nx">▶</button>';
+      document.getElementById('nx').onclick=function(){step++;renderStep()};
+    };
+  });
+}
+function askStage(){
+  var c=L();currentSpeak=c.a_q;
+  stageEl.innerHTML='<div class="scene">'+bag("#96223A","")+listenHTML()+'<h2 class="qt">'+c.a_q+'</h2></div>'+
+    '<div class="qcards" id="qc"></div><div id="conf"></div><div id="fbwrap"></div>'+
+    '<button class="cta" id="qnext" disabled>▶</button>';
+  attachListen();
+  var qc=document.getElementById('qc'),picked=[];
+  c.a_cards.forEach(function(t,i){
+    var b=document.createElement('button');b.className='qcard';
+    b.innerHTML='<span class="tick">✓</span>'+t;
+    b.onclick=function(){var k=picked.indexOf(i);
+      if(k>=0){picked.splice(k,1);b.classList.remove('pick')}else{picked.push(i);b.classList.add('pick')}
+      data.questions=picked.slice();
+      document.getElementById('qnext').disabled=picked.length===0;};
+    qc.appendChild(b);
+  });
+  document.getElementById('qnext').onclick=function(){finishAsk(picked)};
+}
+function finishAsk(picked){
+  var c=L();
+  var good=picked.filter(function(i){return i<3}).length;
+  data.act1=(good>=1&&picked.indexOf(3)<0)?'會':(picked.indexOf(3)>=0&&good===0?'不會':'也許');
+  data.act2=(picked.indexOf(1)>=0)?'知道':'不知道';
+  if(good>=1&&picked.indexOf(3)<0)stars++;
+  document.getElementById('qc').style.pointerEvents='none';
+  document.getElementById('qnext').style.display='none';
+  document.getElementById('fbwrap').innerHTML='<div class="fbk">'+c.a_fb+'</div>';
+  var faces=['😟','😕','🙂','😃'];
+  document.getElementById('conf').innerHTML='<div class="scene" style="margin-top:22px"><h2 class="qt" style="font-size:19px">'+c.conf_q+'</h2></div><div class="faces" id="faces"></div>';
+  var fe=document.getElementById('faces');
+  faces.forEach(function(em,i){
+    var b=document.createElement('button');b.className='face';
+    b.innerHTML='<span class="em">'+em+'</span><span class="fl">'+c.conf_faces[i]+'</span>';
+    b.onclick=function(){fe.querySelectorAll('.face').forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on');data.self_efficacy=i+1;
+      if(!document.getElementById('toEnd')){var nb=document.createElement('button');nb.className='cta';nb.id='toEnd';nb.textContent='▶';
+        nb.onclick=showEnd;document.getElementById('conf').appendChild(nb);}};
+    fe.appendChild(b);
+  });
+}
+function renderStep(){
+  renderDots();var c=L();
+  if(step===1)choiceStage({art:bag("#96223A","RBC"),q:c.p_q,opts:c.p_a,icons:['🔴','🟡','🟠'],correct:0,fb:c.p_fb,
+    record:function(i){data.k1=['rbc','plt','ffp'][i]}});
+  else if(step===2)choiceStage({art:bag("#96223A","?"),q:c.t_q,opts:c.t_a,icons:['7️⃣','9️⃣','🔟'],correct:0,fb:c.t_fb,
+    record:function(i){data.k2=['7','9','10'][i]}});
+  else if(step===3)choiceStage({art:granny(),q:c.s_q,scn:c.s_scn,opts:c.s_a,icons:['🩸','🤝','🔟'],correct:1,warnWrong:true,fb:c.s_fb,
+    record:function(i){data.k3=['a','b','c'][i]}});
+  else if(step===4)tfStage({q:c.f_q,answer:"false",fb:c.f_fb,
+    record:function(v){data.k4=(v==="false"?'c':'a');data.misconception=(v==="true"?1:0)}});
+  else if(step===5)choiceStage({art:bag("#96223A","1"),q:c.u_q,opts:c.u_a,icons:['➕','🔎'],correct:1,fb:c.u_fb,
+    record:function(i){data.k5=['b','a'][i]}});
+  else if(step===6)askStage();
+  else showEnd();
+}
+function showEnd(){
+  step=7;document.getElementById('dots').innerHTML='';currentSpeak=L().end_sub;
+  var c=L(),sc=Math.min(stars,5);
+  var st='★★★★★'.slice(0,sc)+'☆☆☆☆☆'.slice(0,5-sc);
+  var lis=c.learned.map(function(x){return '<li>'+x+'</li>'}).join('');
+  stageEl.innerHTML='<div class="center">'+trophy()+'<h2 class="big">'+c.end_title+'</h2>'+
+    '<div class="stars">'+st+'</div><p class="lead">'+c.end_sub+'</p></div>'+
+    '<div class="learned"><b style="font-family:var(--serif)">'+c.learned_h+'</b><ul style="margin:10px 0 0;padding:0">'+lis+'</ul></div>'+
+    '<div class="demo"><p>'+c.demo_role_q+'</p><div class="miniopts" id="role"></div></div>'+
+    '<div class="demo"><p>'+c.demo_age_q+'</p><div class="miniopts" id="age"></div></div>'+
+    '<div class="demo"><p>'+c.clear_q+'</p><div class="miniopts" id="clr"></div></div>'+
+    '<button class="cta" id="sub" disabled>'+c.submit+'</button>';
+  mini('role',c.demo_role,function(i){data.role=ROLE_VAL[i];chk()});
+  mini('age',c.demo_age,function(i){data.age=AGE_VAL[i];chk()});
+  mini('clr',c.clear_opts,function(i){data.clarity=['clear','ok','hard'][i];chk()});
+  document.getElementById('sub').onclick=submitAll;
+}
+function mini(id,labels,cb){var box=document.getElementById(id);
+  labels.forEach(function(o,i){var b=document.createElement('button');b.textContent=o;
+    b.onclick=function(){box.querySelectorAll('button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');cb(i);};
+    box.appendChild(b);});}
+function chk(){document.getElementById('sub').disabled=!(data.clarity);}
+function submitAll(){
+  data.lang=lang;data.stars=Math.min(stars,5);
+  try{ if(ENDPOINT){fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});}else{console.log("[game submit]",data);} }catch(e){}
+  var c=L();
+  stageEl.innerHTML='<div class="center" style="padding-top:36px">'+trophy()+
+    '<h2 class="big">'+c.done_title+'</h2><p class="lead">'+c.done_sub+'</p>'+
+    '<button class="cta" id="again" style="margin-top:22px">↻</button></div>';
+  document.getElementById('again').onclick=function(){stars=0;data=blank();showStart()};
+}
+function buildLangBar(){var lb=document.getElementById('langbar');
+  LANGS.forEach(function(p){var b=document.createElement('button');b.innerHTML=p[1];b.dataset.l=p[0];
+    if(p[0]===lang)b.className='on';
+    b.onclick=function(){lang=p[0];data.lang=lang;
+      lb.querySelectorAll('button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');
+      document.getElementById('brand').textContent=L().brand;
+      document.getElementById('foot').textContent=L().foot;
+      document.documentElement.lang=(lang==='zh'||lang==='nan')?'zh-Hant':lang;
+      if(step===0)showStart();else if(step<=6)renderStep();else showEnd();};
+    lb.appendChild(b);});}
+
+buildLangBar();
+document.getElementById('brand').textContent=L().brand;
+document.getElementById('foot').textContent=L().foot;
+showStart();
+</script>
+</body>
+</html>

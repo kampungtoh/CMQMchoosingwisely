@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>「我需要輸血嗎？」明智選擇衛教成效問卷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#F4F6F3;--panel:#FFFFFF;--ink:#15211D;--ink-soft:#4C5A54;--ink-faint:#7C8880;
+    --garnet:#96223A;--garnet-bg:#F7E9EC;--teal:#1F6E60;--teal-bg:#E4F1ED;
+    --amber:#A96A15;--amber-bg:#F7ECD9;--slate:#4F6A72;--slate-bg:#E7EEF0;
+    --line:#E1E5E0;--line-strong:#CBD2CC;
+    --serif:'Noto Serif TC',serif;--sans:'Noto Sans TC',sans-serif;--radius:14px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+    font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:680px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.35;margin:0}
+  p{margin:0}
+  :focus-visible{outline:2.5px solid var(--garnet);outline-offset:2px;border-radius:4px}
+
+  .top{background:var(--panel);border-bottom:1px solid var(--line);padding:24px 0 22px}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14px;color:var(--ink-soft);margin-bottom:14px}
+  .brand svg{width:20px;height:20px}
+  .top h1{font-size:clamp(22px,4vw,28px)}
+  .meta{color:var(--ink-faint);font-size:14px;margin-top:10px}
+  .meta b{color:var(--garnet)}
+
+  .modewrap{display:flex;gap:8px;margin-top:18px;background:var(--ground);padding:5px;border-radius:11px}
+  .modewrap button{flex:1;border:none;background:none;font-family:var(--sans);font-size:14.5px;font-weight:600;
+    color:var(--ink-soft);padding:9px;border-radius:8px;cursor:pointer;transition:.15s}
+  .modewrap button.on{background:var(--panel);color:var(--garnet);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+
+  form{padding:26px 0 40px}
+  .block{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 22px 8px;margin-bottom:16px}
+  .blabel{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-weight:600;font-size:15px;
+    color:var(--garnet);margin:-4px 0 4px;letter-spacing:.5px}
+  .blabel .n{background:var(--garnet);color:#fff;width:22px;height:22px;border-radius:6px;
+    display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+  .q{padding:16px 0;border-top:1px solid var(--line)}
+  .q:first-of-type{border-top:none}
+  .q>p{font-weight:500;font-size:16.5px;margin-bottom:11px}
+  .q .hint{font-size:13px;color:var(--ink-faint);font-weight:400;margin-left:4px}
+  .scn{background:var(--slate-bg);border-radius:10px;padding:12px 14px;font-size:15.5px;
+    color:#33474E;margin-bottom:11px;line-height:1.7}
+
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{display:flex;align-items:center;gap:11px;border:1px solid var(--line-strong);border-radius:10px;
+    padding:11px 14px;cursor:pointer;transition:.13s;font-size:15.5px}
+  .opt:hover{border-color:var(--garnet);background:var(--garnet-bg)}
+  .opt input{accent-color:var(--garnet);width:18px;height:18px;flex:none;margin:0}
+  .opt.sel{border-color:var(--garnet);background:var(--garnet-bg)}
+
+  .likert{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:12px 0;border-top:1px dashed var(--line)}
+  .likert:first-child{border-top:none}
+  .likert .lq{font-size:15.5px}
+  .scale{display:flex;gap:5px}
+  .scale label{cursor:pointer}
+  .scale input{position:absolute;opacity:0;width:0}
+  .scale span{display:flex;align-items:center;justify-content:center;width:34px;height:34px;
+    border:1px solid var(--line-strong);border-radius:8px;font-size:14px;color:var(--ink-faint);transition:.13s}
+  .scale input:checked+span{background:var(--garnet);border-color:var(--garnet);color:#fff}
+  .scalekey{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-faint);margin-top:4px}
+
+  textarea{width:100%;border:1px solid var(--line-strong);border-radius:10px;padding:12px 14px;
+    font-family:var(--sans);font-size:15px;resize:vertical;background:var(--ground);color:var(--ink)}
+
+  .lottery{background:var(--amber-bg);border-radius:var(--radius);padding:18px 20px;margin-bottom:16px}
+  .lottery h3{font-size:15px;color:var(--amber);margin-bottom:6px}
+  .lottery p{font-size:14.5px;color:#6E4A12;line-height:1.7}
+  .lottery a{color:var(--amber);font-weight:700}
+
+  .submit{width:100%;background:var(--garnet);color:#fff;border:none;font-family:var(--sans);
+    font-size:17px;font-weight:700;padding:15px;border-radius:12px;cursor:pointer}
+  .submit:hover{background:#7d1c30}
+  .done{display:none;text-align:center;background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--radius);padding:34px 24px}
+  .done.show{display:block}
+  .done .ok{width:52px;height:52px;margin:0 auto 14px}
+  .done h2{font-size:22px;margin-bottom:8px}
+  .done p{color:var(--ink-soft);font-size:15.5px}
+  .postonly{display:block}
+  body.pre .postonly{display:none}
+</style>
+</head>
+<body class="post">
+
+<div class="top">
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0c0-4.5-7-13-7-13Z" fill="#96223A"/></svg>
+      奇美醫療體系 · 明智選擇 Choosing Wisely
+    </div>
+    <h1>「我需要輸血嗎？」衛教成效問卷</h1>
+    <p class="meta">全部<b>匿名</b>作答，約 <b>2 分鐘</b>。您的回答只用於改善衛教，<b>不會</b>和身分綁定。抽獎聯絡資料請另外填寫（見問卷最後）。</p>
+    <div class="modewrap" id="mode">
+      <button data-m="pre" type="button">宣導前填答</button>
+      <button data-m="post" type="button" class="on">宣導後填答</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<form id="survey">
+
+  <!-- Part A -->
+  <div class="block">
+    <div class="blabel"><span class="n">A</span>基本資料</div>
+    <div class="q">
+      <p>您的身分</p>
+      <div class="opts" data-single="role">
+        <label class="opt"><input type="radio" name="role" value="病人本人">病人本人</label>
+        <label class="opt"><input type="radio" name="role" value="家屬">家屬</label>
+        <label class="opt"><input type="radio" name="role" value="陪病者／看護">陪病者／看護</label>
+      </div>
+    </div>
+    <div class="q">
+      <p>年齡層</p>
+      <div class="opts" data-single="age">
+        <label class="opt"><input type="radio" name="age" value="<40">未滿 40 歲</label>
+        <label class="opt"><input type="radio" name="age" value="40-64">40 至 64 歲</label>
+        <label class="opt"><input type="radio" name="age" value="65+">65 歲以上</label>
+      </div>
+    </div>
+    <div class="q">
+      <p>您本人或家人曾經接受過輸血嗎？</p>
+      <div class="opts" data-single="exp">
+        <label class="opt"><input type="radio" name="exp" value="有">有</label>
+        <label class="opt"><input type="radio" name="exp" value="沒有">沒有</label>
+        <label class="opt"><input type="radio" name="exp" value="不確定">不確定</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Part B knowledge (identical in pre & post for true pre/post) -->
+  <div class="block">
+    <div class="blabel"><span class="n">B</span>對輸血的認識</div>
+
+    <div class="q">
+      <p>1. 「有 7 就好」這句口號，指的是哪一種血品？</p>
+      <div class="opts" data-single="k1">
+        <label class="opt"><input type="radio" name="k1" value="rbc">紅血球</label>
+        <label class="opt"><input type="radio" name="k1" value="plt">血小板</label>
+        <label class="opt"><input type="radio" name="k1" value="ffp">血漿</label>
+        <label class="opt"><input type="radio" name="k1" value="all">全部的血品都一樣</label>
+      </div>
+    </div>
+
+    <div class="q">
+      <p>2. 對多數病況穩定、沒有持續出血的成人住院病人，通常在血紅素（Hb）低於多少時，才開始評估是否需要輸紅血球？</p>
+      <div class="opts" data-single="k2">
+        <label class="opt"><input type="radio" name="k2" value="10">10 g/dL</label>
+        <label class="opt"><input type="radio" name="k2" value="9">9 g/dL</label>
+        <label class="opt"><input type="radio" name="k2" value="7">7 g/dL</label>
+        <label class="opt"><input type="radio" name="k2" value="dk">不知道</label>
+      </div>
+    </div>
+
+    <div class="q">
+      <p>3. 請看下面的情況，選出比較適合的下一步：</p>
+      <div class="scn">王先生血紅素 7.6 g/dL，沒有持續出血，生命徵象穩定，也沒有明顯不舒服。</div>
+      <div class="opts" data-single="k3">
+        <label class="opt"><input type="radio" name="k3" value="a">立即輸 2 袋紅血球</label>
+        <label class="opt"><input type="radio" name="k3" value="b">由醫療團隊綜合症狀與病情評估，可以先不輸血</label>
+        <label class="opt"><input type="radio" name="k3" value="c">一定要把血紅素補到 10</label>
+        <label class="opt"><input type="radio" name="k3" value="dk">不知道</label>
+      </div>
+    </div>
+
+    <div class="q">
+      <p>4. 關於輸血的血紅素標準，下列何者正確？</p>
+      <div class="opts" data-single="k4">
+        <label class="opt"><input type="radio" name="k4" value="a">血紅素低於 7，就一定要輸血</label>
+        <label class="opt"><input type="radio" name="k4" value="b">血紅素高於 7，就一定不能輸血</label>
+        <label class="opt"><input type="radio" name="k4" value="c">7 是參考值，仍要依症狀與整體病況判斷</label>
+        <label class="opt"><input type="radio" name="k4" value="dk">不知道</label>
+      </div>
+    </div>
+
+    <div class="q">
+      <p>5. 一位穩定、沒有出血的病人需要輸紅血球時，比較符合明智選擇的做法是？</p>
+      <div class="opts" data-single="k5">
+        <label class="opt"><input type="radio" name="k5" value="a">先輸 1 袋，輸完再評估要不要下一袋</label>
+        <label class="opt"><input type="radio" name="k5" value="b">一次輸 2 袋比較有效率</label>
+        <label class="opt"><input type="radio" name="k5" value="c">輸越多恢復越快</label>
+        <label class="opt"><input type="radio" name="k5" value="dk">不知道</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Part C actionability -->
+  <div class="block">
+    <div class="blabel"><span class="n">C</span>我可以怎麼做</div>
+    <div class="q">
+      <p>6. 如果醫師建議你或家人輸血，你會不會主動問醫師相關問題？<span class="hint">例如為什麼需要、有沒有其他方法</span></p>
+      <div class="opts" data-single="act1">
+        <label class="opt"><input type="radio" name="act1" value="會">會，我想試試</label>
+        <label class="opt"><input type="radio" name="act1" value="也許">也許，看情況</label>
+        <label class="opt"><input type="radio" name="act1" value="不會">應該不會</label>
+      </div>
+    </div>
+    <div class="q">
+      <p>7. 你知道有輸血以外的方法可以改善貧血嗎？<span class="hint">例如補鐵</span></p>
+      <div class="opts" data-single="act2">
+        <label class="opt"><input type="radio" name="act2" value="知道">知道</label>
+        <label class="opt"><input type="radio" name="act2" value="不知道">不知道</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Part D material quality (post only) -->
+  <div class="block postonly">
+    <div class="blabel"><span class="n">D</span>這份衛教資訊如何</div>
+    <div class="q" style="border:none;padding-bottom:0">
+      <div class="likert"><span class="lq">這份資訊清楚、容易看懂</span><div class="scale" data-lk="q_clear"></div></div>
+      <div class="likert"><span class="lq">這份資訊對我有幫助</span><div class="scale" data-lk="q_help"></div></div>
+      <div class="likert"><span class="lq">看完後，我更知道就醫時可以怎麼和醫師討論</span><div class="scale" data-lk="q_talk"></div></div>
+      <div class="scalekey"><span>← 很不同意</span><span>很同意 →</span></div>
+    </div>
+  </div>
+
+  <!-- Part E open -->
+  <div class="block">
+    <div class="blabel"><span class="n">E</span>想問或想說的</div>
+    <div class="q" style="border:none">
+      <p>看完之後，還有什麼問題或建議？<span class="hint">選填</span></p>
+      <textarea name="open" rows="2" placeholder="例如：我還想知道輸血的過敏反應多常見"></textarea>
+    </div>
+  </div>
+
+  <!-- Lottery decoupled -->
+  <div class="lottery">
+    <h3>關於抽獎</h3>
+    <p>為保護您的隱私，抽獎聯絡資料<b>不在這份問卷收集</b>，也不會和您的作答連在一起。想參加抽獎，請另外掃描抽獎專用 QR code，或點<a href="#">這裡的抽獎登記連結</a>填寫。</p>
+  </div>
+
+  <button class="submit" type="button" id="send">送出問卷</button>
+</form>
+
+<div class="done" id="done">
+  <svg class="ok" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" stroke="#1F6E60" stroke-width="2"/><path d="M16 27l7 7 14-15" stroke="#1F6E60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <h2>已收到，謝謝您</h2>
+  <p>您的回饋會幫助我們把輸血衛教做得更清楚、更安全。<br>想參加抽獎，別忘了另外填寫抽獎登記。</p>
+</div>
+</div>
+
+<script>
+/* mode toggle: pre / post */
+var body=document.body;
+document.getElementById('mode').addEventListener('click',function(e){
+  var b=e.target.closest('button[data-m]'); if(!b)return;
+  document.querySelectorAll('#mode button').forEach(function(x){x.classList.remove('on')});
+  b.classList.add('on');
+  body.classList.remove('pre','post'); body.classList.add(b.dataset.m);
+});
+
+/* build likert scales 1-5 */
+document.querySelectorAll('.scale').forEach(function(s){
+  var name=s.dataset.lk;
+  for(var i=1;i<=5;i++){
+    var l=document.createElement('label');
+    l.innerHTML='<input type="radio" name="'+name+'" value="'+i+'"><span>'+i+'</span>';
+    s.appendChild(l);
+  }
+});
+
+/* single-select highlight */
+document.querySelectorAll('.opts').forEach(function(g){
+  g.addEventListener('change',function(){
+    g.querySelectorAll('.opt').forEach(function(o){o.classList.remove('sel')});
+    var c=g.querySelector('input:checked'); if(c)c.closest('.opt').classList.add('sel');
+  });
+});
+
+/* submit (wire to backend here) */
+document.getElementById('send').addEventListener('click',function(){
+  var fd=new FormData(document.getElementById('survey'));
+  var data={mode:document.querySelector('#mode .on').dataset.m};
+  fd.forEach(function(v,k){data[k]=v});
+  /* 資料落地：改成 fetch('你的院內端點',{method:'POST',body:JSON.stringify(data)}) 即可 */
+  document.getElementById('survey').style.display='none';
+  document.querySelector('.lottery').style.display='none';
+  document.getElementById('done').classList.add('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我需要輸血嗎？｜有 7 就好 · 奇美醫療財團法人奇美醫院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --o-bg:#fefaf6; --o-card:#ffffff; --o-fg:#2d2a26; --o-fg-soft:#575249; --o-fg-mute:#8f857a;
+  --o-orb-1:#ffafd2; --o-orb-2:#a8e6cf; --o-orb-3:#c8b6ff; --o-orb-4:#ffd6a5; --o-orb-5:#b4e7ff; --o-orb-6:#ffaaa5;
+  --o-accent:#e23a63; --o-line:#f0e8d8;
+  --radius-md:16px; --radius-lg:28px; --radius-pill:999px;
+  --font-body:'PingFang TC','PingFang SC','Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic','Meiryo','Malgun Gothic','Apple SD Gothic Neo','Noto Sans TC','Noto Sans Thai','Inter',system-ui,sans-serif;
+  --font-display:var(--font-body);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--o-bg);color:var(--o-fg);font-family:var(--font-body);
+  font-size:18px;line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+h1,h2,h3{margin:0;font-family:var(--font-display);letter-spacing:-.01em}
+p{margin:0}
+a{color:var(--o-accent);text-decoration:none}
+
+.orbs{position:fixed;inset:0;pointer-events:none;z-index:0}
+.orb{position:absolute;border-radius:50%;opacity:.5;will-change:transform;filter:blur(2px)}
+.orb.sq{border-radius:22%}
+.orb.o1{top:8%;left:9%;width:150px;height:150px;background:var(--o-orb-1);animation:of1 13s ease-in-out infinite}
+.orb.o2{top:16%;right:7%;width:210px;height:210px;background:var(--o-orb-2);animation:of2 17s ease-in-out infinite reverse}
+.orb.o3{top:52%;left:4%;width:180px;height:180px;background:var(--o-orb-3);animation:of1 15s ease-in-out infinite -3s}
+.orb.o4{top:70%;right:12%;width:140px;height:140px;background:var(--o-orb-4);animation:of2 19s ease-in-out infinite -6s}
+.orb.o5{top:40%;left:52%;width:190px;height:190px;background:var(--o-orb-5);animation:of3 21s ease-in-out infinite}
+.orb.o6{top:28%;left:26%;width:110px;height:110px;background:var(--o-orb-6);animation:of1 11s ease-in-out infinite -2s}
+.orb.o7{top:86%;left:40%;width:120px;height:120px;background:var(--o-orb-3);animation:of2 16s ease-in-out infinite -4s}
+.orb.o8{top:60%;right:5%;width:100px;height:100px;background:var(--o-orb-1);animation:of3 14s ease-in-out infinite -5s}
+.orb.o9{top:4%;left:60%;width:90px;height:90px;background:var(--o-orb-4);animation:of1 18s ease-in-out infinite -1s}
+.orb.o10{top:78%;left:8%;width:130px;height:130px;background:var(--o-orb-5);animation:of2 20s ease-in-out infinite -7s}
+@keyframes of1{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(14px,-30px,0) rotate(8deg)}}
+@keyframes of2{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-18px,-24px,0) rotate(-6deg)}}
+@keyframes of3{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(10px,-38px,0) rotate(5deg)}}
+
+section,header,footer{position:relative;z-index:2}
+header{padding:16px 0}
+.hd{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge-brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;color:var(--o-fg-soft)}
+.badge-brand svg{width:22px;height:22px;flex:none}
+.langbar{margin-left:auto;display:flex;gap:5px;flex-wrap:wrap}
+.langbar button{font-family:var(--font-body);font-size:13px;font-weight:600;border:1px solid #e6ddd0;
+  background:var(--o-card);color:var(--o-fg-soft);padding:5px 10px;border-radius:9px;cursor:pointer;white-space:nowrap}
+.langbar button.on{background:var(--o-accent);border-color:var(--o-accent);color:#fff}
+.caption{font-size:15px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--o-fg-soft)}
+
+.hero{padding:44px 0 32px;text-align:center}
+.hero .caption{margin-bottom:18px}
+.hero h1{font-size:clamp(42px,6.5vw,78px);line-height:1.12;font-weight:700}
+.hero .slogan{font-size:clamp(24px,3.6vw,36px);font-weight:700;margin-top:18px}
+.hero .slogan .sev{color:var(--o-accent)}
+.cta{display:inline-flex;align-items:center;gap:8px;margin-top:26px;background:var(--o-accent);color:#fff;
+  font-weight:700;font-size:18px;padding:15px 30px;border-radius:var(--radius-pill);border:none;cursor:pointer}
+
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px auto 0;max-width:540px}
+.tile{background:var(--o-card);border-radius:var(--radius-lg);padding:24px 18px;text-align:center;box-shadow:0 10px 30px rgba(45,42,38,.05)}
+.tile .big{font-family:var(--font-display);font-size:40px;font-weight:700;color:var(--o-accent);line-height:1}
+.tile .big .u{font-size:19px;font-weight:600;margin-left:2px}
+.tile .lab{font-size:16px;color:var(--o-fg-soft);margin-top:10px;line-height:1.55}
+
+.sec-head{text-align:center;margin-bottom:24px}
+.sec-head h2{font-size:clamp(27px,3.8vw,42px);font-weight:600}
+.sec-head p{color:var(--o-fg-soft);margin-top:8px;font-size:19px}
+
+.intro{background:var(--o-card);border-radius:var(--radius-lg);padding:26px 28px;box-shadow:0 10px 30px rgba(45,42,38,.05);margin-bottom:20px}
+.intro p{font-size:19px;color:var(--o-fg);line-height:1.9}
+.intro p+p{margin-top:14px}
+.intro b{color:var(--o-accent)}
+
+.figure{margin:0 0 22px;text-align:center}
+.figure img{max-width:100%;height:auto;border-radius:var(--radius-lg);box-shadow:0 14px 40px rgba(45,42,38,.12)}
+.figure figcaption{font-size:14px;color:var(--o-fg-mute);margin-top:10px}
+
+.pacc{background:var(--o-card);border-radius:var(--radius-lg);margin-bottom:13px;overflow:hidden;box-shadow:0 10px 30px rgba(45,42,38,.05)}
+.ph{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:none;border:none;padding:20px 22px;cursor:pointer;font-family:var(--font-body)}
+.ph .dot{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:15px;flex:none}
+.ph .pt{flex:1}
+.ph .pt h3{font-size:22px;font-weight:600}
+.ph .pt .role{font-size:16px;color:var(--o-fg-soft);margin-top:2px}
+.ph .tag7{background:var(--o-accent);color:#fff;font-size:13px;font-weight:700;padding:4px 12px;border-radius:var(--radius-pill);flex:none}
+.ph .chev{color:var(--o-fg-mute);transition:.2s;flex:none;margin-left:4px}
+.pacc.open .chev{transform:rotate(180deg)}
+.pbody{max-height:0;overflow:hidden;transition:max-height .35s}
+.pinner{padding:0 22px 22px 84px}
+@media(max-width:560px){.pinner{padding:0 22px 22px 22px}}
+.facet{border-top:1px solid var(--o-line);padding-top:13px;margin-top:13px}
+.facet .fl{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.04em;color:#fff;background:var(--o-orb-3);padding:3px 11px;border-radius:var(--radius-pill);margin-bottom:7px}
+.facet .fl.good{background:var(--o-orb-2);color:#1b6b52}
+.facet .fl.bad{background:var(--o-orb-6);color:#8a2f2f}
+.facet p{font-size:17.5px;color:var(--o-fg-soft);line-height:1.85}
+
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:720px){.three{grid-template-columns:1fr}}
+.scard{background:var(--o-card);border-radius:var(--radius-lg);padding:24px;box-shadow:0 10px 30px rgba(45,42,38,.05)}
+.scard .n{width:36px;height:36px;border-radius:50%;background:var(--o-orb-3);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-family:var(--font-display);font-size:18px}
+.scard h3{font-size:19px;font-weight:600;margin:14px 0 8px}
+.scard p{font-size:17px;color:var(--o-fg-soft)}
+.exc{background:var(--o-card);border:2px solid var(--o-orb-6);border-radius:var(--radius-lg);padding:24px;margin-top:16px;box-shadow:0 10px 30px rgba(226,58,99,.06)}
+.exc h3{font-size:19px;font-weight:600;color:#c23b56;margin-bottom:12px}
+.exc ul{list-style:none;padding:0;margin:0}
+.exc li{padding:7px 0 7px 28px;position:relative;font-size:17px;color:var(--o-fg-soft);line-height:1.65}
+.exc li::before{content:"!";position:absolute;left:0;top:7px;width:19px;height:19px;background:var(--o-orb-6);color:#fff;font-size:12px;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+.qa{background:var(--o-card);border-radius:var(--radius-md);margin-bottom:10px;overflow:hidden;box-shadow:0 6px 20px rgba(45,42,38,.04)}
+.qh{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:none;border:none;padding:18px 20px;cursor:pointer;font-family:var(--font-body);font-size:18.5px;font-weight:600;color:var(--o-fg)}
+.qh .qm{width:28px;height:28px;border-radius:50%;background:var(--o-orb-2);color:#1b6b52;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none;font-size:15px}
+.qh .chev{margin-left:auto;color:var(--o-fg-mute);transition:.2s;flex:none}
+.qa.open .chev{transform:rotate(180deg)}
+.qb{max-height:0;overflow:hidden;transition:max-height .3s}
+.qi{padding:0 20px 18px 60px;color:var(--o-fg-soft);font-size:17.5px;line-height:1.85}
+.qi b{color:var(--o-fg)}
+
+.ask{background:var(--o-card);border-radius:var(--radius-lg);padding:28px;box-shadow:0 10px 30px rgba(45,42,38,.05)}
+.ask ol{margin:0;padding-left:24px}
+.ask li{font-size:19px;font-weight:600;margin-bottom:13px;line-height:1.5}
+.ask .safe{margin-top:14px;background:var(--o-bg);border-radius:var(--radius-md);padding:15px 17px;font-size:16.5px;color:var(--o-fg-soft);font-weight:400}
+.ask .safe b{color:var(--o-accent)}
+.tip{background:var(--o-card);border-left:5px solid var(--o-orb-4);border-radius:var(--radius-md);padding:20px 24px;margin-top:16px;box-shadow:0 10px 30px rgba(45,42,38,.04)}
+.tip h3{font-size:18px;font-weight:600;margin-bottom:10px}
+.tip li{font-size:17px;color:var(--o-fg-soft);margin-bottom:7px;list-style:none;padding-left:26px;position:relative;line-height:1.6}
+.tip li::before{content:"\2713";position:absolute;left:0;color:#c99a2e;font-weight:700}
+
+footer{padding:38px 0 60px;text-align:center}
+.disc{background:var(--o-card);border-radius:var(--radius-lg);padding:22px 26px;font-size:14px;color:var(--o-fg-mute);line-height:1.75;box-shadow:0 10px 30px rgba(45,42,38,.04)}
+
+.pt-overlay{position:fixed;inset:0;z-index:100;background:rgba(45,42,38,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:18px}
+.pt-card{background:var(--o-card);border-radius:var(--radius-lg);max-width:560px;width:100%;max-height:94vh;overflow:auto;padding:24px 24px 20px;box-shadow:0 30px 80px rgba(45,42,38,.28)}
+.plangbar{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;margin-bottom:16px}
+.plangbar button{font-family:var(--font-body);font-size:12px;font-weight:600;border:1px solid #e6ddd0;background:var(--o-bg);color:var(--o-fg-soft);padding:4px 8px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.plangbar button.on{background:var(--o-accent);border-color:var(--o-accent);color:#fff}
+.pt-card h3{font-size:22px;font-weight:700;text-align:center;line-height:1.4}
+.pt-note{font-size:14px;color:var(--o-fg-mute);text-align:center;margin:8px 0 18px;line-height:1.6}
+.pt-q{font-size:19px;font-weight:600;line-height:1.6;margin-bottom:16px}
+.opt{display:block;width:100%;text-align:left;background:var(--o-bg);border:2px solid var(--o-line);border-radius:14px;padding:14px 16px;margin-bottom:11px;font-family:var(--font-body);font-size:17px;line-height:1.55;color:var(--o-fg);cursor:pointer;transition:.15s}
+.opt:hover{border-color:var(--o-orb-3)}
+.pt-skip{display:block;margin:4px auto 0;background:none;border:none;color:var(--o-fg-mute);font-size:14px;text-decoration:underline;cursor:pointer;font-family:var(--font-body)}
+.pt-thanks{text-align:center;padding:14px 0 6px}
+.pt-thanks p{font-size:18px;font-weight:600;margin-bottom:18px}
+.enterbtn{background:var(--o-accent);color:#fff;border:none;border-radius:var(--radius-pill);font-weight:700;font-size:18px;padding:13px 30px;cursor:pointer;font-family:var(--font-body)}
+
+.thr{max-width:640px;margin:0 auto;background:var(--o-card);border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 10px 30px rgba(45,42,38,.05)}
+.thr-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:15px 22px;border-top:1px solid var(--o-line)}
+.thr-row:first-child{border-top:none}
+.thr-c{font-size:17px;color:var(--o-fg);font-weight:600}
+.thr-v{font-size:17px;color:var(--o-accent);font-weight:700;white-space:nowrap;text-align:right}
+.thr-note{text-align:center;font-size:15px;color:var(--o-fg-mute);margin-top:14px;line-height:1.6}
+.alts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:720px){.alts{grid-template-columns:1fr}}
+.altc{background:var(--o-card);border-radius:var(--radius-lg);padding:20px;box-shadow:0 10px 30px rgba(45,42,38,.05);display:flex;gap:13px;align-items:flex-start}
+.altc .ai{font-size:26px;flex:none;line-height:1.1}
+.altc .an{font-size:18px;font-weight:600;margin-bottom:4px}
+.altc .ad{font-size:15.5px;color:var(--o-fg-soft);line-height:1.6}
+.gift{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:560px){.gift{grid-template-columns:repeat(2,1fr)}}
+.giftc{background:var(--o-card);border-radius:var(--radius-lg);padding:22px 16px;text-align:center;box-shadow:0 10px 30px rgba(45,42,38,.05)}
+.giftc .gb{font-family:var(--font-display);font-size:25px;font-weight:700;color:var(--o-accent);line-height:1.15}
+.giftc .gl{font-size:15px;color:var(--o-fg-soft);margin-top:8px;line-height:1.5}
+.gift-close{text-align:center;font-size:17px;color:var(--o-fg-soft);margin-top:18px;font-weight:600}
+.togame{background:linear-gradient(135deg,#ffffff,#fef2f6);border:2px solid var(--o-accent);border-radius:var(--radius-lg);padding:34px 28px;text-align:center;box-shadow:0 14px 40px rgba(226,58,99,.1)}
+.togame h2{font-size:clamp(24px,3.4vw,34px);font-weight:700}
+.togame p{font-size:18px;color:var(--o-fg-soft);margin:12px 0 22px;line-height:1.7}
+.togame .cta{text-decoration:none}
+
+#kinds,#meaning,#thresholds,#alts,#faq,#ask,#precious,#togame{padding:30px 0}
+
+@media(max-width:600px){
+  .wrap{padding:0 16px}
+  body{font-size:17px}
+  header{padding:12px 0}
+  .badge-brand{font-size:13px}
+  .badge-brand svg{width:20px;height:20px}
+  .langbar{margin-left:0;width:100%;justify-content:flex-start;gap:6px 5px;margin-top:6px}
+  .langbar button{font-size:12px;padding:5px 9px}
+  .hero{padding:30px 0 22px}
+  .hero .caption{margin-bottom:12px}
+  #kinds,#meaning,#thresholds,#alts,#faq,#ask,#precious,#togame{padding:24px 0}
+  .sec-head{margin-bottom:18px}
+  .intro{padding:20px 18px}
+  .ph{padding:16px 15px;gap:11px}
+  .ph .dot{width:42px;height:42px;font-size:14px}
+  .ph .pt h3{font-size:20px}
+  .ph .tag7{font-size:12px;padding:3px 10px}
+  .pinner{padding:0 18px 18px 18px}
+  .scard{padding:20px}
+  .exc{padding:20px}
+  .qh{padding:16px 15px;font-size:17px}
+  .qi{padding:0 16px 16px 50px;font-size:16.5px}
+  .ask{padding:22px 18px}
+  .altc{padding:17px}
+  .thr-row{padding:13px 16px}
+  .thr-c,.thr-v{font-size:16px}
+  .togame{padding:26px 20px}
+  .togame p{font-size:16.5px}
+  .giftc{padding:18px 12px}
+  .giftc .gb{font-size:21px}
+  .pt-card{padding:20px 18px 16px}
+  .pt-card h3{font-size:20px}
+  .pt-q{font-size:18px}
+  .opt{font-size:16px;padding:13px 14px}
+}
+
+@media (prefers-reduced-motion: reduce){ .orb{animation:none !important} }
+</style>
+</head>
+<body data-motion-type="loop">
+
+<div class="pt-overlay" id="pretest">
+  <div class="pt-card">
+    <div class="plangbar" id="pt_langbar"></div>
+    <h3 id="pt_intro"></h3>
+    <p class="pt-note" id="pt_note"></p>
+    <div id="pt_body">
+      <p class="pt-q" id="pt_q"></p>
+      <div id="pt_opts"></div>
+      <button class="pt-skip" id="pt_skip" onclick="skipPre()"></button>
+    </div>
+    <div id="pt_done" style="display:none" class="pt-thanks">
+      <p id="pt_thanks"></p>
+      <button class="enterbtn" id="pt_enter" onclick="closePre()"></button>
+    </div>
+  </div>
+</div>
+
+<div class="orbs" aria-hidden="true">
+  <span class="orb o1"></span><span class="orb o2 sq"></span><span class="orb o3"></span>
+  <span class="orb o4"></span><span class="orb o5"></span><span class="orb o6 sq"></span>
+  <span class="orb o7"></span><span class="orb o8"></span><span class="orb o9 sq"></span><span class="orb o10"></span>
+</div>
+
+<header><div class="wrap"><div class="hd">
+  <span class="badge-brand"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0c0-4.5-7-13-7-13Z" fill="#e23a63"/></svg><span id="brand"></span></span>
+  <div class="langbar" id="langbar"></div>
+</div></div></header>
+
+<section class="hero"><div class="wrap">
+  <p class="caption" id="caption"></p>
+  <h1 id="htitle"></h1>
+  <p class="slogan" id="hslogan"></p>
+  <button class="cta" id="cta" onclick="document.getElementById('kinds').scrollIntoView()"></button>
+</div></section>
+
+<section id="kinds"><div class="wrap">
+  <div class="sec-head"><h2 id="kinds_h"></h2><p id="kinds_sub"></p></div>
+  <div id="prodbox"></div>
+</div></section>
+
+<section id="meaning"><div class="wrap">
+  <div class="sec-head"><h2 id="meaning_h"></h2><p id="meaning_sub"></p></div>
+  <div class="stats">
+    <div class="tile"><div class="big">7<span class="u">g/dL</span></div><div class="lab" id="tile1"></div></div>
+    <div class="tile"><div class="big">1<span class="u" id="tile2u"></span></div><div class="lab" id="tile2"></div></div>
+  </div>
+  <div class="intro" id="intro"></div>
+  <figure class="figure">
+    <img src="data:image/jpeg;base64,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" alt="有 7 就好 衛教海報">
+    <figcaption id="postercap"></figcaption>
+  </figure>
+  <div class="three" id="cards"></div>
+  <div class="exc"><h3 id="exc_h"></h3><ul id="exc_list"></ul></div>
+</div></section>
+
+<section id="thresholds"><div class="wrap">
+  <div class="sec-head"><h2 id="thr_h"></h2><p id="thr_sub"></p></div>
+  <div class="thr" id="thr_body"></div>
+  <p class="thr-note" id="thr_note"></p>
+</div></section>
+
+<section id="alts"><div class="wrap">
+  <div class="sec-head"><h2 id="alts_h"></h2><p id="alts_sub"></p></div>
+  <div class="alts" id="alts_body"></div>
+  <p class="thr-note" id="alts_note"></p>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <div class="sec-head"><h2 id="faq_h"></h2><p id="faq_sub"></p></div>
+  <div id="faqbox"></div>
+</div></section>
+
+<section id="ask"><div class="wrap">
+  <div class="sec-head"><h2 id="ask_h"></h2><p id="ask_sub"></p></div>
+  <div class="ask"><ol id="ask_list"></ol><div class="safe" id="ask_safe"></div></div>
+  <div class="tip"><h3 id="tip_h"></h3><ul id="tip_list"></ul></div>
+</div></section>
+
+<section id="precious"><div class="wrap">
+  <div class="sec-head"><h2 id="gift_h"></h2><p id="gift_sub"></p></div>
+  <div class="gift" id="gift_body"></div>
+  <p class="gift-close" id="gift_close"></p>
+</div></section>
+
+<section id="togame"><div class="wrap">
+  <div class="togame">
+    <h2 id="cta_h"></h2>
+    <p id="cta_sub"></p>
+    <a class="cta" id="cta_btn" href="#" target="_blank" rel="noopener"></a>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><div class="disc" id="disc"></div></div></footer>
+
+<script>
+var I={
+"zh-Hant":{lang:"zh-Hant",brand:"奇美醫療財團法人奇美醫院",caption:"明智選擇 Choosing Wisely",
+ htitle:"我需要輸血嗎？",hslogan:'明智選擇，有 <span class="sev">7</span> 就好',cta:"往下了解 ↓",
+ kinds_h:"醫生說我要輸血，到底是輸什麼血",kinds_sub:"點開每一種，完整了解它是什麼、為什麼用、什麼時候用、怎麼用、好處和副作用。",
+ whatL:"這是什麼",whyL:"為什麼要用",whenL:"什麼情形下用",howL:"怎麼用",goodL:"好處",badL:"副作用",tag7:"有 7 就好",
+ products:[
+  {name:"紅血球",ab:"RBC",seven:true,role:"血液裡數量最多的細胞，把氧氣送到全身",
+   what:"紅血球是血液裡數量最多的細胞，裡面的血紅素（Hb）會抓住氧氣，把氧氣從肺送到全身。醫院把捐來的血分離、濃縮成一袋，就是「濃厚紅血球」，英文叫 RBC。",
+   why:"當紅血球太少（貧血）或大量流失時，身體會缺氧，出現喘、疲累、頭暈、臉色蒼白。輸紅血球是直接把帶氧能力補回來。",
+   when:"嚴重貧血又有症狀、手術或外傷大量出血時。多數病況穩定的成人，血紅素低於 7 g/dL 才會評估要不要輸。",
+   how:"從手臂靜脈打點滴輸入。一袋約 250 到 350 毫升，通常 1.5 到 4 小時輸完，護理人員會持續觀察。",
+   good:"快速改善缺氧、喘、無力等症狀，大量出血時可以救命。",
+   bad:"可能發燒或過敏；輸太多太快會造成心肺負擔（體液過多），長輩和心臟病者要注意；嚴重反應少見；反覆多次輸血可能鐵過量。"},
+  {name:"血小板",ab:"PLT",seven:false,role:"幫忙止血的小碎片",
+   what:"血小板是血液裡幫忙止血的小碎片（不是完整細胞）。受傷流血時，它們會聚在一起把傷口堵住、形成血塊。英文叫 Platelet，簡寫 PLT。",
+   why:"血小板太少或功能不好時，容易瘀青、流血不止，嚴重時會自己出血。輸血小板是補充止血能力。",
+   when:"血小板太低又在出血，或血小板很低卻要開刀、做侵入性檢查前。看的是血小板數值，不是血紅素 7 g/dL。",
+   how:"一樣從靜脈打點滴輸入，通常比紅血球快，約 30 分鐘到 1 小時。",
+   good:"幫助止血、預防嚴重出血。",
+   bad:"發燒、過敏較常見；因為保存在室溫，細菌污染機會相對高，所以核對和觀察特別重要。"},
+  {name:"血漿",ab:"FFP",seven:false,role:"補充多種凝血因子的淡黃色液體",
+   what:"把血液裡的血球拿掉後，剩下的淡黃色液體就是血漿，裡面有很多「凝血因子」，也就是幫助血液凝固的蛋白質。新鮮採集後冷凍保存，用前才解凍，英文叫 FFP。",
+   why:"當身體缺乏多種凝血因子、血液不容易凝固又在出血時，輸血漿可以一次補回這些凝血因子。",
+   when:"出血又合併凝血功能異常、某些抗凝血藥造成的出血、大量輸血時。看的是凝血功能檢查，不是血紅素 7 g/dL。",
+   how:"解凍後從靜脈打點滴輸入。因為量比較大，輸的時候會注意心肺負擔。",
+   good:"補充多種凝血因子、幫助止血。",
+   bad:"過敏、發燒；量較大時可能造成體液過多、變喘。"},
+  {name:"冷凍沉澱品",ab:"Cryo",seven:false,role:"濃縮的纖維蛋白原等凝血原料",
+   what:"把血漿在低溫下處理後，會沉澱出一小包濃縮成分，特別富含「纖維蛋白原」，這是形成血塊的關鍵原料。英文叫 Cryoprecipitate，簡稱 Cryo。",
+   why:"當纖維蛋白原太低、血塊做不起來又嚴重出血時，用它快速補充關鍵原料。",
+   when:"纖維蛋白原過低合併嚴重出血，例如產科大出血、大手術。看的是纖維蛋白原濃度，不是血紅素 7 g/dL。",
+   how:"解凍後從靜脈輸入，體積小。",
+   good:"濃縮補充纖維蛋白原、幫助止血。",
+   bad:"過敏、發燒等，比較少見。"}],
+ meaning_h:"「有 7 就好」是什麼意思？",meaning_sub:"大部分病況穩定、沒有持續出血的成人，血紅素 7 g/dL 以上通常就足夠。",
+ tile1:"以上通常就足夠",tile2u:"袋",tile2:"先輸一袋，輸完再評估",
+ intro:['「有 7 就好」是一句好記的口號。這裡的 <b>7</b> 指的是<b>血紅素（Hb）</b>，也就是紅血球裡負責帶氧的蛋白質，是醫師用來衡量貧血程度的數值，單位是 <b>g/dL</b>。',
+  '它的意思是：對大部分病況穩定、沒有一直在流血的成年病人來說，血紅素維持在 <b>7 g/dL 以上</b>通常就夠用，不一定要輸血；要等到<b>低於 7 g/dL</b>，醫師才會開始評估需不需要輸紅血球。這在國際上叫「限制性輸血策略」，因為研究發現，對穩定的病人來說，輸得多並不會比較好，反而多了風險。',
+  '要記得：這個 <b>7 g/dL 是紅血球的參考值</b>，不適用於血小板或血漿；而且它是「參考」，不是「硬規定」。'],
+ postercap:"奇美醫療財團法人奇美醫院 · PBM 病人用血管理推動小組 · 輸血委員會製",
+ cards:[{h:"7 是參考，不是開關",p:"低於 7 g/dL 不一定要輸，超過 7 g/dL 也不一定不能輸。醫師會一起看症狀、出血、心臟與其他疾病。心臟或骨科手術、有心血管疾病者，標準可能是 7.5 或 8 g/dL。"},
+  {h:"一袋再評估",p:"對穩定、沒出血的病人，需要時以一袋為原則，輸完再看症狀和血紅素，真的需要才輸下一袋。"},
+  {h:"不輸不等於不做",p:"暫時不輸，醫療團隊仍會找出貧血原因、補鐵、控制出血、治療疾病本身。真正需要時一定會及時處理。"}],
+ exc_h:"這些情況標準不同，要個別評估",
+ exc:["正在大量出血或循環不穩","急性心肌梗塞、急性冠心症（指引建議 Hb 低於 10 g/dL 就評估）","需要長期規則輸血的疾病","有明顯症狀，例如嚴重的喘、胸悶"],
+ faq_h:"常見問題",faq_sub:"點開看答案。",
+ faqs:[{q:"「有 7 就好」是所有輸血都適用嗎？",a:"不是。<b>只講紅血球。</b>血小板、血漿、冷凍沉澱品各有標準，不看這個 7 g/dL。"},
+  {q:"血紅素低，醫師卻說先不輸，為什麼？",a:"如果只是稍低、沒有不舒服、也沒出血，輸血好處有限、風險照樣在。醫師會先找原因、用更根本的方式改善，這樣更安全。"},
+  {q:"輸血前要簽同意書嗎？為什麼？",a:"需要。輸血是有風險的治療，醫師會先說明<b>為什麼需要、有什麼風險、有沒有其他選擇</b>，你了解後簽署輸血同意書。簽之前有疑問一定要當場問清楚。"},
+  {q:"輸血前為什麼要一直核對姓名、血型？",a:"因為<b>輸錯血非常危險</b>。輸血前醫護會和你一起核對姓名、病歷號、血型和血袋資料，確認無誤才開始。請一起幫忙確認，這是保護你最重要的一關。"},
+  {q:"輸血過程中覺得不舒服怎麼辦？",a:"出現發冷、發燒、起紅疹、喘、胸悶、腰痠或任何不舒服，請<b>立刻按鈴或告訴護理人員</b>，會馬上停下處理。"},
+  {q:"輸血會不會傳染疾病？",a:"現代血品都經嚴格檢驗，因輸血感染的風險已<b>非常低</b>，但不是零。能避免的輸血就避免不必要的風險。"},
+  {q:"輸血有什麼風險或副作用？",a:"較常見的是發燒或過敏。輸太多太快可能造成體液過多、呼吸困難。嚴重反應很少見。鐵過量主要發生在<b>反覆多次輸血</b>的人。"},
+  {q:"除了輸血，還有別的方法嗎？",a:"有。缺鐵性貧血可以補鐵；手術可以先把貧血養好、術中用止血藥、把流失的血回收再輸回自己。哪種適合你，問醫師。"},
+  {q:"我可以拒絕輸血嗎？",a:"你有權參與並表達意見。若考慮不輸，請先和醫療團隊<b>討論後果和替代方案</b>，一起做出對你安全又符合你想法的決定。"},
+  {q:"血是從哪裡來的？",a:"都來自善心民眾的無償捐血，經嚴格檢驗後供應。血源有限又珍貴，「需要才輸、夠用就好」也是珍惜這份心意。"}],
+ ask_h:"輸紅血球前可以問醫師的三個問題",ask_sub:"一起做最適合你的決定。",
+ ask:["我現在為什麼需要輸紅血球？","有沒有先治療貧血、或控制出血的方法？","如果需要輸，可以先輸 1 袋，再評估嗎？"],
+ ask_safe:"<b>重要：</b>請不要只看數字就自己要求或拒絕輸血。該不該輸，請和醫療團隊一起評估。真正需要時，及時輸血能救命。",
+ tip_h:"輸血當天的小提醒",tip:["簽輸血同意書前，把不懂的地方問清楚再簽","輸血前，和醫護一起核對你的姓名、血型和血袋資料","輸血中有任何不舒服，馬上按鈴告訴護理人員"],
+ disc:"本頁為衛教資訊，不能取代醫師診療。緊急時請立即就醫。<br>奇美醫療財團法人奇美醫院 · 品質管理部 × 明智選擇 Choosing Wisely"},
+
+"zh-Hans":{lang:"zh-Hans",brand:"奇美医疗财团法人奇美医院",caption:"明智选择 Choosing Wisely",
+ htitle:"我需要输血吗？",hslogan:'明智选择，有 <span class="sev">7</span> 就好',cta:"往下了解 ↓",
+ kinds_h:"医生说我要输血，到底是输什么血",kinds_sub:"点开每一种，完整了解它是什么、为什么用、什么时候用、怎么用、好处和副作用。",
+ whatL:"这是什么",whyL:"为什么要用",whenL:"什么情形下用",howL:"怎么用",goodL:"好处",badL:"副作用",tag7:"有 7 就好",
+ products:[
+  {name:"红细胞",ab:"RBC",seven:true,role:"血液里数量最多的细胞，把氧气送到全身",
+   what:"红细胞是血液里数量最多的细胞，里面的血红素（Hb）会抓住氧气，把氧气从肺送到全身。医院把捐来的血分离、浓缩成一袋，就是「浓缩红细胞」，英文叫 RBC。",
+   why:"当红细胞太少（贫血）或大量流失时，身体会缺氧，出现气喘、疲累、头晕、脸色苍白。输红细胞是直接把带氧能力补回来。",
+   when:"严重贫血又有症状、手术或外伤大量出血时。多数病况稳定的成人，血红素低于 7 g/dL 才会评估要不要输。",
+   how:"从手臂静脉打点滴输入。一袋约 250 到 350 毫升，通常 1.5 到 4 小时输完，护理人员会持续观察。",
+   good:"快速改善缺氧、气喘、无力等症状，大量出血时可以救命。",
+   bad:"可能发烧或过敏；输太多太快会造成心肺负担（体液过多），长辈和心脏病者要注意；严重反应少见；反复多次输血可能铁过量。"},
+  {name:"血小板",ab:"PLT",seven:false,role:"帮忙止血的小碎片",
+   what:"血小板是血液里帮忙止血的小碎片（不是完整细胞）。受伤流血时，它们会聚在一起把伤口堵住、形成血块。英文叫 Platelet，简写 PLT。",
+   why:"血小板太少或功能不好时，容易瘀青、流血不止，严重时会自己出血。输血小板是补充止血能力。",
+   when:"血小板太低又在出血，或血小板很低却要开刀、做侵入性检查前。看的是血小板数值，不是血红素 7 g/dL。",
+   how:"一样从静脉打点滴输入，通常比红细胞快，约 30 分钟到 1 小时。",
+   good:"帮助止血、预防严重出血。",
+   bad:"发烧、过敏较常见；因为保存在室温，细菌污染机会相对高，所以核对和观察特别重要。"},
+  {name:"血浆",ab:"FFP",seven:false,role:"补充多种凝血因子的淡黄色液体",
+   what:"把血液里的血细胞拿掉后，剩下的淡黄色液体就是血浆，里面有很多「凝血因子」，也就是帮助血液凝固的蛋白质。新鲜采集后冷冻保存，用前才解冻，英文叫 FFP。",
+   why:"当身体缺乏多种凝血因子、血液不容易凝固又在出血时，输血浆可以一次补回这些凝血因子。",
+   when:"出血又合并凝血功能异常、某些抗凝血药造成的出血、大量输血时。看的是凝血功能检查，不是血红素 7 g/dL。",
+   how:"解冻后从静脉打点滴输入。因为量比较大，输的时候会注意心肺负担。",
+   good:"补充多种凝血因子、帮助止血。",
+   bad:"过敏、发烧；量较大时可能造成体液过多、气喘。"},
+  {name:"冷沉淀",ab:"Cryo",seven:false,role:"浓缩的纤维蛋白原等凝血原料",
+   what:"把血浆在低温下处理后，会沉淀出一小包浓缩成分，特别富含「纤维蛋白原」，这是形成血块的关键原料。英文叫 Cryoprecipitate，简称 Cryo。",
+   why:"当纤维蛋白原太低、血块做不起来又严重出血时，用它快速补充关键原料。",
+   when:"纤维蛋白原过低合并严重出血，例如产科大出血、大手术。看的是纤维蛋白原浓度，不是血红素 7 g/dL。",
+   how:"解冻后从静脉输入，体积小。",
+   good:"浓缩补充纤维蛋白原、帮助止血。",
+   bad:"过敏、发烧等，比较少见。"}],
+ meaning_h:"「有 7 就好」是什么意思？",meaning_sub:"大部分病况稳定、没有持续出血的成人，血红素 7 g/dL 以上通常就足够。",
+ tile1:"以上通常就足够",tile2u:"袋",tile2:"先输一袋，输完再评估",
+ intro:['「有 7 就好」是一句好记的口号。这里的 <b>7</b> 指的是<b>血红素（Hb）</b>，也就是红细胞里负责带氧的蛋白质，是医师用来衡量贫血程度的数值，单位是 <b>g/dL</b>。',
+  '它的意思是：对大部分病况稳定、没有一直在流血的成年病人来说，血红素维持在 <b>7 g/dL 以上</b>通常就够用，不一定要输血；要等到<b>低于 7 g/dL</b>，医师才会开始评估需不需要输红细胞。这在国际上叫「限制性输血策略」，因为研究发现，对稳定的病人来说，输得多并不会比较好，反而多了风险。',
+  '要记得：这个 <b>7 g/dL 是红细胞的参考值</b>，不适用于血小板或血浆；而且它是「参考」，不是「硬规定」。'],
+ postercap:"奇美医疗财团法人奇美医院 · PBM 病人用血管理推动小组 · 输血委员会制",
+ cards:[{h:"7 是参考，不是开关",p:"低于 7 g/dL 不一定要输，超过 7 g/dL 也不一定不能输。医师会一起看症状、出血、心脏与其他疾病。心脏或骨科手术、有心血管疾病者，标准可能是 7.5 或 8 g/dL。"},
+  {h:"一袋再评估",p:"对稳定、没出血的病人，需要时以一袋为原则，输完再看症状和血红素，真的需要才输下一袋。"},
+  {h:"不输不等于不做",p:"暂时不输，医疗团队仍会找出贫血原因、补铁、控制出血、治疗疾病本身。真正需要时一定会及时处理。"}],
+ exc_h:"这些情况标准不同，要个别评估",
+ exc:["正在大量出血或循环不稳","急性心肌梗塞、急性冠心症（指引建议 Hb 低于 10 g/dL 就评估）","需要长期规则输血的疾病","有明显症状，例如严重的气喘、胸闷"],
+ faq_h:"常见问题",faq_sub:"点开看答案。",
+ faqs:[{q:"「有 7 就好」是所有输血都适用吗？",a:"不是。<b>只讲红细胞。</b>血小板、血浆、冷沉淀各有标准，不看这个 7 g/dL。"},
+  {q:"血红素低，医师却说先不输，为什么？",a:"如果只是稍低、没有不舒服、也没出血，输血好处有限、风险照样在。医师会先找原因、用更根本的方式改善，这样更安全。"},
+  {q:"输血前要签同意书吗？为什么？",a:"需要。输血是有风险的治疗，医师会先说明<b>为什么需要、有什么风险、有没有其他选择</b>，你了解后签署输血同意书。签之前有疑问一定要当场问清楚。"},
+  {q:"输血前为什么要一直核对姓名、血型？",a:"因为<b>输错血非常危险</b>。输血前医护会和你一起核对姓名、病历号、血型和血袋资料，确认无误才开始。请一起帮忙确认，这是保护你最重要的一关。"},
+  {q:"输血过程中觉得不舒服怎么办？",a:"出现发冷、发烧、起红疹、气喘、胸闷、腰酸或任何不舒服，请<b>立刻按铃或告诉护理人员</b>，会马上停下处理。"},
+  {q:"输血会不会传染疾病？",a:"现代血品都经严格检验，因输血感染的风险已<b>非常低</b>，但不是零。能避免的输血就避免不必要的风险。"},
+  {q:"输血有什么风险或副作用？",a:"较常见的是发烧或过敏。输太多太快可能造成体液过多、呼吸困难。严重反应很少见。铁过量主要发生在<b>反复多次输血</b>的人。"},
+  {q:"除了输血，还有别的方法吗？",a:"有。缺铁性贫血可以补铁；手术可以先把贫血养好、术中用止血药、把流失的血回收再输回自己。哪种适合你，问医师。"},
+  {q:"我可以拒绝输血吗？",a:"你有权参与并表达意见。若考虑不输，请先和医疗团队<b>讨论后果和替代方案</b>，一起做出对你安全又符合你想法的决定。"},
+  {q:"血是从哪里来的？",a:"都来自善心民众的无偿捐血，经严格检验后供应。血源有限又珍贵，「需要才输、够用就好」也是珍惜这份心意。"}],
+ ask_h:"输红细胞前可以问医师的三个问题",ask_sub:"一起做最适合你的决定。",
+ ask:["我现在为什么需要输红细胞？","有没有先治疗贫血、或控制出血的方法？","如果需要输，可以先输 1 袋，再评估吗？"],
+ ask_safe:"<b>重要：</b>请不要只看数字就自己要求或拒绝输血。该不该输，请和医疗团队一起评估。真正需要时，及时输血能救命。",
+ tip_h:"输血当天的小提醒",tip:["签输血同意书前，把不懂的地方问清楚再签","输血前，和医护一起核对你的姓名、血型和血袋资料","输血中有任何不舒服，马上按铃告诉护理人员"],
+ disc:"本页为卫教信息，不能取代医师诊疗。紧急时请立即就医。<br>奇美医疗财团法人奇美医院 · 品质管理部 × 明智选择 Choosing Wisely"},
+
+"en":{lang:"en",brand:"Chi Mei Medical Center",caption:"Choosing Wisely",
+ htitle:"Do I need a transfusion?",hslogan:'Choose wisely: a <span class="sev">7</span> is enough',cta:"Learn more ↓",
+ kinds_h:"The doctor says I need a transfusion. What is being transfused?",kinds_sub:"Tap each one to learn what it is, why and when it is used, how it is given, and its benefits and side effects.",
+ whatL:"What it is",whyL:"Why it is used",whenL:"When it is used",howL:"How it is given",goodL:"Benefits",badL:"Side effects",tag7:"A 7 is enough",
+ products:[
+  {name:"Red cells",ab:"RBC",seven:true,role:"The most common blood cell; carries oxygen around the body",
+   what:"Red cells are the most common cells in blood. Their hemoglobin (Hb) grabs oxygen and carries it from the lungs to the whole body. Donated blood is separated and concentrated into one bag, known as packed red cells (RBC).",
+   why:"When red cells are too few (anemia) or heavily lost, the body lacks oxygen, causing breathlessness, fatigue, dizziness and paleness. Transfusing red cells restores oxygen-carrying capacity.",
+   when:"Symptomatic severe anemia, or heavy bleeding from surgery or trauma. For most stable adults, transfusion is only assessed when Hb falls below 7 g/dL.",
+   how:"Given through an arm vein by drip. A bag is about 250 to 350 mL, usually infused over 1.5 to 4 hours, with nurses observing you throughout.",
+   good:"Quickly relieves low-oxygen symptoms like breathlessness and weakness, and can be lifesaving in major bleeding.",
+   bad:"Possible fever or allergy; too much too fast can overload the heart and lungs (fluid overload), so the elderly and heart patients need care; serious reactions are rare; repeated transfusions may cause iron overload."},
+  {name:"Platelets",ab:"PLT",seven:false,role:"Tiny fragments that help stop bleeding",
+   what:"Platelets are tiny fragments in blood that help stop bleeding (not whole cells). When you bleed, they clump together to plug the wound and form a clot. Called Platelet (PLT).",
+   why:"When platelets are too few or work poorly, you bruise easily and bleed for a long time, sometimes spontaneously. Transfusing platelets restores clotting ability.",
+   when:"Very low platelets with bleeding, or very low platelets before surgery or an invasive procedure. Judged by the platelet count, not by Hb 7 g/dL.",
+   how:"Also given by vein drip, usually faster than red cells, about 30 minutes to 1 hour.",
+   good:"Helps stop bleeding and prevents serious bleeding.",
+   bad:"Fever and allergy are more common; because platelets are stored at room temperature, bacterial contamination risk is relatively higher, so checking and observation matter."},
+  {name:"Plasma",ab:"FFP",seven:false,role:"Pale yellow liquid that replaces clotting factors",
+   what:"After the blood cells are removed, the pale yellow liquid left is plasma, which contains many clotting factors (proteins that help blood clot). Frozen fresh and thawed before use, called FFP.",
+   why:"When the body lacks several clotting factors and bleeds because blood will not clot easily, plasma replaces those factors at once.",
+   when:"Bleeding with multiple clotting-factor deficiency, bleeding from certain anticoagulant drugs, or massive transfusion. Judged by clotting tests, not by Hb 7 g/dL.",
+   how:"Thawed and given by vein drip. Because the volume is larger, the heart and lung load is watched.",
+   good:"Replaces multiple clotting factors and helps stop bleeding.",
+   bad:"Allergy and fever; larger volumes may cause fluid overload and breathlessness."},
+  {name:"Cryoprecipitate",ab:"Cryo",seven:false,role:"Concentrated fibrinogen and clotting material",
+   what:"When plasma is processed at low temperature, a small concentrated portion settles out, especially rich in fibrinogen, the key raw material for forming a clot. Called Cryoprecipitate (Cryo).",
+   why:"When fibrinogen is too low and a clot will not form during serious bleeding, it quickly replaces this key material.",
+   when:"Low fibrinogen with serious bleeding, such as obstetric hemorrhage or major surgery. Judged by fibrinogen level, not by Hb 7 g/dL.",
+   how:"Thawed and given by vein; small in volume.",
+   good:"Concentrated fibrinogen replacement to help stop bleeding.",
+   bad:"Allergy and fever, relatively uncommon."}],
+ meaning_h:"What does “a 7 is enough” mean?",meaning_sub:"For most stable adults without ongoing bleeding, a hemoglobin of 7 g/dL or above is usually enough.",
+ tile1:"or above is usually enough",tile2u:" bag",tile2:"One bag first, then reassess",
+ intro:['“A 7 is enough” is an easy-to-remember slogan. Here <b>7</b> means <b>hemoglobin (Hb)</b>, the oxygen-carrying protein in red cells that doctors use to gauge anemia, measured in <b>g/dL</b>.',
+  'It means: for most stable adult patients who are not continuously bleeding, keeping hemoglobin <b>at 7 g/dL or above</b> is usually enough, and a transfusion is not always needed; only <b>below 7 g/dL</b> does the doctor start to assess whether red cells are needed. Internationally this is the “restrictive transfusion strategy,” because research shows that for stable patients, transfusing more is not better and adds risk.',
+  'Remember: this <b>7 g/dL is a reference for red cells</b>, not for platelets or plasma; and it is a “guide,” not a “fixed rule.”'],
+ postercap:"Chi Mei Medical Center · Patient Blood Management team · Transfusion Committee",
+ cards:[{h:"7 is a guide, not a switch",p:"Below 7 g/dL does not always mean transfuse; above 7 g/dL does not always mean don't. The team weighs symptoms, bleeding, heart and other conditions. For cardiac or orthopedic surgery, or heart disease, the mark may be 7.5 or 8 g/dL."},
+  {h:"One bag, then reassess",p:"For stable patients without bleeding, give one bag when needed, then check symptoms and hemoglobin, and give another only if truly needed."},
+  {h:"Not transfusing is not doing nothing",p:"If held, the team still finds the cause of anemia, gives iron, controls bleeding and treats the illness. When truly needed, it is given promptly."}],
+ exc_h:"These need individual assessment (different standard)",
+ exc:["Active heavy bleeding or unstable circulation","Acute myocardial infarction / acute coronary syndrome (guidelines suggest assessing below Hb 10 g/dL)","Conditions needing regular long-term transfusion","Clear symptoms, e.g. severe breathlessness or chest tightness"],
+ faq_h:"Common questions",faq_sub:"Tap to see the answer.",
+ faqs:[{q:"Does “a 7 is enough” apply to all transfusions?",a:"No. <b>Only red cells.</b> Platelets, plasma and cryoprecipitate each have their own standards, not this 7 g/dL."},
+  {q:"My hemoglobin is low but the doctor says hold off. Why?",a:"If it is only mildly low with no symptoms and no bleeding, benefit is limited while risk remains. The doctor finds the cause and treats it more fundamentally, which is safer."},
+  {q:"Do I sign a consent form before transfusion? Why?",a:"Yes. Transfusion is a treatment with risks, so the doctor explains <b>why it is needed, the risks, and any alternatives</b>, and you sign a transfusion consent form. Ask anything you are unsure about before signing."},
+  {q:"Why are my name and blood type checked repeatedly?",a:"Because <b>giving the wrong blood is very dangerous</b>. Before transfusion, staff check your name, record number, blood type and bag details with you. Please help confirm; this is the most important safety step."},
+  {q:"What if I feel unwell during transfusion?",a:"If you feel chills, fever, rash, breathlessness, chest tightness, back ache or any discomfort, <b>press the call bell or tell a nurse immediately</b>; it will be stopped and managed at once."},
+  {q:"Can transfusion transmit disease?",a:"Modern blood is rigorously screened, so infection risk is <b>very low</b> but not zero. Avoiding unnecessary transfusion avoids unnecessary risk."},
+  {q:"What are the risks or side effects?",a:"Fever or allergy are the more common ones. Too much too fast can cause fluid overload and breathlessness. Serious reactions are rare. Iron overload mainly affects people transfused <b>repeatedly</b>."},
+  {q:"Are there alternatives to transfusion?",a:"Yes. Iron-deficiency anemia can be treated with iron; for surgery, anemia can be corrected beforehand, drugs can reduce bleeding, and lost blood can be salvaged back to you. Ask your doctor which fits."},
+  {q:"Can I refuse a transfusion?",a:"You have the right to take part and speak up. If you are considering not transfusing, first <b>discuss the consequences and alternatives</b> with the team to decide together what is safe and fits your wishes."},
+  {q:"Where does the blood come from?",a:"All from voluntary donors, screened before use. Blood is limited and precious, so “transfuse only when needed, just enough” also honors that gift."}],
+ ask_h:"Three questions to ask before red cell transfusion",ask_sub:"Deciding together what is best for you.",
+ ask:["Why do I need red cells now?","Is there a way to treat the anemia or control bleeding first?","If needed, can we give one bag first, then reassess?"],
+ ask_safe:"<b>Important:</b> Please do not request or refuse a transfusion based on the number alone. Whether to transfuse should be assessed with your care team. When truly needed, prompt transfusion saves lives.",
+ tip_h:"Reminders on transfusion day",tip:["Before signing the consent form, ask about anything you do not understand","Before transfusion, check your name, blood type and bag details with the staff","If you feel any discomfort during transfusion, press the call bell and tell a nurse"],
+ disc:"This page is educational and does not replace medical care. In an emergency, seek care immediately.<br>Chi Mei Medical Center · Quality Management × Choosing Wisely"},
+
+"ja":{lang:"ja",brand:"奇美医療財団法人奇美病院",caption:"Choosing Wisely（賢明な選択）",
+ htitle:"輸血は必要ですか？",hslogan:'賢明な選択、<span class="sev">7</span> で十分',cta:"詳しく見る ↓",
+ kinds_h:"「輸血が必要」と言われた。いったい何を輸血するの？",kinds_sub:"それぞれをタップして、何か、なぜ・いつ使うか、どう行うか、利点と副作用を確認しましょう。",
+ whatL:"これは何",whyL:"なぜ使う",whenL:"どんな時に使う",howL:"どう行う",goodL:"利点",badL:"副作用",tag7:"7 で十分",
+ products:[
+  {name:"赤血球",ab:"RBC",seven:true,role:"血液で最も多い細胞。酸素を全身に運ぶ",
+   what:"赤血球は血液で最も多い細胞で、中のヘモグロビン（Hb）が酸素をつかみ、肺から全身へ運びます。提供された血液を分離・濃縮した一袋が「濃厚赤血球（RBC）」です。",
+   why:"赤血球が少ない（貧血）または大量に失われると、体が酸素不足になり、息切れ・疲れ・めまい・顔色不良が出ます。輸血は酸素を運ぶ力を補います。",
+   when:"症状のある重い貧血、手術や外傷での大量出血のときです。状態が安定した多くの成人では、Hb が 7 g/dL を下回って初めて必要性を評価します。",
+   how:"腕の静脈から点滴で入れます。一袋は約250〜350 mLで、通常1.5〜4時間かけ、看護師が経過を観察します。",
+   good:"息切れや倦怠感など酸素不足の症状を速やかに改善し、大量出血では救命になります。",
+   bad:"発熱やアレルギーのことがあります。速すぎ・多すぎると心肺に負担（体液過剰）がかかり、高齢者や心臓病の方は注意が必要です。重い反応はまれです。反復輸血では鉄過剰の可能性があります。"},
+  {name:"血小板",ab:"PLT",seven:false,role:"止血を助ける小さな断片",
+   what:"血小板は止血を助ける小さな断片（完全な細胞ではありません）。出血すると集まって傷をふさぎ、血のかたまりを作ります。英語で Platelet（PLT）。",
+   why:"血小板が少ない・働きが悪いと、あざができやすく出血が止まりにくく、時に自然出血します。輸血で止血する力を補います。",
+   when:"血小板がとても低く出血がある時、または低い状態で手術や侵襲的検査の前。判断は血小板数で行い、Hb 7 g/dL ではありません。",
+   how:"同じく静脈から点滴で入れ、通常は赤血球より速く約30分〜1時間です。",
+   good:"止血を助け、重い出血を防ぎます。",
+   bad:"発熱・アレルギーが比較的多いです。室温で保存するため細菌汚染の可能性がやや高く、照合と観察が特に大切です。"},
+  {name:"血漿",ab:"FFP",seven:false,role:"多くの凝固因子を補う淡黄色の液体",
+   what:"血液から血球を除いた淡黄色の液体が血漿で、血を固める働きの「凝固因子」というたんぱく質を多く含みます。新鮮なうちに凍結し、使う前に解凍します（FFP）。",
+   why:"複数の凝固因子が不足して血が固まりにくく出血しているとき、血漿でこれらを一度に補います。",
+   when:"出血に凝固異常を伴うとき、抗凝固薬による出血、大量輸血のとき。判断は凝固検査で行い、Hb 7 g/dL ではありません。",
+   how:"解凍して静脈から点滴で入れます。量が多いため心肺の負担に注意します。",
+   good:"複数の凝固因子を補い、止血を助けます。",
+   bad:"アレルギー・発熱。量が多いと体液過剰や息切れが起こることがあります。"},
+  {name:"クリオプレシピテート",ab:"Cryo",seven:false,role:"フィブリノゲンなどを濃縮した凝固原料",
+   what:"血漿を低温で処理すると沈殿する濃縮成分で、血のかたまりの主原料である「フィブリノゲン」を特に多く含みます（Cryoprecipitate、略して Cryo）。",
+   why:"フィブリノゲンが低くかたまりが作れず、重い出血があるとき、この主原料を素早く補います。",
+   when:"フィブリノゲン低下に重い出血を伴うとき（産科大量出血、大手術など）。判断はフィブリノゲン値で行い、Hb 7 g/dL ではありません。",
+   how:"解凍して静脈から入れます。量は少なめです。",
+   good:"フィブリノゲンを濃縮して補い、止血を助けます。",
+   bad:"アレルギー・発熱など。比較的まれです。"}],
+ meaning_h:"「7 で十分」とはどういう意味？",meaning_sub:"状態が安定し出血の続いていない多くの成人では、ヘモグロビン 7 g/dL 以上あれば通常は十分です。",
+ tile1:"以上あれば通常は十分",tile2u:"袋",tile2:"まず1袋、終えてから再評価",
+ intro:['「7 で十分」は覚えやすい標語です。ここでの <b>7</b> は <b>ヘモグロビン（Hb）</b>、赤血球で酸素を運ぶたんぱく質で、貧血の程度を測る値、単位は <b>g/dL</b> です。',
+  '意味はこうです。出血が続いていない安定した多くの成人では、Hb を <b>7 g/dL 以上</b> に保てば通常は十分で、必ず輸血が必要とは限りません。<b>7 g/dL を下回って</b> はじめて、赤血球の輸血が必要かを医師が評価します。これは国際的に「制限的輸血戦略」と呼ばれ、安定した患者では多く輸血しても良くはならず、かえって危険が増えると分かっているためです。',
+  '覚えておいてください。この <b>7 g/dL は赤血球の目安</b> で、血小板や血漿には当てはまりません。しかも「目安」であり「絶対の規則」ではありません。'],
+ postercap:"奇美医療財団法人奇美病院 · PBM（患者血液管理）推進チーム · 輸血委員会",
+ cards:[{h:"7 は目安、スイッチではない",p:"7 g/dL 未満でも必ず輸血ではなく、7 g/dL 超でも必ず不可ではありません。医師は症状・出血・心臓や他の病気を合わせて判断します。心臓や整形の手術、心疾患のある方では 7.5 や 8 g/dL のこともあります。"},
+  {h:"1袋、そして再評価",p:"安定し出血のない患者では、必要なとき1袋を原則とし、終えてから症状と Hb を見て、本当に必要な時だけ次の袋を入れます。"},
+  {h:"輸血しない＝何もしない、ではない",p:"見送っても、医療チームは貧血の原因を探し、鉄剤を使い、出血を抑え、病気そのものを治療します。本当に必要な時は速やかに行います。"}],
+ exc_h:"これらは個別評価が必要（基準が異なる）",
+ exc:["大量に出血中、または循環が不安定","急性心筋梗塞・急性冠症候群（Hb 10 g/dL 未満で評価を推奨）","長期に定期輸血が必要な病気","強い息切れや胸の圧迫感などの明らかな症状"],
+ faq_h:"よくある質問",faq_sub:"タップして答えを見る。",
+ faqs:[{q:"「7 で十分」はすべての輸血に当てはまる？",a:"いいえ。<b>赤血球だけ</b>です。血小板・血漿・クリオはそれぞれ別の基準で、この 7 g/dL では判断しません。"},
+  {q:"Hb が低いのに医師は輸血を見送ると言う。なぜ？",a:"少し低いだけで症状も出血もなければ、利点は限られ危険は残ります。医師は原因を探して根本から改善します。その方が安全です。"},
+  {q:"輸血前に同意書に署名しますか？なぜ？",a:"はい。輸血は危険を伴う治療なので、医師が<b>必要な理由・危険・他の選択肢</b>を説明し、理解のうえで同意書に署名します。不明点は署名前に必ず確認してください。"},
+  {q:"なぜ名前や血液型を何度も確認するの？",a:"<b>血液の取り違えは非常に危険</b>だからです。輸血前に、氏名・診察券番号・血液型・血液バッグを一緒に確認してから始めます。ご協力ください。最も大切な安全の関門です。"},
+  {q:"輸血中に気分が悪くなったら？",a:"悪寒・発熱・発疹・息切れ・胸の圧迫・腰の痛みなど不調があれば、<b>すぐにナースコールか看護師へ</b>。直ちに止めて対応します。"},
+  {q:"輸血で病気がうつる？",a:"現在の血液は厳しく検査され、感染の危険は<b>非常に低い</b>ですが、ゼロではありません。不要な輸血を避けることで不要な危険を避けます。"},
+  {q:"どんな危険・副作用がある？",a:"多いのは発熱やアレルギーです。速すぎ・多すぎると体液過剰や呼吸困難のことも。重い反応はまれです。鉄過剰は主に<b>繰り返し輸血</b>する人に起こります。"},
+  {q:"輸血以外の方法は？",a:"あります。鉄欠乏性貧血は鉄剤で、手術では事前に貧血を整え、術中に止血薬を使い、出た血を回収して戻すこともできます。適した方法は医師に相談を。"},
+  {q:"輸血を断れますか？",a:"参加し意見を述べる権利があります。見送りを考えるなら、まず<b>結果と代替策</b>を医療チームと話し合い、安全で希望に合う決定を一緒にしましょう。"},
+  {q:"血液はどこから来るの？",a:"善意の無償献血からで、厳重な検査を経て提供されます。血液は限られ貴重なので「必要な時に、十分なだけ」もその思いを大切にすることです。"}],
+ ask_h:"赤血球輸血の前に医師へ聞ける3つの質問",ask_sub:"あなたに最も合う決定を一緒に。",
+ ask:["今なぜ赤血球が必要なのですか？","先に貧血を治す、または出血を抑える方法はありますか？","必要なら、まず1袋にして再評価できますか？"],
+ ask_safe:"<b>大切：</b>数値だけで輸血を求めたり断ったりしないでください。可否は医療チームと評価します。本当に必要な時、迅速な輸血は命を救います。",
+ tip_h:"輸血当日の小さな注意",tip:["同意書に署名する前に、分からない点を確認する","輸血前に、氏名・血液型・血液バッグを職員と一緒に照合する","輸血中に不調があれば、すぐナースコールで看護師へ"],
+ disc:"本ページは教育目的で、医師の診療に代わるものではありません。緊急時はただちに受診してください。<br>奇美医療財団法人奇美病院 · 品質管理部 × Choosing Wisely"},
+
+"ko":{lang:"ko",brand:"치메이 의료재단 치메이병원",caption:"Choosing Wisely（현명한 선택）",
+ htitle:"나는 수혈이 필요한가요?",hslogan:'현명한 선택, <span class="sev">7</span>이면 충분합니다',cta:"자세히 보기 ↓",
+ kinds_h:"의사가 수혈이 필요하다고 합니다. 무엇을 수혈하나요?",kinds_sub:"각각을 눌러 무엇인지, 왜·언제 쓰는지, 어떻게 하는지, 장점과 부작용을 확인하세요.",
+ whatL:"이것은 무엇",whyL:"왜 쓰나",whenL:"언제 쓰나",howL:"어떻게 하나",goodL:"장점",badL:"부작용",tag7:"7이면 충분",
+ products:[
+  {name:"적혈구",ab:"RBC",seven:true,role:"혈액에서 가장 많은 세포로 산소를 온몸에 운반",
+   what:"적혈구는 혈액에서 가장 많은 세포로, 안의 헤모글로빈(Hb)이 산소를 붙잡아 폐에서 온몸으로 운반합니다. 기증 혈액을 분리·농축한 한 봉지가 ‘농축 적혈구(RBC)’입니다.",
+   why:"적혈구가 너무 적거나(빈혈) 많이 손실되면 몸이 산소 부족이 되어 숨참·피로·어지럼·창백이 나타납니다. 수혈은 산소 운반 능력을 보충합니다.",
+   when:"증상이 있는 중증 빈혈, 수술·외상으로 인한 대량 출혈 때입니다. 상태가 안정된 대부분의 성인은 Hb가 7 g/dL 아래로 떨어져야 수혈 여부를 평가합니다.",
+   how:"팔의 정맥으로 수액처럼 넣습니다. 한 봉지는 약 250~350 mL이며 보통 1.5~4시간에 걸쳐 넣고, 간호사가 계속 관찰합니다.",
+   good:"숨참·무력감 등 산소 부족 증상을 빠르게 개선하고, 대량 출혈에서는 생명을 살릴 수 있습니다.",
+   bad:"발열이나 알레르기가 생길 수 있고, 너무 많고 빠르면 심폐 부담(체액 과다)이 생겨 어르신·심장병 환자는 주의가 필요합니다. 심한 반응은 드뭅니다. 반복 수혈 시 철 과잉이 생길 수 있습니다."},
+  {name:"혈소판",ab:"PLT",seven:false,role:"지혈을 돕는 작은 조각",
+   what:"혈소판은 지혈을 돕는 작은 조각입니다(완전한 세포가 아님). 출혈하면 모여서 상처를 막고 혈전을 만듭니다. 영어로 Platelet(PLT).",
+   why:"혈소판이 너무 적거나 기능이 나쁘면 멍이 잘 들고 출혈이 멈추지 않으며, 심하면 저절로 출혈합니다. 수혈로 지혈 능력을 보충합니다.",
+   when:"혈소판이 매우 낮으면서 출혈이 있을 때, 또는 매우 낮은 상태로 수술·침습적 검사 전. 혈소판 수치로 판단하며 Hb 7 g/dL가 아닙니다.",
+   how:"마찬가지로 정맥으로 넣으며 보통 적혈구보다 빠른 약 30분~1시간입니다.",
+   good:"지혈을 돕고 심한 출혈을 예방합니다.",
+   bad:"발열·알레르기가 비교적 흔합니다. 실온 보관이라 세균 오염 가능성이 다소 높아 대조 확인과 관찰이 특히 중요합니다."},
+  {name:"혈장",ab:"FFP",seven:false,role:"여러 응고 인자를 보충하는 연노랑 액체",
+   what:"혈액에서 혈구를 제거하면 남는 연노랑 액체가 혈장이며, 피를 굳히는 ‘응고 인자’ 단백질을 많이 담고 있습니다. 신선할 때 얼려 두었다가 쓰기 전에 녹입니다(FFP).",
+   why:"여러 응고 인자가 부족해 피가 잘 굳지 않고 출혈할 때, 혈장으로 이들을 한 번에 보충합니다.",
+   when:"출혈에 응고 이상을 동반할 때, 항응고제로 인한 출혈, 대량 수혈 때. 응고 검사로 판단하며 Hb 7 g/dL가 아닙니다.",
+   how:"녹인 뒤 정맥으로 넣습니다. 양이 많아 심폐 부담에 주의합니다.",
+   good:"여러 응고 인자를 보충하고 지혈을 돕습니다.",
+   bad:"알레르기·발열. 양이 많으면 체액 과다와 숨참이 생길 수 있습니다."},
+  {name:"동결침전제제",ab:"Cryo",seven:false,role:"피브리노겐 등을 농축한 응고 원료",
+   what:"혈장을 저온에서 처리하면 가라앉는 농축 성분으로, 혈전의 핵심 원료인 ‘피브리노겐’을 특히 많이 담고 있습니다(Cryoprecipitate, 약칭 Cryo).",
+   why:"피브리노겐이 낮아 혈전이 만들어지지 않고 심한 출혈이 있을 때, 이 핵심 원료를 빠르게 보충합니다.",
+   when:"피브리노겐 저하에 심한 출혈을 동반할 때(산과 대량 출혈, 큰 수술 등). 피브리노겐 수치로 판단하며 Hb 7 g/dL가 아닙니다.",
+   how:"녹인 뒤 정맥으로 넣으며 양이 적습니다.",
+   good:"피브리노겐을 농축 보충해 지혈을 돕습니다.",
+   bad:"알레르기·발열 등으로 비교적 드뭅니다."}],
+ meaning_h:"“7이면 충분”은 무슨 뜻인가요?",meaning_sub:"상태가 안정되고 출혈이 계속되지 않는 대부분의 성인은 헤모글로빈 7 g/dL 이상이면 보통 충분합니다.",
+ tile1:"이상이면 보통 충분",tile2u:"봉지",tile2:"먼저 한 봉지, 끝난 뒤 재평가",
+ intro:['“7이면 충분”은 기억하기 쉬운 표어입니다. 여기서 <b>7</b>은 <b>헤모글로빈(Hb)</b>, 적혈구에서 산소를 나르는 단백질로 빈혈 정도를 재는 값이며 단위는 <b>g/dL</b>입니다.',
+  '뜻은 이렇습니다. 출혈이 계속되지 않는 안정된 대부분의 성인은 Hb를 <b>7 g/dL 이상</b>으로 유지하면 보통 충분하며 반드시 수혈이 필요하지는 않습니다. <b>7 g/dL 아래로</b> 떨어져야 의사가 적혈구 수혈이 필요한지 평가합니다. 국제적으로 ‘제한적 수혈 전략’이라 하며, 안정된 환자는 많이 수혈해도 더 좋지 않고 오히려 위험이 늘기 때문입니다.',
+  '기억하세요. 이 <b>7 g/dL는 적혈구의 기준</b>으로 혈소판이나 혈장에는 해당하지 않으며, ‘참고’이지 ‘절대 규칙’이 아닙니다.'],
+ postercap:"치메이 의료재단 치메이병원 · PBM(환자 혈액 관리) 추진팀 · 수혈위원회",
+ cards:[{h:"7은 참고이지 스위치가 아니다",p:"7 g/dL 미만이라고 반드시 수혈은 아니고, 7 g/dL 초과라고 반드시 금지도 아닙니다. 의료진은 증상·출혈·심장 및 다른 병을 함께 봅니다. 심장·정형 수술이나 심장병이 있으면 7.5나 8 g/dL일 수 있습니다."},
+  {h:"한 봉지, 그리고 재평가",p:"안정되고 출혈이 없는 환자는 필요할 때 한 봉지를 원칙으로 하고, 끝난 뒤 증상과 Hb를 보아 정말 필요할 때만 다음 봉지를 넣습니다."},
+  {h:"수혈 안 함 ≠ 아무것도 안 함",p:"보류해도 의료진은 빈혈 원인을 찾고 철분을 주며 출혈을 조절하고 병 자체를 치료합니다. 정말 필요하면 즉시 시행합니다."}],
+ exc_h:"이 경우는 개별 평가가 필요(기준이 다름)",
+ exc:["대량 출혈 중이거나 순환이 불안정","급성 심근경색 · 급성 관동맥증후군(Hb 10 g/dL 미만에서 평가 권고)","장기간 정기 수혈이 필요한 질환","심한 숨참·가슴 답답함 등 뚜렷한 증상"],
+ faq_h:"자주 묻는 질문",faq_sub:"눌러서 답을 보세요.",
+ faqs:[{q:"“7이면 충분”은 모든 수혈에 해당하나요?",a:"아니요. <b>적혈구에만</b> 해당합니다. 혈소판·혈장·동결침전제제는 각기 다른 기준이며 이 7 g/dL로 판단하지 않습니다."},
+  {q:"Hb가 낮은데 의사가 보류하자고 해요. 왜죠?",a:"조금 낮을 뿐 증상도 출혈도 없다면 이득은 제한적이고 위험은 남습니다. 의사는 원인을 찾아 근본적으로 개선하며, 그게 더 안전합니다."},
+  {q:"수혈 전에 동의서에 서명하나요? 왜죠?",a:"네. 수혈은 위험이 있는 치료라 의사가 <b>필요한 이유·위험·다른 선택지</b>를 설명하고, 이해한 뒤 수혈 동의서에 서명합니다. 서명 전 궁금한 점은 꼭 확인하세요."},
+  {q:"왜 이름과 혈액형을 계속 확인하나요?",a:"<b>피를 잘못 주면 매우 위험</b>하기 때문입니다. 수혈 전 이름·등록번호·혈액형·혈액백을 함께 확인한 뒤 시작합니다. 함께 확인해 주세요. 가장 중요한 안전 단계입니다."},
+  {q:"수혈 중 불편하면 어떻게 하나요?",a:"오한·발열·발진·숨참·가슴 답답함·허리 통증 등 불편이 있으면 <b>즉시 호출벨을 누르거나 간호사에게 알리세요</b>. 바로 멈추고 처치합니다."},
+  {q:"수혈로 병이 옮나요?",a:"현대의 혈액은 엄격히 검사되어 감염 위험이 <b>매우 낮</b>지만 0은 아닙니다. 불필요한 수혈을 피하면 불필요한 위험을 피합니다."},
+  {q:"어떤 위험·부작용이 있나요?",a:"흔한 것은 발열이나 알레르기입니다. 너무 많고 빠르면 체액 과다·호흡곤란이 올 수 있습니다. 심한 반응은 드뭅니다. 철 과잉은 주로 <b>반복 수혈</b>하는 사람에게 생깁니다."},
+  {q:"수혈 말고 다른 방법은?",a:"있습니다. 철결핍 빈혈은 철분으로, 수술은 미리 빈혈을 교정하고 수술 중 지혈제를 쓰며 잃은 피를 회수해 되돌릴 수 있습니다. 맞는 방법은 의사와 상의하세요."},
+  {q:"수혈을 거부할 수 있나요?",a:"참여하고 의견을 낼 권리가 있습니다. 보류를 고려한다면 먼저 <b>결과와 대안</b>을 의료진과 논의해 안전하고 뜻에 맞는 결정을 함께 하세요."},
+  {q:"혈액은 어디서 오나요?",a:"모두 선의의 무상 헌혈에서 오며 엄격한 검사를 거쳐 공급됩니다. 혈액은 한정되고 귀하므로 ‘필요할 때, 충분한 만큼’도 그 마음을 소중히 하는 일입니다."}],
+ ask_h:"적혈구 수혈 전 의사에게 물을 세 가지",ask_sub:"당신에게 가장 맞는 결정을 함께.",
+ ask:["지금 왜 적혈구가 필요한가요?","먼저 빈혈을 치료하거나 출혈을 조절할 방법이 있나요?","필요하다면 먼저 한 봉지만 하고 재평가할 수 있나요?"],
+ ask_safe:"<b>중요:</b> 숫자만 보고 수혈을 요구하거나 거부하지 마세요. 여부는 의료진과 함께 평가합니다. 정말 필요할 때 신속한 수혈은 생명을 구합니다.",
+ tip_h:"수혈 당일 작은 알림",tip:["동의서에 서명하기 전, 모르는 점을 확인하세요","수혈 전, 이름·혈액형·혈액백을 직원과 함께 대조하세요","수혈 중 불편하면 즉시 호출벨로 간호사에게 알리세요"],
+ disc:"이 페이지는 교육용이며 의사의 진료를 대체하지 않습니다. 응급 시 즉시 진료를 받으세요.<br>치메이 의료재단 치메이병원 · 품질관리부 × Choosing Wisely"},
+
+"vi":{lang:"vi",brand:"Bệnh viện Chi Mei",caption:"Choosing Wisely",
+ htitle:"Tôi có cần truyền máu không?",hslogan:'Lựa chọn khôn ngoan, <span class="sev">7</span> là đủ',cta:"Tìm hiểu thêm ↓",
+ kinds_h:"Bác sĩ nói tôi cần truyền máu. Vậy truyền cái gì?",kinds_sub:"Chạm vào từng loại để hiểu nó là gì, vì sao và khi nào dùng, dùng thế nào, lợi ích và tác dụng phụ.",
+ whatL:"Là gì",whyL:"Vì sao dùng",whenL:"Khi nào dùng",howL:"Dùng thế nào",goodL:"Lợi ích",badL:"Tác dụng phụ",tag7:"7 là đủ",
+ products:[
+  {name:"Hồng cầu",ab:"RBC",seven:true,role:"Tế bào nhiều nhất trong máu, mang oxy đi khắp cơ thể",
+   what:"Hồng cầu là tế bào nhiều nhất trong máu; huyết sắc tố (Hb) bên trong giữ oxy và đưa từ phổi đi khắp cơ thể. Máu hiến được tách và cô đặc thành một túi, gọi là khối hồng cầu (RBC).",
+   why:"Khi hồng cầu quá ít (thiếu máu) hoặc mất nhiều, cơ thể thiếu oxy gây khó thở, mệt, chóng mặt, xanh xao. Truyền hồng cầu bù lại khả năng mang oxy.",
+   when:"Thiếu máu nặng có triệu chứng, hoặc chảy máu nhiều do mổ hay chấn thương. Với đa số người lớn ổn định, chỉ đánh giá khi Hb dưới 7 g/dL.",
+   how:"Truyền qua tĩnh mạch ở tay. Một túi khoảng 250–350 mL, thường 1,5–4 giờ, điều dưỡng theo dõi suốt quá trình.",
+   good:"Cải thiện nhanh khó thở, mệt do thiếu oxy; có thể cứu mạng khi chảy máu nhiều.",
+   bad:"Có thể sốt hoặc dị ứng; truyền quá nhiều quá nhanh gây quá tải tim phổi (thừa dịch), người già và bệnh tim cần lưu ý; phản ứng nặng hiếm; truyền nhiều lần có thể thừa sắt."},
+  {name:"Tiểu cầu",ab:"PLT",seven:false,role:"Mảnh nhỏ giúp cầm máu",
+   what:"Tiểu cầu là mảnh nhỏ giúp cầm máu (không phải tế bào hoàn chỉnh). Khi chảy máu, chúng kết lại bịt vết thương và tạo cục máu đông. Tiếng Anh là Platelet (PLT).",
+   why:"Khi tiểu cầu quá ít hoặc kém, dễ bầm tím, chảy máu khó cầm, nặng thì tự chảy máu. Truyền tiểu cầu bù khả năng cầm máu.",
+   when:"Tiểu cầu rất thấp kèm chảy máu, hoặc rất thấp trước khi mổ hay làm thủ thuật. Xét theo số tiểu cầu, không phải Hb 7 g/dL.",
+   how:"Cũng truyền qua tĩnh mạch, thường nhanh hơn hồng cầu, khoảng 30 phút–1 giờ.",
+   good:"Giúp cầm máu, phòng chảy máu nặng.",
+   bad:"Sốt, dị ứng khá thường gặp; do bảo quản ở nhiệt độ phòng nên nguy cơ nhiễm khuẩn cao hơn một chút, vì vậy đối chiếu và theo dõi rất quan trọng."},
+  {name:"Huyết tương",ab:"FFP",seven:false,role:"Dịch vàng nhạt bù nhiều yếu tố đông máu",
+   what:"Lấy bỏ tế bào máu, phần dịch vàng nhạt còn lại là huyết tương, chứa nhiều ‘yếu tố đông máu’ là protein giúp máu đông. Được đông lạnh khi còn tươi và rã đông trước khi dùng (FFP).",
+   why:"Khi thiếu nhiều yếu tố đông máu, máu khó đông mà đang chảy máu, huyết tương bù các yếu tố này một lần.",
+   when:"Chảy máu kèm rối loạn đông máu, chảy máu do thuốc chống đông, hoặc truyền máu khối lượng lớn. Xét theo xét nghiệm đông máu, không phải Hb 7 g/dL.",
+   how:"Rã đông rồi truyền qua tĩnh mạch. Vì lượng lớn nên lưu ý quá tải tim phổi.",
+   good:"Bù nhiều yếu tố đông máu, giúp cầm máu.",
+   bad:"Dị ứng, sốt; lượng lớn có thể gây thừa dịch, khó thở."},
+  {name:"Tủa lạnh",ab:"Cryo",seven:false,role:"Fibrinogen cô đặc và nguyên liệu đông máu",
+   what:"Xử lý huyết tương ở nhiệt độ thấp sẽ lắng ra một phần cô đặc, đặc biệt giàu ‘fibrinogen’, nguyên liệu chính tạo cục máu đông (Cryoprecipitate, gọi tắt Cryo).",
+   why:"Khi fibrinogen quá thấp, không tạo được cục đông mà chảy máu nặng, nó bù nhanh nguyên liệu chính này.",
+   when:"Fibrinogen thấp kèm chảy máu nặng (băng huyết sản khoa, đại phẫu). Xét theo nồng độ fibrinogen, không phải Hb 7 g/dL.",
+   how:"Rã đông rồi truyền qua tĩnh mạch, thể tích nhỏ.",
+   good:"Bù fibrinogen cô đặc, giúp cầm máu.",
+   bad:"Dị ứng, sốt… tương đối hiếm."}],
+ meaning_h:"“7 là đủ” nghĩa là gì?",meaning_sub:"Với đa số người lớn ổn định, không chảy máu, huyết sắc tố từ 7 g/dL trở lên thường là đủ.",
+ tile1:"trở lên thường là đủ",tile2u:" túi",tile2:"Một túi trước, xong rồi đánh giá lại",
+ intro:['“7 là đủ” là khẩu hiệu dễ nhớ. Ở đây <b>7</b> là <b>huyết sắc tố (Hb)</b>, protein mang oxy trong hồng cầu, dùng để đo mức thiếu máu, đơn vị <b>g/dL</b>.',
+  'Nghĩa là: với đa số người lớn ổn định, không chảy máu liên tục, giữ Hb <b>từ 7 g/dL trở lên</b> thường là đủ, không nhất thiết phải truyền; chỉ khi <b>dưới 7 g/dL</b> bác sĩ mới bắt đầu đánh giá có cần truyền hồng cầu. Quốc tế gọi là “chiến lược truyền máu hạn chế”, vì nghiên cứu cho thấy với người ổn định, truyền nhiều không tốt hơn mà còn tăng rủi ro.',
+  'Hãy nhớ: <b>7 g/dL này là mức tham khảo cho hồng cầu</b>, không áp dụng cho tiểu cầu hay huyết tương; và là “tham khảo”, không phải “quy tắc cứng”.'],
+ postercap:"Bệnh viện Chi Mei · Nhóm Quản lý Máu Người bệnh (PBM) · Ủy ban Truyền máu",
+ cards:[{h:"7 là tham khảo, không phải công tắc",p:"Dưới 7 g/dL không phải luôn truyền; trên 7 g/dL cũng không phải luôn cấm. Bác sĩ xem triệu chứng, chảy máu, tim và bệnh khác. Với mổ tim, chỉnh hình hay bệnh tim, mức có thể là 7,5 hoặc 8 g/dL."},
+  {h:"Một túi rồi đánh giá lại",p:"Với người ổn định không chảy máu, khi cần truyền một túi là nguyên tắc, xong xem triệu chứng và Hb, thật sự cần mới truyền túi kế."},
+  {h:"Không truyền không phải không làm gì",p:"Nếu tạm hoãn, nhóm y tế vẫn tìm nguyên nhân thiếu máu, bù sắt, kiểm soát chảy máu và điều trị bệnh. Khi thật sự cần sẽ truyền kịp thời."}],
+ exc_h:"Những trường hợp cần đánh giá riêng (tiêu chuẩn khác)",
+ exc:["Đang chảy máu nhiều hoặc tuần hoàn không ổn định","Nhồi máu cơ tim cấp / hội chứng vành cấp (hướng dẫn đề nghị đánh giá khi Hb dưới 10 g/dL)","Bệnh cần truyền máu đều đặn lâu dài","Triệu chứng rõ như khó thở nặng, tức ngực"],
+ faq_h:"Câu hỏi thường gặp",faq_sub:"Chạm để xem câu trả lời.",
+ faqs:[{q:"“7 là đủ” có áp dụng cho mọi loại truyền máu?",a:"Không. <b>Chỉ hồng cầu.</b> Tiểu cầu, huyết tương, tủa lạnh có tiêu chuẩn riêng, không theo 7 g/dL này."},
+  {q:"Hb thấp nhưng bác sĩ nói hoãn, vì sao?",a:"Nếu chỉ hơi thấp, không triệu chứng, không chảy máu, lợi ích hạn chế mà rủi ro vẫn còn. Bác sĩ tìm nguyên nhân và điều trị tận gốc, như vậy an toàn hơn."},
+  {q:"Trước truyền máu có ký cam kết không? Vì sao?",a:"Có. Truyền máu là điều trị có rủi ro, nên bác sĩ giải thích <b>vì sao cần, rủi ro, và lựa chọn khác</b>, hiểu rồi mới ký giấy đồng ý. Có thắc mắc hãy hỏi rõ trước khi ký."},
+  {q:"Vì sao cứ đối chiếu tên và nhóm máu?",a:"Vì <b>truyền nhầm máu rất nguy hiểm</b>. Trước khi truyền, nhân viên cùng bạn đối chiếu tên, số hồ sơ, nhóm máu và túi máu rồi mới bắt đầu. Hãy cùng xác nhận; đây là bước an toàn quan trọng nhất."},
+  {q:"Trong lúc truyền thấy khó chịu thì sao?",a:"Nếu ớn lạnh, sốt, nổi mẩn, khó thở, tức ngực, đau lưng hay bất kỳ khó chịu nào, hãy <b>bấm chuông hoặc báo điều dưỡng ngay</b>; sẽ dừng và xử trí lập tức."},
+  {q:"Truyền máu có lây bệnh không?",a:"Máu hiện nay được sàng lọc nghiêm ngặt nên nguy cơ nhiễm bệnh <b>rất thấp</b> nhưng không phải bằng không. Tránh truyền không cần thiết là tránh rủi ro không cần thiết."},
+  {q:"Có rủi ro hay tác dụng phụ gì?",a:"Thường gặp là sốt hoặc dị ứng. Truyền quá nhiều quá nhanh có thể gây thừa dịch, khó thở. Phản ứng nặng hiếm. Thừa sắt chủ yếu ở người truyền <b>nhiều lần</b>."},
+  {q:"Có cách nào thay cho truyền máu?",a:"Có. Thiếu máu do thiếu sắt thì bù sắt; với phẫu thuật có thể cải thiện thiếu máu trước, dùng thuốc giảm chảy máu, và thu hồi máu mất trả lại cho bạn. Hỏi bác sĩ cách nào phù hợp."},
+  {q:"Tôi có thể từ chối truyền máu không?",a:"Bạn có quyền tham gia và nêu ý kiến. Nếu cân nhắc không truyền, hãy <b>bàn hậu quả và giải pháp thay thế</b> với nhóm y tế để cùng quyết định an toàn và hợp ý bạn."},
+  {q:"Máu từ đâu ra?",a:"Đều từ người hiến máu tình nguyện, được xét nghiệm nghiêm ngặt trước khi cấp. Máu có hạn và quý, nên ‘cần mới truyền, đủ là được’ cũng là trân trọng tấm lòng đó."}],
+ ask_h:"Ba câu hỏi trước khi truyền hồng cầu",ask_sub:"Cùng quyết định điều tốt nhất cho bạn.",
+ ask:["Vì sao bây giờ tôi cần hồng cầu?","Có cách trị thiếu máu hoặc kiểm soát chảy máu trước không?","Nếu cần, truyền một túi trước rồi đánh giá lại được không?"],
+ ask_safe:"<b>Quan trọng:</b> Đừng yêu cầu hay từ chối truyền máu chỉ dựa vào con số. Việc có truyền hay không nên đánh giá cùng nhóm y tế. Khi thật sự cần, truyền kịp thời cứu mạng.",
+ tip_h:"Nhắc nhở trong ngày truyền máu",tip:["Trước khi ký giấy đồng ý, hỏi rõ những điều chưa hiểu","Trước khi truyền, cùng nhân viên đối chiếu tên, nhóm máu và túi máu","Trong lúc truyền nếu khó chịu, bấm chuông báo điều dưỡng ngay"],
+ disc:"Trang này mang tính giáo dục, không thay thế khám chữa bệnh. Khi khẩn cấp hãy đi khám ngay.<br>Bệnh viện Chi Mei · Quản lý Chất lượng × Choosing Wisely"},
+
+"id":{lang:"id",brand:"Rumah Sakit Chi Mei",caption:"Choosing Wisely",
+ htitle:"Apakah saya perlu transfusi?",hslogan:'Pilih dengan bijak, <span class="sev">7</span> sudah cukup',cta:"Pelajari lebih lanjut ↓",
+ kinds_h:"Dokter bilang saya perlu transfusi. Sebenarnya yang ditransfusikan apa?",kinds_sub:"Ketuk tiap jenis untuk memahami apa itu, mengapa dan kapan dipakai, bagaimana caranya, manfaat dan efek sampingnya.",
+ whatL:"Apa itu",whyL:"Mengapa dipakai",whenL:"Kapan dipakai",howL:"Bagaimana caranya",goodL:"Manfaat",badL:"Efek samping",tag7:"7 sudah cukup",
+ products:[
+  {name:"Sel darah merah",ab:"RBC",seven:true,role:"Sel terbanyak dalam darah, membawa oksigen ke seluruh tubuh",
+   what:"Sel darah merah adalah sel terbanyak dalam darah; hemoglobin (Hb) di dalamnya menangkap oksigen dan membawanya dari paru ke seluruh tubuh. Darah donor dipisah dan dipekatkan menjadi satu kantong, disebut sel darah merah pekat (RBC).",
+   why:"Bila sel darah merah terlalu sedikit (anemia) atau banyak hilang, tubuh kekurangan oksigen sehingga sesak, lelah, pusing, pucat. Transfusi mengembalikan kemampuan membawa oksigen.",
+   when:"Anemia berat bergejala, atau perdarahan banyak akibat operasi atau cedera. Bagi kebanyakan orang dewasa yang stabil, baru dinilai bila Hb di bawah 7 g/dL.",
+   how:"Diberikan lewat infus vena di lengan. Satu kantong sekitar 250–350 mL, biasanya 1,5–4 jam, perawat mengawasi sepanjang proses.",
+   good:"Cepat memperbaiki gejala kekurangan oksigen seperti sesak dan lemas; bisa menyelamatkan nyawa saat perdarahan banyak.",
+   bad:"Bisa demam atau alergi; terlalu banyak dan cepat membebani jantung-paru (kelebihan cairan), lansia dan penderita jantung perlu hati-hati; reaksi berat jarang; transfusi berulang bisa menyebabkan kelebihan zat besi."},
+  {name:"Trombosit",ab:"PLT",seven:false,role:"Kepingan kecil yang membantu menghentikan perdarahan",
+   what:"Trombosit adalah kepingan kecil yang membantu menghentikan perdarahan (bukan sel utuh). Saat berdarah, mereka berkumpul menutup luka dan membentuk bekuan. Bahasa Inggris Platelet (PLT).",
+   why:"Bila trombosit terlalu sedikit atau kurang berfungsi, mudah memar dan perdarahan sulit berhenti, parahnya berdarah sendiri. Transfusi mengembalikan kemampuan menghentikan perdarahan.",
+   when:"Trombosit sangat rendah disertai perdarahan, atau sangat rendah sebelum operasi/tindakan. Dinilai dari jumlah trombosit, bukan Hb 7 g/dL.",
+   how:"Juga diberikan lewat vena, biasanya lebih cepat dari sel darah merah, sekitar 30 menit–1 jam.",
+   good:"Membantu menghentikan perdarahan dan mencegah perdarahan berat.",
+   bad:"Demam dan alergi cukup sering; karena disimpan pada suhu ruang, risiko kontaminasi bakteri sedikit lebih tinggi, sehingga pencocokan dan pengawasan penting."},
+  {name:"Plasma",ab:"FFP",seven:false,role:"Cairan kuning muda yang mengganti faktor pembekuan",
+   what:"Setelah sel darah dibuang, cairan kuning muda yang tersisa adalah plasma, berisi banyak ‘faktor pembekuan’, yaitu protein yang membantu darah membeku. Dibekukan segar dan dicairkan sebelum dipakai (FFP).",
+   why:"Bila tubuh kekurangan banyak faktor pembekuan sehingga darah sulit membeku sementara sedang berdarah, plasma menggantinya sekaligus.",
+   when:"Perdarahan disertai gangguan pembekuan, perdarahan akibat obat antikoagulan, atau transfusi masif. Dinilai dari tes pembekuan, bukan Hb 7 g/dL.",
+   how:"Dicairkan lalu diberikan lewat vena. Karena volumenya besar, beban jantung-paru diperhatikan.",
+   good:"Mengganti banyak faktor pembekuan dan membantu menghentikan perdarahan.",
+   bad:"Alergi, demam; volume besar dapat menyebabkan kelebihan cairan dan sesak."},
+  {name:"Kriopresipitat",ab:"Cryo",seven:false,role:"Fibrinogen pekat dan bahan pembekuan",
+   what:"Bila plasma diproses pada suhu rendah, mengendap bagian pekat yang sangat kaya ‘fibrinogen’, bahan utama pembentuk bekuan (Cryoprecipitate, singkat Cryo).",
+   why:"Bila fibrinogen terlalu rendah, bekuan tak terbentuk sementara perdarahan berat, ia cepat mengganti bahan utama ini.",
+   when:"Fibrinogen rendah disertai perdarahan berat (perdarahan obstetri, operasi besar). Dinilai dari kadar fibrinogen, bukan Hb 7 g/dL.",
+   how:"Dicairkan lalu diberikan lewat vena, volumenya kecil.",
+   good:"Mengganti fibrinogen pekat, membantu menghentikan perdarahan.",
+   bad:"Alergi, demam, dan lain-lain, relatif jarang."}],
+ meaning_h:"Apa arti “7 sudah cukup”?",meaning_sub:"Bagi kebanyakan orang dewasa yang stabil dan tidak berdarah, hemoglobin 7 g/dL atau lebih biasanya sudah cukup.",
+ tile1:"atau lebih biasanya cukup",tile2u:" kantong",tile2:"Satu kantong dulu, lalu nilai ulang",
+ intro:['“7 sudah cukup” adalah slogan yang mudah diingat. Di sini <b>7</b> berarti <b>hemoglobin (Hb)</b>, protein pembawa oksigen dalam sel darah merah, dipakai untuk menilai anemia, dengan satuan <b>g/dL</b>.',
+  'Artinya: bagi kebanyakan pasien dewasa yang stabil dan tidak terus berdarah, menjaga Hb <b>7 g/dL atau lebih</b> biasanya sudah cukup dan tidak selalu perlu transfusi; baru saat <b>di bawah 7 g/dL</b> dokter mulai menilai perlu tidaknya sel darah merah. Secara internasional ini disebut “strategi transfusi restriktif”, karena penelitian menunjukkan bagi pasien stabil, transfusi lebih banyak tidak lebih baik dan menambah risiko.',
+  'Ingat: <b>7 g/dL ini acuan untuk sel darah merah</b>, tidak berlaku untuk trombosit atau plasma; dan ini “acuan”, bukan “aturan mutlak”.'],
+ postercap:"Rumah Sakit Chi Mei · Tim Manajemen Darah Pasien (PBM) · Komite Transfusi",
+ cards:[{h:"7 itu acuan, bukan sakelar",p:"Di bawah 7 g/dL tak selalu harus transfusi; di atas 7 g/dL juga tak selalu dilarang. Tim menimbang gejala, perdarahan, jantung dan penyakit lain. Untuk operasi jantung/ortopedi atau penyakit jantung, ambangnya bisa 7,5 atau 8 g/dL."},
+  {h:"Satu kantong, lalu nilai ulang",p:"Untuk pasien stabil tanpa perdarahan, bila perlu beri satu kantong, lalu cek gejala dan Hb, beri lagi hanya bila benar-benar perlu."},
+  {h:"Tidak transfusi bukan berarti diam saja",p:"Bila ditunda, tim tetap mencari penyebab anemia, memberi zat besi, mengendalikan perdarahan, dan mengobati penyakitnya. Bila benar-benar perlu, diberikan segera."}],
+ exc_h:"Kondisi ini perlu penilaian tersendiri (standar berbeda)",
+ exc:["Sedang perdarahan banyak atau sirkulasi tidak stabil","Infark miokard akut / sindrom koroner akut (pedoman menyarankan dinilai bila Hb di bawah 10 g/dL)","Penyakit yang perlu transfusi rutin jangka panjang","Gejala jelas seperti sesak berat atau nyeri dada"],
+ faq_h:"Pertanyaan umum",faq_sub:"Ketuk untuk melihat jawaban.",
+ faqs:[{q:"Apakah “7 sudah cukup” berlaku untuk semua transfusi?",a:"Tidak. <b>Hanya sel darah merah.</b> Trombosit, plasma, kriopresipitat punya standar sendiri, bukan 7 g/dL ini."},
+  {q:"Hb rendah tapi dokter bilang ditunda, kenapa?",a:"Bila hanya sedikit rendah, tanpa gejala dan tanpa perdarahan, manfaatnya terbatas sedangkan risiko tetap ada. Dokter mencari penyebab dan mengobatinya lebih mendasar, itu lebih aman."},
+  {q:"Apakah tanda tangan persetujuan sebelum transfusi? Mengapa?",a:"Ya. Transfusi adalah pengobatan berisiko, jadi dokter menjelaskan <b>alasan, risiko, dan pilihan lain</b>, lalu Anda menandatangani persetujuan transfusi. Tanyakan yang belum jelas sebelum menandatangani."},
+  {q:"Mengapa nama dan golongan darah dicocokkan berulang?",a:"Karena <b>salah memberi darah sangat berbahaya</b>. Sebelum transfusi, petugas bersama Anda mencocokkan nama, nomor rekam medis, golongan darah, dan kantong darah. Mohon ikut memastikan; ini langkah keselamatan terpenting."},
+  {q:"Bagaimana bila merasa tidak enak saat transfusi?",a:"Bila menggigil, demam, ruam, sesak, nyeri dada, nyeri pinggang atau tidak nyaman, <b>segera tekan bel atau beri tahu perawat</b>; akan dihentikan dan ditangani segera."},
+  {q:"Apakah transfusi bisa menular penyakit?",a:"Darah kini disaring ketat sehingga risiko infeksi <b>sangat rendah</b> tetapi bukan nol. Menghindari transfusi yang tak perlu menghindari risiko yang tak perlu."},
+  {q:"Apa risiko atau efek sampingnya?",a:"Yang lebih umum demam atau alergi. Terlalu banyak dan cepat bisa menyebabkan kelebihan cairan dan sesak. Reaksi berat jarang. Kelebihan zat besi terutama pada yang ditransfusi <b>berulang kali</b>."},
+  {q:"Adakah alternatif selain transfusi?",a:"Ada. Anemia kekurangan zat besi diberi zat besi; untuk operasi, anemia bisa diperbaiki dulu, obat mengurangi perdarahan, dan darah yang hilang bisa didaur ulang untuk Anda. Tanyakan mana yang cocok."},
+  {q:"Bolehkah saya menolak transfusi?",a:"Anda berhak ikut serta dan menyampaikan pendapat. Bila mempertimbangkan menolak, <b>bahas dulu akibat dan alternatifnya</b> dengan tim untuk memutuskan bersama yang aman dan sesuai keinginan Anda."},
+  {q:"Dari mana darah berasal?",a:"Semua dari pendonor sukarela, disaring ketat sebelum diberikan. Darah terbatas dan berharga, maka ‘transfusi hanya bila perlu, secukupnya’ juga menghargai ketulusan itu."}],
+ ask_h:"Tiga pertanyaan sebelum transfusi sel darah merah",ask_sub:"Bersama memutuskan yang terbaik untuk Anda.",
+ ask:["Kenapa saya perlu sel darah merah sekarang?","Adakah cara mengobati anemia atau mengendalikan perdarahan dulu?","Bila perlu, bisakah satu kantong dulu lalu dinilai ulang?"],
+ ask_safe:"<b>Penting:</b> Jangan meminta atau menolak transfusi hanya berdasarkan angka. Perlu tidaknya dinilai bersama tim medis. Saat benar-benar perlu, transfusi tepat waktu menyelamatkan nyawa.",
+ tip_h:"Pengingat di hari transfusi",tip:["Sebelum menandatangani persetujuan, tanyakan yang belum dimengerti","Sebelum transfusi, cocokkan nama, golongan darah, dan kantong darah bersama petugas","Bila tidak nyaman saat transfusi, segera tekan bel dan beri tahu perawat"],
+ disc:"Halaman ini bersifat edukasi, bukan pengganti layanan medis. Saat darurat segera ke fasilitas kesehatan.<br>Rumah Sakit Chi Mei · Manajemen Mutu × Choosing Wisely"},
+
+"th":{lang:"th",brand:"โรงพยาบาล Chi Mei",caption:"Choosing Wisely",
+ htitle:"ฉันจำเป็นต้องรับเลือดไหม?",hslogan:'เลือกอย่างชาญฉลาด แค่ <span class="sev">7</span> ก็พอ',cta:"ดูเพิ่มเติม ↓",
+ kinds_h:"หมอบอกว่าต้องให้เลือด แล้วให้อะไรกันแน่?",kinds_sub:"แตะแต่ละชนิดเพื่อเข้าใจว่าคืออะไร ทำไมและเมื่อไรจึงใช้ ใช้อย่างไร ประโยชน์และผลข้างเคียง",
+ whatL:"คืออะไร",whyL:"ทำไมต้องใช้",whenL:"ใช้เมื่อไร",howL:"ใช้อย่างไร",goodL:"ประโยชน์",badL:"ผลข้างเคียง",tag7:"แค่ 7 ก็พอ",
+ products:[
+  {name:"เม็ดเลือดแดง",ab:"RBC",seven:true,role:"เซลล์ที่มากที่สุดในเลือด นำออกซิเจนไปทั่วร่างกาย",
+   what:"เม็ดเลือดแดงเป็นเซลล์ที่มากที่สุดในเลือด ฮีโมโกลบิน (Hb) ในเซลล์จะจับออกซิเจนและนำจากปอดไปทั่วร่างกาย เลือดที่บริจาคถูกแยกและทำให้เข้มข้นเป็นหนึ่งถุง เรียกว่าเม็ดเลือดแดงเข้มข้น (RBC)",
+   why:"เมื่อเม็ดเลือดแดงน้อยเกินไป (โลหิตจาง) หรือเสียมาก ร่างกายขาดออกซิเจน ทำให้เหนื่อย อ่อนเพลีย เวียนหัว ซีด การให้เลือดช่วยคืนความสามารถในการนำออกซิเจน",
+   when:"โลหิตจางรุนแรงที่มีอาการ หรือเสียเลือดมากจากการผ่าตัดหรืออุบัติเหตุ ผู้ใหญ่ที่อาการคงที่ส่วนใหญ่จะประเมินเมื่อ Hb ต่ำกว่า 7 g/dL",
+   how:"ให้ทางหลอดเลือดดำที่แขนแบบหยด หนึ่งถุงประมาณ 250–350 มล. มักใช้เวลา 1.5–4 ชั่วโมง พยาบาลเฝ้าสังเกตตลอด",
+   good:"ช่วยบรรเทาอาการขาดออกซิเจนเช่นเหนื่อยและอ่อนแรงได้เร็ว และช่วยชีวิตเมื่อเสียเลือดมาก",
+   bad:"อาจมีไข้หรือแพ้ ให้มากและเร็วเกินไปอาจทำให้หัวใจและปอดรับภาระ (น้ำเกิน) ผู้สูงอายุและผู้ป่วยหัวใจต้องระวัง ปฏิกิริยารุนแรงพบน้อย การให้เลือดซ้ำหลายครั้งอาจทำให้ธาตุเหล็กเกิน"},
+  {name:"เกล็ดเลือด",ab:"PLT",seven:false,role:"ชิ้นส่วนเล็กที่ช่วยห้ามเลือด",
+   what:"เกล็ดเลือดเป็นชิ้นส่วนเล็กที่ช่วยห้ามเลือด (ไม่ใช่เซลล์สมบูรณ์) เมื่อมีเลือดออก พวกมันจะรวมตัวอุดแผลและสร้างลิ่มเลือด ภาษาอังกฤษคือ Platelet (PLT)",
+   why:"เมื่อเกล็ดเลือดน้อยหรือทำงานไม่ดี จะเกิดจ้ำเลือดง่ายและเลือดหยุดยาก รุนแรงถึงขั้นเลือดออกเอง การให้เกล็ดเลือดช่วยคืนความสามารถห้ามเลือด",
+   when:"เกล็ดเลือดต่ำมากร่วมกับมีเลือดออก หรือต่ำมากก่อนผ่าตัด/หัตถการ พิจารณาจากจำนวนเกล็ดเลือด ไม่ใช่ Hb 7 g/dL",
+   how:"ให้ทางหลอดเลือดดำเช่นกัน มักเร็วกว่าเม็ดเลือดแดง ประมาณ 30 นาที–1 ชั่วโมง",
+   good:"ช่วยห้ามเลือดและป้องกันเลือดออกรุนแรง",
+   bad:"ไข้และแพ้พบได้บ่อยกว่า เพราะเก็บที่อุณหภูมิห้องจึงมีโอกาสปนเปื้อนเชื้อสูงขึ้นเล็กน้อย การตรวจสอบและเฝ้าสังเกตจึงสำคัญ"},
+  {name:"พลาสมา",ab:"FFP",seven:false,role:"ของเหลวสีเหลืองอ่อนที่ทดแทนปัจจัยการแข็งตัว",
+   what:"เมื่อเอาเซลล์เม็ดเลือดออก ของเหลวสีเหลืองอ่อนที่เหลือคือพลาสมา มี ‘ปัจจัยการแข็งตัว’ ซึ่งเป็นโปรตีนที่ช่วยให้เลือดแข็งตัวจำนวนมาก แช่แข็งขณะสดและละลายก่อนใช้ (FFP)",
+   why:"เมื่อร่างกายขาดปัจจัยการแข็งตัวหลายชนิด เลือดแข็งตัวยากขณะมีเลือดออก พลาสมาช่วยทดแทนปัจจัยเหล่านี้ในคราวเดียว",
+   when:"มีเลือดออกร่วมกับการแข็งตัวผิดปกติ เลือดออกจากยาต้านการแข็งตัว หรือการให้เลือดปริมาณมาก พิจารณาจากผลตรวจการแข็งตัว ไม่ใช่ Hb 7 g/dL",
+   how:"ละลายแล้วให้ทางหลอดเลือดดำ เนื่องจากปริมาณมากจึงเฝ้าระวังภาระหัวใจและปอด",
+   good:"ทดแทนปัจจัยการแข็งตัวหลายชนิด ช่วยห้ามเลือด",
+   bad:"แพ้ ไข้ หากปริมาณมากอาจเกิดน้ำเกินและเหนื่อย"},
+  {name:"ไครโอพรีซิพิเตต",ab:"Cryo",seven:false,role:"ไฟบริโนเจนเข้มข้นและวัตถุดิบการแข็งตัว",
+   what:"เมื่อนำพลาสมามาผ่านความเย็น จะตกตะกอนส่วนเข้มข้นที่อุดมด้วย ‘ไฟบริโนเจน’ ซึ่งเป็นวัตถุดิบหลักในการสร้างลิ่มเลือด (Cryoprecipitate เรียกย่อว่า Cryo)",
+   why:"เมื่อไฟบริโนเจนต่ำ สร้างลิ่มเลือดไม่ได้ขณะมีเลือดออกรุนแรง ตัวนี้ช่วยทดแทนวัตถุดิบหลักได้อย่างรวดเร็ว",
+   when:"ไฟบริโนเจนต่ำร่วมกับเลือดออกรุนแรง เช่น ตกเลือดหลังคลอด ผ่าตัดใหญ่ พิจารณาจากระดับไฟบริโนเจน ไม่ใช่ Hb 7 g/dL",
+   how:"ละลายแล้วให้ทางหลอดเลือดดำ ปริมาณน้อย",
+   good:"ทดแทนไฟบริโนเจนเข้มข้น ช่วยห้ามเลือด",
+   bad:"แพ้ ไข้ เป็นต้น พบค่อนข้างน้อย"}],
+ meaning_h:"“แค่ 7 ก็พอ” หมายความว่าอย่างไร?",meaning_sub:"ผู้ใหญ่ส่วนใหญ่ที่อาการคงที่และไม่มีเลือดออก ค่าฮีโมโกลบิน 7 g/dL ขึ้นไปมักเพียงพอ",
+ tile1:"ขึ้นไปมักเพียงพอ",tile2u:" ถุง",tile2:"หนึ่งถุงก่อน แล้วประเมินซ้ำ",
+ intro:['“แค่ 7 ก็พอ” เป็นสโลแกนที่จำง่าย ตรงนี้ <b>7</b> หมายถึง <b>ฮีโมโกลบิน (Hb)</b> โปรตีนนำออกซิเจนในเม็ดเลือดแดง ใช้วัดระดับโลหิตจาง หน่วยคือ <b>g/dL</b>',
+  'ความหมายคือ สำหรับผู้ป่วยผู้ใหญ่ส่วนใหญ่ที่อาการคงที่และไม่มีเลือดออกต่อเนื่อง การรักษา Hb <b>ตั้งแต่ 7 g/dL ขึ้นไป</b> มักเพียงพอ ไม่จำเป็นต้องให้เลือดเสมอ ต่อเมื่อ <b>ต่ำกว่า 7 g/dL</b> แพทย์จึงเริ่มประเมินว่าจำเป็นต้องให้เม็ดเลือดแดงหรือไม่ ในระดับสากลเรียกว่า “กลยุทธ์การให้เลือดแบบจำกัด” เพราะงานวิจัยพบว่าในผู้ป่วยที่คงที่ การให้มากไม่ได้ดีกว่าแต่กลับเพิ่มความเสี่ยง',
+  'โปรดจำไว้ว่า <b>7 g/dL นี้เป็นค่าอ้างอิงของเม็ดเลือดแดง</b> ไม่ใช้กับเกล็ดเลือดหรือพลาสมา และเป็น “ค่าอ้างอิง” ไม่ใช่ “กฎตายตัว”'],
+ postercap:"โรงพยาบาล Chi Mei · ทีมบริหารการใช้เลือดผู้ป่วย (PBM) · คณะกรรมการการให้เลือด",
+ cards:[{h:"7 เป็นค่าอ้างอิง ไม่ใช่สวิตช์",p:"ต่ำกว่า 7 g/dL ไม่จำเป็นต้องให้เสมอ สูงกว่า 7 g/dL ก็ไม่ใช่ว่าห้ามให้ ทีมแพทย์ดูอาการ การมีเลือดออก โรคหัวใจและโรคอื่นร่วมด้วย ผู้ที่ผ่าตัดหัวใจ/กระดูกหรือมีโรคหัวใจ เกณฑ์อาจเป็น 7.5 หรือ 8 g/dL"},
+  {h:"หนึ่งถุงแล้วประเมินซ้ำ",p:"สำหรับผู้ป่วยที่คงที่และไม่มีเลือดออก เมื่อจำเป็นให้ทีละหนึ่งถุง แล้วดูอาการและ Hb จะให้ถุงต่อไปเมื่อจำเป็นจริง"},
+  {h:"ไม่ให้เลือด ไม่ได้แปลว่าไม่ทำอะไร",p:"หากยังไม่ให้ ทีมแพทย์ยังหาสาเหตุโลหิตจาง ให้ธาตุเหล็ก ควบคุมเลือดออก และรักษาโรคต้นเหตุ เมื่อจำเป็นจริงจะให้ทันเวลา"}],
+ exc_h:"กรณีเหล่านี้ต้องประเมินเป็นรายบุคคล (เกณฑ์ต่างกัน)",
+ exc:["กำลังเสียเลือดมากหรือระบบไหลเวียนไม่คงที่","กล้ามเนื้อหัวใจตายเฉียบพลัน / กลุ่มอาการหลอดเลือดหัวใจเฉียบพลัน (แนวทางแนะนำให้ประเมินเมื่อ Hb ต่ำกว่า 10 g/dL)","โรคที่ต้องรับเลือดสม่ำเสมอในระยะยาว","มีอาการชัดเจน เช่น เหนื่อยมาก แน่นหน้าอก"],
+ faq_h:"คำถามที่พบบ่อย",faq_sub:"แตะเพื่อดูคำตอบ",
+ faqs:[{q:"“แค่ 7 ก็พอ” ใช้กับการให้เลือดทุกชนิดไหม?",a:"ไม่ <b>ใช้กับเม็ดเลือดแดงเท่านั้น</b> เกล็ดเลือด พลาสมา ไครโอมีเกณฑ์ของตัวเอง ไม่ใช้ 7 g/dL นี้"},
+  {q:"Hb ต่ำ แต่หมอบอกยังไม่ให้ ทำไม?",a:"หากต่ำเพียงเล็กน้อย ไม่มีอาการ ไม่มีเลือดออก ประโยชน์จำกัดแต่ความเสี่ยงยังอยู่ แพทย์จะหาสาเหตุและรักษาที่ต้นเหตุ ซึ่งปลอดภัยกว่า"},
+  {q:"ก่อนให้เลือดต้องเซ็นใบยินยอมไหม? ทำไม?",a:"ต้องเซ็น การให้เลือดเป็นการรักษาที่มีความเสี่ยง แพทย์จะอธิบาย <b>เหตุผล ความเสี่ยง และทางเลือกอื่น</b> เมื่อเข้าใจแล้วจึงเซ็นใบยินยอม หากสงสัยให้ถามให้ชัดก่อนเซ็น"},
+  {q:"ทำไมต้องตรวจสอบชื่อและหมู่เลือดซ้ำ ๆ?",a:"เพราะ <b>การให้เลือดผิดอันตรายมาก</b> ก่อนให้เลือด เจ้าหน้าที่จะตรวจสอบชื่อ เลขเวชระเบียน หมู่เลือด และถุงเลือดร่วมกับคุณก่อนเริ่ม โปรดช่วยยืนยันด้วย นี่คือด่านความปลอดภัยที่สำคัญที่สุด"},
+  {q:"ระหว่างให้เลือดรู้สึกไม่สบายทำอย่างไร?",a:"หากหนาวสั่น มีไข้ ผื่น เหนื่อย แน่นหน้าอก ปวดหลัง หรือไม่สบายใด ๆ <b>กดกริ่งหรือบอกพยาบาลทันที</b> จะหยุดและดูแลทันที"},
+  {q:"การให้เลือดทำให้ติดโรคไหม?",a:"เลือดปัจจุบันผ่านการตรวจคัดกรองเข้มงวด ความเสี่ยงติดเชื้อจึง <b>ต่ำมาก</b> แต่ไม่ใช่ศูนย์ การเลี่ยงการให้เลือดที่ไม่จำเป็นคือการเลี่ยงความเสี่ยงที่ไม่จำเป็น"},
+  {q:"มีความเสี่ยงหรือผลข้างเคียงอะไร?",a:"ที่พบบ่อยคือไข้หรือแพ้ ให้มากและเร็วเกินไปอาจเกิดน้ำเกินและหายใจลำบาก ปฏิกิริยารุนแรงพบน้อย ธาตุเหล็กเกินมักเกิดกับผู้ที่รับเลือด <b>ซ้ำหลายครั้ง</b>"},
+  {q:"มีทางเลือกอื่นนอกจากการให้เลือดไหม?",a:"มี โลหิตจางจากขาดธาตุเหล็กให้ธาตุเหล็กได้ การผ่าตัดสามารถแก้ภาวะโลหิตจางล่วงหน้า ใช้ยาลดเลือดออก และนำเลือดที่เสียกลับคืนสู่ตัวคุณ ปรึกษาแพทย์ว่าแบบใดเหมาะกับคุณ"},
+  {q:"ฉันปฏิเสธการให้เลือดได้ไหม?",a:"คุณมีสิทธิ์มีส่วนร่วมและแสดงความเห็น หากคิดจะไม่รับ โปรด <b>ปรึกษาผลที่ตามมาและทางเลือก</b> กับทีมแพทย์ก่อน เพื่อตัดสินใจร่วมกันอย่างปลอดภัยและตรงความต้องการ"},
+  {q:"เลือดมาจากไหน?",a:"มาจากผู้บริจาคด้วยความสมัครใจ ผ่านการตรวจอย่างเข้มงวดก่อนนำมาใช้ เลือดมีจำกัดและมีค่า ‘ให้เมื่อจำเป็น พอเพียงก็พอ’ จึงเป็นการเห็นคุณค่าน้ำใจนั้นด้วย"}],
+ ask_h:"สามคำถามก่อนรับเม็ดเลือดแดง",ask_sub:"ร่วมกันตัดสินใจสิ่งที่เหมาะกับคุณที่สุด",
+ ask:["ทำไมตอนนี้ฉันจึงต้องรับเม็ดเลือดแดง?","มีวิธีรักษาโลหิตจางหรือควบคุมเลือดออกก่อนไหม?","ถ้าจำเป็น ขอเริ่มหนึ่งถุงก่อนแล้วประเมินซ้ำได้ไหม?"],
+ ask_safe:"<b>สำคัญ:</b> โปรดอย่าขอหรือปฏิเสธการให้เลือดโดยดูแค่ตัวเลข ควรประเมินร่วมกับทีมแพทย์ เมื่อจำเป็นจริง การให้เลือดทันเวลาช่วยชีวิตได้",
+ tip_h:"ข้อเตือนในวันรับเลือด",tip:["ก่อนเซ็นใบยินยอม ถามสิ่งที่ไม่เข้าใจให้ชัด","ก่อนรับเลือด ตรวจสอบชื่อ หมู่เลือด และถุงเลือดร่วมกับเจ้าหน้าที่","หากไม่สบายระหว่างรับเลือด กดกริ่งบอกพยาบาลทันที"],
+ disc:"หน้านี้เป็นข้อมูลให้ความรู้ ไม่ใช่การทดแทนการรักษา หากฉุกเฉินโปรดพบแพทย์ทันที<br>โรงพยาบาล Chi Mei · ฝ่ายบริหารคุณภาพ × Choosing Wisely"}
+};
+
+var LANGS=[["zh-Hant","🇹🇼 繁中"],["zh-Hans","🇨🇳 简中"],["en","🇬🇧 EN"],["ja","🇯🇵 日本語"],["ko","🇰🇷 한국어"],["vi","🇻🇳 Tiếng Việt"],["id","🇮🇩 Bahasa"],["th","🇹🇭 ไทย"]];
+var lang="zh-Hant";
+function T(){return I[lang]}
+function set(id,txt){var e=document.getElementById(id);if(e)e.textContent=txt;}
+function setH(id,html){var e=document.getElementById(id);if(e)e.innerHTML=html;}
+
+function renderProducts(){
+  var t=T();
+  document.getElementById('prodbox').innerHTML=t.products.map(function(p){
+    return '<div class="pacc"><button class="ph"><span class="dot" style="background:'+(p.seven?'#e23a63':(p.ab==="PLT"?'#1f9e75':p.ab==="FFP"?'#d09a1e':'#7b62cf'))+'">'+p.ab+'</span>'+
+      '<span class="pt"><h3>'+p.name+'</h3><span class="role">'+p.role+'</span></span>'+
+      (p.seven?'<span class="tag7">'+t.tag7+'</span>':'')+
+      '<svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>'+
+      '<div class="pbody"><div class="pinner">'+
+        '<div class="facet"><span class="fl">'+t.whatL+'</span><p>'+p.what+'</p></div>'+
+        '<div class="facet"><span class="fl">'+t.whyL+'</span><p>'+p.why+'</p></div>'+
+        '<div class="facet"><span class="fl">'+t.whenL+'</span><p>'+p.when+'</p></div>'+
+        '<div class="facet"><span class="fl">'+t.howL+'</span><p>'+p.how+'</p></div>'+
+        '<div class="facet"><span class="fl good">'+t.goodL+'</span><p>'+p.good+'</p></div>'+
+        '<div class="facet"><span class="fl bad">'+t.badL+'</span><p>'+p.bad+'</p></div>'+
+      '</div></div></div>';
+  }).join('');
+  document.querySelectorAll('.pacc').forEach(function(el){
+    var h=el.querySelector('.ph'),b=el.querySelector('.pbody');
+    h.onclick=function(){var o=el.classList.toggle('open');b.style.maxHeight=o?b.scrollHeight+'px':0;};
+  });
+}
+function renderFaq(){
+  var t=T();
+  document.getElementById('faqbox').innerHTML=(t.faqs.concat((typeof EX!=="undefined"&&EX[lang]&&EX[lang].faqAdd)||[])).map(function(f){
+    return '<div class="qa"><button class="qh"><span class="qm">Q</span>'+f.q+
+      '<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>'+
+      '<div class="qb"><div class="qi">'+f.a+'</div></div></div>';
+  }).join('');
+  document.querySelectorAll('.qa').forEach(function(el){
+    var h=el.querySelector('.qh'),b=el.querySelector('.qb');
+    h.onclick=function(){var o=el.classList.toggle('open');b.style.maxHeight=o?b.scrollHeight+'px':0;};
+  });
+}
+function renderAll(){
+  var t=T();
+  document.documentElement.lang=(lang==="zh-Hant"?"zh-Hant":lang==="zh-Hans"?"zh-Hans":lang);
+  set('brand',t.brand);set('caption',t.caption);set('htitle',t.htitle);setH('hslogan',t.hslogan);set('cta',t.cta);
+  set('kinds_h',t.kinds_h);set('kinds_sub',t.kinds_sub);
+  set('meaning_h',t.meaning_h);set('meaning_sub',t.meaning_sub);
+  set('tile1',t.tile1);set('tile2u',t.tile2u);set('tile2',t.tile2);
+  setH('intro',t.intro.map(function(p){return '<p>'+p+'</p>'}).join(''));
+  set('postercap',t.postercap);
+  setH('cards',t.cards.map(function(c,i){return '<div class="scard"><div class="n">'+(i+1)+'</div><h3>'+c.h+'</h3><p>'+c.p+'</p></div>'}).join(''));
+  set('exc_h',t.exc_h);
+  setH('exc_list',t.exc.map(function(x){return '<li>'+x+'</li>'}).join(''));
+  set('faq_h',t.faq_h);set('faq_sub',t.faq_sub);
+  set('ask_h',t.ask_h);set('ask_sub',t.ask_sub);
+  setH('ask_list',t.ask.map(function(x){return '<li>'+x+'</li>'}).join(''));
+  setH('ask_safe',t.ask_safe);
+  set('tip_h',t.tip_h);
+  setH('tip_list',t.tip.map(function(x){return '<li>'+x+'</li>'}).join(''));
+  setH('disc',t.disc);
+  renderProducts();renderFaq();if(typeof renderExtras!=="undefined")renderExtras();
+}
+function buildLangBar(){var lb=document.getElementById('langbar');
+  LANGS.forEach(function(p){var b=document.createElement('button');b.innerHTML=p[1];
+    if(p[0]===lang)b.className='on';
+    b.onclick=function(){setLang(p[0]);};
+    lb.appendChild(b);});}
+var GAME_URL="chimei-transfusion-game.html"; /* 部署後可改成遊戲的正式網址 */
+
+var EX={
+"zh-Hant":{
+ thr:{title:"不同情況的輸血參考值",sub:"以下是常見的參考門檻，實際仍由醫師綜合症狀與狀況決定。",
+  rows:[["一般成人","Hb < 7 g/dL"],["心臟病 / 開心手術","Hb < 8 g/dL"],["急性冠心症","Hb 8~10 g/dL"],["慢性腎臟病","Hb < 7~8 g/dL"],["大量出血 / 休克","依臨床判斷"]],
+  note:"這些是參考值，不是硬性規定；該不該輸，由醫師個別評估。"},
+ alts:{title:"輸血不是唯一的選擇",sub:"以下方法有時更適合你，請和醫師討論哪一種適合。",
+  items:[{ic:"💊",name:"鐵劑補充",desc:"口服或靜脈鐵劑，適合缺鐵性貧血，約 2 到 4 週見效。"},
+   {ic:"💉",name:"紅血球生成素 EPO",desc:"刺激骨髓自己造血，適合腎性貧血或化療引起的貧血。"},
+   {ic:"🥦",name:"飲食調整",desc:"多吃含鐵食物（紅肉、豆類、深綠葉菜），搭配維他命 C 幫助吸收。"},
+   {ic:"🩸",name:"術中自體血回輸",desc:"手術時回收自己的血再輸回，減少異體輸血。"},
+   {ic:"🧪",name:"止血藥物 TXA",desc:"氨甲環酸可減少手術或外傷的出血量。"},
+   {ic:"🌿",name:"葉酸 / 維他命 B12",desc:"改善造血，適合巨球性貧血或長期素食者。"}],
+  note:"哪一種適合你，由醫師依貧血原因評估。"},
+ precious:{title:"每一袋血，都是生命的禮物",sub:"血液全靠愛心捐出，珍惜使用，需要才輸、夠用就好。",
+  items:[{big:"每 1.2 秒",lab:"台灣就用掉一袋血"},{big:"400~500 mL",lab:"每次捐血的量"},{big:"35~42 天",lab:"紅血球的保存期"},{big:"1 人捐血",lab:"最多可幫助 3 位病人"},{big:"9 項檢驗",lab:"每袋血嚴格把關"},{big:"無償捐出",lab:"全靠愛心民眾"}],
+  close:"每一袋血都來自他人的無償捐贈，請珍惜使用。"},
+ cta:{h:"想知道自己懂多少？",sub:"一起來玩「輸血明智選擇」闖關遊戲，破迷思、做測驗",btn:"進入輸血闖關遊戲 →"},
+ faqAdd:[{q:"輸血後是不是馬上就會好？",a:"不一定。紅血球在體內壽命約 80 到 120 天，症狀改善也需要時間；更重要的是，造成貧血或出血的<b>根本原因還是要治療</b>，輸血只是暫時補充，不是把病治好。"}]},
+"zh-Hans":{
+ thr:{title:"不同情况的输血参考值",sub:"以下是常见的参考门槛，实际仍由医师综合症状与状况决定。",
+  rows:[["一般成人","Hb < 7 g/dL"],["心脏病 / 开心手术","Hb < 8 g/dL"],["急性冠心症","Hb 8~10 g/dL"],["慢性肾脏病","Hb < 7~8 g/dL"],["大量出血 / 休克","依临床判断"]],
+  note:"这些是参考值，不是硬性规定；该不该输，由医师个别评估。"},
+ alts:{title:"输血不是唯一的选择",sub:"以下方法有时更适合你，请和医师讨论哪一种适合。",
+  items:[{ic:"💊",name:"铁剂补充",desc:"口服或静脉铁剂，适合缺铁性贫血，约 2 到 4 周见效。"},
+   {ic:"💉",name:"红细胞生成素 EPO",desc:"刺激骨髓自己造血，适合肾性贫血或化疗引起的贫血。"},
+   {ic:"🥦",name:"饮食调整",desc:"多吃含铁食物（红肉、豆类、深绿叶菜），搭配维他命 C 帮助吸收。"},
+   {ic:"🩸",name:"术中自体血回输",desc:"手术时回收自己的血再输回，减少异体输血。"},
+   {ic:"🧪",name:"止血药物 TXA",desc:"氨甲环酸可减少手术或外伤的出血量。"},
+   {ic:"🌿",name:"叶酸 / 维他命 B12",desc:"改善造血，适合巨球性贫血或长期素食者。"}],
+  note:"哪一种适合你，由医师依贫血原因评估。"},
+ precious:{title:"每一袋血，都是生命的礼物",sub:"血液全靠爱心捐出，珍惜使用，需要才输、够用就好。",
+  items:[{big:"每 1.2 秒",lab:"台湾就用掉一袋血"},{big:"400~500 mL",lab:"每次捐血的量"},{big:"35~42 天",lab:"红细胞的保存期"},{big:"1 人捐血",lab:"最多可帮助 3 位病人"},{big:"9 项检验",lab:"每袋血严格把关"},{big:"无偿捐出",lab:"全靠爱心民众"}],
+  close:"每一袋血都来自他人的无偿捐赠，请珍惜使用。"},
+ cta:{h:"想知道自己懂多少？",sub:"一起来玩「输血明智选择」闯关游戏，破迷思、做测验",btn:"进入输血闯关游戏 →"},
+ faqAdd:[{q:"输血后是不是马上就会好？",a:"不一定。红细胞在体内寿命约 80 到 120 天，症状改善也需要时间；更重要的是，造成贫血或出血的<b>根本原因还是要治疗</b>，输血只是暂时补充，不是把病治好。"}]},
+"en":{
+ thr:{title:"Reference thresholds for different situations",sub:"These are common reference thresholds; the actual decision is made by the doctor considering symptoms and condition.",
+  rows:[["General adults","Hb < 7 g/dL"],["Heart disease / cardiac surgery","Hb < 8 g/dL"],["Acute coronary syndrome","Hb 8–10 g/dL"],["Chronic kidney disease","Hb < 7–8 g/dL"],["Massive bleeding / shock","Clinical judgment"]],
+  note:"These are references, not fixed rules; whether to transfuse is assessed individually by the doctor."},
+ alts:{title:"Transfusion is not the only option",sub:"Sometimes these fit you better. Discuss with your doctor which one suits you.",
+  items:[{ic:"💊",name:"Iron supplement",desc:"Oral or IV iron for iron-deficiency anemia; effect in about 2 to 4 weeks."},
+   {ic:"💉",name:"Erythropoietin (EPO)",desc:"Stimulates the marrow to make blood; for renal or chemotherapy-related anemia."},
+   {ic:"🥦",name:"Dietary changes",desc:"Eat iron-rich foods (red meat, beans, dark leafy greens) with vitamin C to aid absorption."},
+   {ic:"🩸",name:"Intraoperative cell salvage",desc:"Your own blood is collected during surgery and returned, reducing donor blood."},
+   {ic:"🧪",name:"Antifibrinolytic (TXA)",desc:"Tranexamic acid reduces blood loss in surgery or trauma."},
+   {ic:"🌿",name:"Folate / Vitamin B12",desc:"Improves blood formation; for macrocytic anemia or long-term vegetarians."}],
+  note:"Which one fits you is assessed by the doctor based on the cause of anemia."},
+ precious:{title:"Every unit of blood is a gift of life",sub:"Blood comes entirely from donors. Use it wisely: transfuse only when needed, just enough.",
+  items:[{big:"Every 1.2 s",lab:"a unit is used in Taiwan"},{big:"400–500 mL",lab:"per donation"},{big:"35–42 days",lab:"red cell shelf life"},{big:"1 donor",lab:"can help up to 3 patients"},{big:"9 screens",lab:"strict checks per unit"},{big:"Unpaid",lab:"all from volunteer donors"}],
+  close:"Every unit comes from someone's voluntary donation. Please use it wisely."},
+ cta:{h:"Want to see how much you know?",sub:"Let's play the “Transfusion: Choosing Wisely” game to bust myths and take a quiz.",btn:"Enter the transfusion game →"},
+ faqAdd:[{q:"Will I feel better right after a transfusion?",a:"Not necessarily. Red cells live about 80 to 120 days and symptoms take time to improve; more importantly, the <b>underlying cause of anemia or bleeding still needs treatment</b>. A transfusion is a temporary top-up, not a cure."}]},
+"ja":{
+ thr:{title:"状況ごとの輸血の目安",sub:"以下は一般的な参考値です。実際の判断は症状や状態を踏まえて医師が行います。",
+  rows:[["一般の成人","Hb < 7 g/dL"],["心臓病・心臓手術","Hb < 8 g/dL"],["急性冠症候群","Hb 8〜10 g/dL"],["慢性腎臓病","Hb < 7〜8 g/dL"],["大量出血・ショック","臨床判断による"]],
+  note:"これらは目安で、絶対の規則ではありません。輸血の可否は医師が個別に評価します。"},
+ alts:{title:"輸血だけが選択肢ではありません",sub:"次の方法が適する場合もあります。どれが合うか医師とご相談を。",
+  items:[{ic:"💊",name:"鉄剤の補充",desc:"経口または静注の鉄剤。鉄欠乏性貧血に適し、効果は約2〜4週間。"},
+   {ic:"💉",name:"エリスロポエチン（EPO）",desc:"骨髄の造血を促す。腎性貧血や化学療法による貧血に。"},
+   {ic:"🥦",name:"食事の工夫",desc:"鉄の多い食品（赤身肉・豆類・濃い緑の葉物）をビタミンCと一緒に。"},
+   {ic:"🩸",name:"術中の自己血回収",desc:"手術中に自分の血を回収して戻し、他人の血を減らす。"},
+   {ic:"🧪",name:"止血薬（TXA）",desc:"トラネキサム酸は手術や外傷の出血量を減らす。"},
+   {ic:"🌿",name:"葉酸・ビタミンB12",desc:"造血を改善。巨赤芽球性貧血や長期の菜食の方に。"}],
+  note:"どれが合うかは、貧血の原因に応じて医師が評価します。"},
+ precious:{title:"一袋の血は、命の贈り物",sub:"血液はすべて善意の献血から。大切に使い、必要な時に、十分なだけ。",
+  items:[{big:"1.2秒ごと",lab:"台湾で1袋が使われる"},{big:"400〜500 mL",lab:"1回の献血量"},{big:"35〜42日",lab:"赤血球の保存期間"},{big:"1人の献血",lab:"最大3人を助ける"},{big:"9項目",lab:"1袋ごとに厳格に検査"},{big:"無償",lab:"すべて善意のボランティア"}],
+  close:"どの一袋も他者の無償の献血によるものです。大切にお使いください。"},
+ cta:{h:"どのくらい知っているか、試しませんか？",sub:"「輸血 賢い選択」ゲームで、一緒に誤解を解き、テストに挑戦しましょう。",btn:"輸血ゲームに入る →"},
+ faqAdd:[{q:"輸血をすればすぐ良くなりますか？",a:"必ずしもそうではありません。赤血球の寿命は約80〜120日で、症状の改善にも時間がかかります。さらに大切なのは、貧血や出血の<b>根本原因の治療</b>です。輸血は一時的な補充で、病気を治すものではありません。"}]},
+"ko":{
+ thr:{title:"상황별 수혈 참고 기준",sub:"아래는 흔한 참고 기준이며, 실제 결정은 증상과 상태를 종합해 의사가 합니다.",
+  rows:[["일반 성인","Hb < 7 g/dL"],["심장병 / 심장수술","Hb < 8 g/dL"],["급성 관동맥증후군","Hb 8~10 g/dL"],["만성 콩팥병","Hb < 7~8 g/dL"],["대량 출혈 / 쇼크","임상 판단에 따름"]],
+  note:"이는 참고값이며 절대 규칙이 아닙니다. 수혈 여부는 의사가 개별적으로 평가합니다."},
+ alts:{title:"수혈만이 유일한 선택은 아닙니다",sub:"다음 방법이 더 맞을 때도 있습니다. 어느 것이 적합한지 의사와 상의하세요.",
+  items:[{ic:"💊",name:"철분 보충",desc:"먹는 철분제나 정맥 철분제. 철결핍 빈혈에 적합, 약 2~4주에 효과."},
+   {ic:"💉",name:"조혈인자(EPO)",desc:"골수의 조혈을 자극. 신성 빈혈이나 항암치료로 인한 빈혈에."},
+   {ic:"🥦",name:"식이 조절",desc:"철분 많은 음식(붉은 고기, 콩류, 진한 녹색 잎채소)을 비타민 C와 함께."},
+   {ic:"🩸",name:"수술 중 자가혈 회수",desc:"수술 중 자신의 피를 회수해 되돌려 타인 혈액을 줄임."},
+   {ic:"🧪",name:"지혈제(TXA)",desc:"트라넥삼산은 수술이나 외상의 출혈량을 줄임."},
+   {ic:"🌿",name:"엽산 / 비타민 B12",desc:"조혈을 개선. 거대적혈모구빈혈이나 장기 채식자에게."}],
+  note:"어느 것이 맞는지는 빈혈 원인에 따라 의사가 평가합니다."},
+ precious:{title:"한 봉지의 피는 생명의 선물",sub:"혈액은 모두 선의의 헌혈에서 옵니다. 아껴 쓰고, 필요할 때 충분한 만큼만.",
+  items:[{big:"1.2초마다",lab:"대만에서 한 봉지 사용"},{big:"400~500 mL",lab:"1회 헌혈량"},{big:"35~42일",lab:"적혈구 보관 기간"},{big:"1명 헌혈",lab:"최대 3명을 도움"},{big:"9가지 검사",lab:"봉지마다 엄격 관리"},{big:"무상",lab:"모두 자원봉사 선의"}],
+  close:"모든 한 봉지는 타인의 무상 헌혈에서 옵니다. 소중히 사용하세요."},
+ cta:{h:"얼마나 아는지 확인해 볼까요?",sub:"‘수혈 현명한 선택’ 게임을 함께 하며 오해를 풀고 퀴즈에 도전해요.",btn:"수혈 게임 들어가기 →"},
+ faqAdd:[{q:"수혈하면 바로 좋아지나요?",a:"꼭 그렇지는 않습니다. 적혈구 수명은 약 80~120일이고 증상 호전에도 시간이 걸립니다. 더 중요한 것은 빈혈이나 출혈의 <b>근본 원인을 치료</b>하는 것입니다. 수혈은 일시적 보충일 뿐 병을 낫게 하는 것이 아닙니다."}]},
+"vi":{
+ thr:{title:"Ngưỡng tham khảo theo từng tình huống",sub:"Đây là các ngưỡng tham khảo thường gặp; quyết định thực tế do bác sĩ cân nhắc theo triệu chứng và tình trạng.",
+  rows:[["Người lớn nói chung","Hb < 7 g/dL"],["Bệnh tim / mổ tim","Hb < 8 g/dL"],["Hội chứng vành cấp","Hb 8–10 g/dL"],["Bệnh thận mạn","Hb < 7–8 g/dL"],["Chảy máu nhiều / sốc","Theo đánh giá lâm sàng"]],
+  note:"Đây là giá trị tham khảo, không phải quy tắc cứng; việc có truyền hay không do bác sĩ đánh giá riêng."},
+ alts:{title:"Truyền máu không phải lựa chọn duy nhất",sub:"Đôi khi các cách sau phù hợp hơn. Hãy bàn với bác sĩ cách nào hợp với bạn.",
+  items:[{ic:"💊",name:"Bổ sung sắt",desc:"Sắt uống hoặc truyền tĩnh mạch cho thiếu máu thiếu sắt; hiệu quả sau 2–4 tuần."},
+   {ic:"💉",name:"Erythropoietin (EPO)",desc:"Kích thích tủy tạo máu; cho thiếu máu do bệnh thận hoặc hóa trị."},
+   {ic:"🥦",name:"Điều chỉnh ăn uống",desc:"Ăn thực phẩm giàu sắt (thịt đỏ, đậu, rau lá xanh đậm) cùng vitamin C để hấp thu tốt."},
+   {ic:"🩸",name:"Thu hồi máu tự thân khi mổ",desc:"Thu lại máu của chính bạn trong mổ để truyền lại, giảm máu người khác."},
+   {ic:"🧪",name:"Thuốc cầm máu (TXA)",desc:"Axit tranexamic giảm lượng máu mất khi mổ hoặc chấn thương."},
+   {ic:"🌿",name:"Axit folic / Vitamin B12",desc:"Cải thiện tạo máu; cho thiếu máu hồng cầu to hoặc người ăn chay lâu dài."}],
+  note:"Cách nào hợp với bạn do bác sĩ đánh giá theo nguyên nhân thiếu máu."},
+ precious:{title:"Mỗi túi máu là một món quà sự sống",sub:"Máu hoàn toàn từ người hiến. Hãy dùng tiết kiệm, chỉ truyền khi cần, vừa đủ.",
+  items:[{big:"Mỗi 1,2 giây",lab:"Đài Loan dùng hết một túi"},{big:"400–500 mL",lab:"mỗi lần hiến"},{big:"35–42 ngày",lab:"hạn bảo quản hồng cầu"},{big:"1 người hiến",lab:"giúp tối đa 3 người bệnh"},{big:"9 xét nghiệm",lab:"kiểm soát chặt mỗi túi"},{big:"Miễn phí",lab:"đều từ tình nguyện viên"}],
+  close:"Mỗi túi máu đến từ sự hiến tặng tự nguyện của người khác. Xin dùng trân trọng."},
+ cta:{h:"Muốn biết bạn hiểu đến đâu?",sub:"Cùng chơi trò “Truyền máu: Lựa chọn khôn ngoan” để phá tan hiểu lầm và làm bài trắc nghiệm.",btn:"Vào trò chơi truyền máu →"},
+ faqAdd:[{q:"Truyền máu xong có khỏe ngay không?",a:"Không hẳn. Hồng cầu sống khoảng 80 đến 120 ngày và triệu chứng cần thời gian để cải thiện; quan trọng hơn, <b>nguyên nhân gốc gây thiếu máu hoặc chảy máu vẫn phải điều trị</b>. Truyền máu chỉ bù tạm thời, không phải chữa khỏi bệnh."}]},
+"id":{
+ thr:{title:"Ambang acuan untuk berbagai situasi",sub:"Ini ambang acuan yang umum; keputusan sebenarnya dibuat dokter dengan menimbang gejala dan kondisi.",
+  rows:[["Dewasa umum","Hb < 7 g/dL"],["Penyakit jantung / operasi jantung","Hb < 8 g/dL"],["Sindrom koroner akut","Hb 8–10 g/dL"],["Penyakit ginjal kronis","Hb < 7–8 g/dL"],["Perdarahan masif / syok","Sesuai penilaian klinis"]],
+  note:"Ini nilai acuan, bukan aturan mutlak; perlu tidaknya transfusi dinilai dokter secara individual."},
+ alts:{title:"Transfusi bukan satu-satunya pilihan",sub:"Kadang cara berikut lebih cocok untuk Anda. Diskusikan dengan dokter mana yang sesuai.",
+  items:[{ic:"💊",name:"Suplemen zat besi",desc:"Zat besi oral atau infus untuk anemia kekurangan zat besi; efek sekitar 2–4 minggu."},
+   {ic:"💉",name:"Eritropoietin (EPO)",desc:"Merangsang sumsum membuat darah; untuk anemia ginjal atau akibat kemoterapi."},
+   {ic:"🥦",name:"Penyesuaian pola makan",desc:"Makan makanan kaya zat besi (daging merah, kacang, sayuran hijau tua) dengan vitamin C agar terserap."},
+   {ic:"🩸",name:"Daur ulang darah saat operasi",desc:"Darah Anda sendiri dikumpulkan saat operasi lalu dikembalikan, mengurangi darah donor."},
+   {ic:"🧪",name:"Obat penghenti perdarahan (TXA)",desc:"Asam traneksamat mengurangi kehilangan darah saat operasi atau cedera."},
+   {ic:"🌿",name:"Asam folat / Vitamin B12",desc:"Memperbaiki pembentukan darah; untuk anemia makrositik atau vegetarian jangka panjang."}],
+  note:"Mana yang cocok dinilai dokter berdasarkan penyebab anemia."},
+ precious:{title:"Setiap kantong darah adalah hadiah kehidupan",sub:"Darah seluruhnya dari pendonor. Gunakan bijak, transfusi hanya bila perlu, secukupnya.",
+  items:[{big:"Tiap 1,2 detik",lab:"satu kantong dipakai di Taiwan"},{big:"400–500 mL",lab:"per donor"},{big:"35–42 hari",lab:"masa simpan sel darah merah"},{big:"1 pendonor",lab:"membantu hingga 3 pasien"},{big:"9 pemeriksaan",lab:"pengawasan ketat tiap kantong"},{big:"Sukarela",lab:"semua dari relawan"}],
+  close:"Setiap kantong berasal dari donasi sukarela orang lain. Mohon gunakan dengan bijak."},
+ cta:{h:"Ingin tahu seberapa paham Anda?",sub:"Ayo main game “Transfusi: Pilih dengan Bijak” untuk menepis mitos dan mengerjakan kuis.",btn:"Masuk ke game transfusi →"},
+ faqAdd:[{q:"Apakah setelah transfusi langsung membaik?",a:"Tidak selalu. Sel darah merah hidup sekitar 80 sampai 120 hari dan gejala butuh waktu membaik; yang lebih penting, <b>penyebab dasar anemia atau perdarahan tetap harus diobati</b>. Transfusi hanya menambah sementara, bukan menyembuhkan penyakit."}]},
+"th":{
+ thr:{title:"ค่าอ้างอิงตามแต่ละสถานการณ์",sub:"ต่อไปนี้เป็นเกณฑ์อ้างอิงที่พบบ่อย การตัดสินจริงแพทย์จะพิจารณาจากอาการและสภาพร่างกาย",
+  rows:[["ผู้ใหญ่ทั่วไป","Hb < 7 g/dL"],["โรคหัวใจ / ผ่าตัดหัวใจ","Hb < 8 g/dL"],["กลุ่มอาการหลอดเลือดหัวใจเฉียบพลัน","Hb 8–10 g/dL"],["โรคไตเรื้อรัง","Hb < 7–8 g/dL"],["เสียเลือดมาก / ช็อก","ตามการประเมินทางคลินิก"]],
+  note:"เหล่านี้เป็นค่าอ้างอิง ไม่ใช่กฎตายตัว การให้เลือดหรือไม่แพทย์จะประเมินเป็นรายบุคคล"},
+ alts:{title:"การให้เลือดไม่ใช่ทางเลือกเดียว",sub:"บางครั้งวิธีต่อไปนี้เหมาะกับคุณมากกว่า โปรดปรึกษาแพทย์ว่าแบบใดเหมาะ",
+  items:[{ic:"💊",name:"การเสริมธาตุเหล็ก",desc:"ธาตุเหล็กชนิดกินหรือฉีดเข้าหลอดเลือด เหมาะกับโลหิตจางจากขาดธาตุเหล็ก เห็นผลราว 2–4 สัปดาห์"},
+   {ic:"💉",name:"อีริโทรพอยเอติน (EPO)",desc:"กระตุ้นไขกระดูกให้สร้างเลือด เหมาะกับโลหิตจางจากโรคไตหรือจากเคมีบำบัด"},
+   {ic:"🥦",name:"ปรับอาหาร",desc:"กินอาหารที่มีธาตุเหล็กสูง (เนื้อแดง ถั่ว ผักใบเขียวเข้ม) ร่วมกับวิตามินซีเพื่อการดูดซึม"},
+   {ic:"🩸",name:"การนำเลือดตัวเองกลับคืนขณะผ่าตัด",desc:"เก็บเลือดของคุณเองระหว่างผ่าตัดแล้วให้กลับ ลดการใช้เลือดผู้อื่น"},
+   {ic:"🧪",name:"ยาห้ามเลือด (TXA)",desc:"กรดทรานเอกซามิกช่วยลดการเสียเลือดจากการผ่าตัดหรือบาดเจ็บ"},
+   {ic:"🌿",name:"กรดโฟลิก / วิตามินบี12",desc:"ช่วยการสร้างเลือด เหมาะกับโลหิตจางเม็ดเลือดโตหรือผู้ทานมังสวิรัติระยะยาว"}],
+  note:"แบบใดเหมาะกับคุณ แพทย์จะประเมินตามสาเหตุของโลหิตจาง"},
+ precious:{title:"เลือดทุกถุงคือของขวัญแห่งชีวิต",sub:"เลือดมาจากผู้บริจาคทั้งสิ้น ใช้อย่างรู้ค่า ให้เมื่อจำเป็นและพอเพียง",
+  items:[{big:"ทุก 1.2 วินาที",lab:"ไต้หวันใช้เลือดหนึ่งถุง"},{big:"400–500 มล.",lab:"ต่อการบริจาคหนึ่งครั้ง"},{big:"35–42 วัน",lab:"อายุการเก็บเม็ดเลือดแดง"},{big:"ผู้บริจาค 1 คน",lab:"ช่วยผู้ป่วยได้ถึง 3 คน"},{big:"9 การตรวจ",lab:"คุมเข้มทุกถุง"},{big:"ไม่มีค่าตอบแทน",lab:"ล้วนจากอาสาสมัคร"}],
+  close:"เลือดทุกถุงมาจากการบริจาคด้วยใจของผู้อื่น โปรดใช้อย่างรู้ค่า"},
+ cta:{h:"อยากรู้ว่าคุณเข้าใจแค่ไหน?",sub:"มาเล่นเกม “การให้เลือด: เลือกอย่างชาญฉลาด” ด้วยกัน เพื่อขจัดความเข้าใจผิดและทำแบบทดสอบ",btn:"เข้าสู่เกมการให้เลือด →"},
+ faqAdd:[{q:"หลังรับเลือดจะดีขึ้นทันทีไหม?",a:"ไม่เสมอไป เม็ดเลือดแดงมีอายุราว 80 ถึง 120 วัน และอาการต้องใช้เวลาดีขึ้น ที่สำคัญกว่าคือ <b>ต้องรักษาสาเหตุที่แท้จริงของโลหิตจางหรือเลือดออก</b> การให้เลือดเป็นเพียงการเติมชั่วคราว ไม่ใช่การรักษาโรคให้หาย"}]}
+};
+
+var QZ={
+"zh-Hant":{correct:1,q:"一位病況穩定、沒有在出血的長輩，抽血發現血紅素偏低。您覺得下列哪個說法比較正確？",
+ opts:["血紅素低就要趕快輸血，最好補到正常，恢復才會快。","血紅素在 7 以上通常就夠，不一定要輸血，可以先找出原因。","輸血很危險，不管血紅素多低都不要輸比較安全。"],
+ pre_intro:"開始前，先請教您一個小問題",pre_note:"這不是考試，只是想了解您現在的想法。您的作答會匿名記錄，用來評估這份衛教有沒有幫助。",enter:"開始了解 →",skip:"先跳過，直接看內容",thanks_pre:"謝謝您的作答！接下來一起了解「有 7 就好」。"},
+"zh-Hans":{correct:1,q:"一位病况稳定、没有在出血的长辈，抽血发现血红素偏低。您觉得下列哪个说法比较正确？",
+ opts:["血红素低就要赶快输血，最好补到正常，恢复才会快。","血红素在 7 以上通常就够，不一定要输血，可以先找出原因。","输血很危险，不管血红素多低都不要输比较安全。"],
+ pre_intro:"开始前，先请教您一个小问题",pre_note:"这不是考试，只是想了解您现在的想法。您的作答会匿名记录，用来评估这份卫教有没有帮助。",enter:"开始了解 →",skip:"先跳过，直接看内容",thanks_pre:"谢谢您的作答！接下来一起了解「有 7 就好」。"},
+"en":{correct:1,q:"A stable older adult who is not bleeding is found to have a low hemoglobin. Which statement is more correct?",
+ opts:["A low hemoglobin means transfuse quickly, ideally back to normal, so recovery is faster.","At 7 g/dL or above it is usually enough; transfusion is not always needed, and the cause can be looked into first.","Transfusion is dangerous, so it is safer never to transfuse no matter how low it is."],
+ pre_intro:"Before we start, one quick question",pre_note:"This is not a test, just to understand what you think now. Your answer is recorded anonymously to evaluate whether this page helps.",enter:"Start learning →",skip:"Skip and go to the content",thanks_pre:"Thank you for answering! Let's learn about “a 7 is enough.”"},
+"ja":{correct:1,q:"出血していない、状態が安定した高齢の方の血液検査で、ヘモグロビンが低いと分かりました。次のうち正しいのはどれ？",
+ opts:["ヘモグロビンが低ければ早く輸血し、正常まで戻したほうが回復が早い。","7 g/dL 以上あれば通常は十分で、必ず輸血せず、まず原因を調べてよい。","輸血は危険なので、どんなに低くても輸血しないほうが安全。"],
+ pre_intro:"始める前に、ひとつ質問です",pre_note:"テストではなく、今のお考えを知るためです。回答は匿名で記録し、このページが役立つかの評価に使います。",enter:"学び始める →",skip:"スキップして内容へ",thanks_pre:"ご回答ありがとうございます！では「7 で十分」を見ていきましょう。"},
+"ko":{correct:1,q:"출혈이 없고 상태가 안정된 어르신의 혈액검사에서 헤모글로빈이 낮게 나왔습니다. 다음 중 더 옳은 설명은?",
+ opts:["헤모글로빈이 낮으면 빨리 수혈해 정상까지 채워야 회복이 빠르다.","7 g/dL 이상이면 보통 충분해 반드시 수혈하지 않고 먼저 원인을 찾아도 된다.","수혈은 위험하니 아무리 낮아도 수혈하지 않는 편이 안전하다."],
+ pre_intro:"시작하기 전에 한 가지 질문",pre_note:"시험이 아니라 지금 생각을 알기 위함입니다. 답변은 익명으로 기록되어 이 페이지가 도움이 되는지 평가에 쓰입니다.",enter:"알아보기 시작 →",skip:"건너뛰고 내용 보기",thanks_pre:"답변 감사합니다! 이제 ‘7이면 충분’을 알아봐요."},
+"vi":{correct:1,q:"Một người lớn tuổi ổn định, không chảy máu, xét nghiệm thấy huyết sắc tố thấp. Câu nào đúng hơn?",
+ opts:["Huyết sắc tố thấp thì phải truyền nhanh, tốt nhất về mức bình thường để hồi phục nhanh hơn.","Từ 7 g/dL trở lên thường là đủ, không nhất thiết truyền, có thể tìm nguyên nhân trước.","Truyền máu nguy hiểm, nên dù thấp đến đâu cũng không truyền cho an toàn."],
+ pre_intro:"Trước khi bắt đầu, một câu hỏi nhanh",pre_note:"Đây không phải bài kiểm tra, chỉ để hiểu suy nghĩ của bạn. Câu trả lời được ghi ẩn danh để đánh giá trang này có ích không.",enter:"Bắt đầu tìm hiểu →",skip:"Bỏ qua, xem nội dung",thanks_pre:"Cảm ơn bạn đã trả lời! Cùng tìm hiểu “7 là đủ” nhé."},
+"id":{correct:1,q:"Seorang lansia yang stabil dan tidak berdarah, hasil tesnya menunjukkan hemoglobin rendah. Pernyataan mana yang lebih tepat?",
+ opts:["Hemoglobin rendah harus segera ditransfusi, sebaiknya sampai normal agar pulih lebih cepat.","7 g/dL atau lebih biasanya cukup, tidak selalu perlu transfusi, cari dulu penyebabnya.","Transfusi berbahaya, jadi serendah apa pun lebih aman tidak ditransfusi."],
+ pre_intro:"Sebelum mulai, satu pertanyaan singkat",pre_note:"Ini bukan ujian, hanya untuk memahami pendapat Anda. Jawaban dicatat anonim untuk menilai apakah halaman ini membantu.",enter:"Mulai belajar →",skip:"Lewati, ke konten",thanks_pre:"Terima kasih sudah menjawab! Mari pelajari “7 sudah cukup.”"},
+"th":{correct:1,q:"ผู้สูงอายุที่อาการคงที่และไม่มีเลือดออก ตรวจพบฮีโมโกลบินต่ำ ข้อใดถูกต้องกว่า?",
+ opts:["ฮีโมโกลบินต่ำต้องรีบให้เลือด ควรเติมให้ถึงปกติเพื่อให้ฟื้นตัวเร็ว","ตั้งแต่ 7 g/dL ขึ้นไปมักพอ ไม่จำเป็นต้องให้เลือดเสมอ หาสาเหตุก่อนได้","การให้เลือดอันตราย ต่ำแค่ไหนก็ไม่ให้จะปลอดภัยกว่า"],
+ pre_intro:"ก่อนเริ่ม ขอถามหนึ่งคำถามสั้น ๆ",pre_note:"นี่ไม่ใช่การสอบ เพียงอยากทราบความคิดของคุณ คำตอบถูกบันทึกแบบไม่ระบุตัวตนเพื่อประเมินว่าหน้านี้ช่วยได้ไหม",enter:"เริ่มเรียนรู้ →",skip:"ข้ามไปดูเนื้อหา",thanks_pre:"ขอบคุณที่ตอบ! มาเรียนรู้ “แค่ 7 ก็พอ” กันต่อ"}
+};
+
+var ENDPOINT=""; /* TODO: 填入後端 API 位址（PostgreSQL 接收端）；留空時僅在 console 記錄 */
+var RID=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():'r'+Date.now()+Math.random().toString(36).slice(2,8);
+var PREANS=null;
+function record(phase,ans){
+  var z=QZ[lang];
+  var payload={response_id:RID,ts:new Date().toISOString(),instrument:"orbs_pre",item:"stable_low_hb",phase:phase,lang:lang,answer:ans,correct:(ans===z.correct)};
+  try{ if(ENDPOINT){fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});}else{console.log("[record]",payload);} }catch(e){}
+}
+function renderExtras(){
+  var e=EX[lang];
+  set('thr_h',e.thr.title);set('thr_sub',e.thr.sub);set('thr_note',e.thr.note);
+  document.getElementById('thr_body').innerHTML=e.thr.rows.map(function(r){return '<div class="thr-row"><span class="thr-c">'+r[0]+'</span><span class="thr-v">'+r[1]+'</span></div>';}).join('');
+  set('alts_h',e.alts.title);set('alts_sub',e.alts.sub);set('alts_note',e.alts.note);
+  document.getElementById('alts_body').innerHTML=e.alts.items.map(function(a){return '<div class="altc"><div class="ai">'+a.ic+'</div><div><div class="an">'+a.name+'</div><div class="ad">'+a.desc+'</div></div></div>';}).join('');
+  set('gift_h',e.precious.title);set('gift_sub',e.precious.sub);set('gift_close',e.precious.close);
+  document.getElementById('gift_body').innerHTML=e.precious.items.map(function(g){return '<div class="giftc"><div class="gb">'+g.big+'</div><div class="gl">'+g.lab+'</div></div>';}).join('');
+  set('cta_h',e.cta.h);set('cta_sub',e.cta.sub);
+  var btn=document.getElementById('cta_btn');btn.textContent=e.cta.btn;
+  btn.href=GAME_URL+"?src=orbs&rid="+encodeURIComponent(RID)+"&lang="+encodeURIComponent(lang);
+  btn.onclick=function(){ record("to_game",PREANS); };
+}
+function renderQuiz(){
+  var z=QZ[lang];
+  set('pt_intro',z.pre_intro);document.getElementById('pt_note').style.display='none';set('pt_q',z.q);set('pt_skip',z.skip);set('pt_thanks',z.thanks_pre);set('pt_enter',z.enter);
+  document.getElementById('pt_opts').innerHTML=z.opts.map(function(o,i){return '<button class="opt" onclick="choosePre('+i+')">'+o+'</button>';}).join('');
+}
+function choosePre(i){ if(PREANS!=null)return; PREANS=i; record("pre",i);
+  document.getElementById('pt_body').style.display='none';
+  document.getElementById('pt_done').style.display='block'; }
+function skipPre(){ if(PREANS==null)record("pre",null); closePre(); }
+function closePre(){ document.getElementById('pretest').style.display='none'; }
+function buildPreBar(){ var lb=document.getElementById('pt_langbar');
+  LANGS.forEach(function(p){ var b=document.createElement('button'); b.innerHTML=p[1];
+    if(p[0]===lang)b.className='on'; b.onclick=function(){setLang(p[0]);}; lb.appendChild(b); }); }
+function syncBars(){
+  var mb=document.getElementById('langbar').querySelectorAll('button');
+  var pb=document.getElementById('pt_langbar').querySelectorAll('button');
+  LANGS.forEach(function(p,i){ if(mb[i])mb[i].classList.toggle('on',p[0]===lang); if(pb[i])pb[i].classList.toggle('on',p[0]===lang); });
+}
+function setLang(l){ lang=l; renderAll(); renderQuiz(); syncBars(); }
+
+buildLangBar();buildPreBar();renderAll();renderQuiz();
+</script>
+</body>
+</html>
