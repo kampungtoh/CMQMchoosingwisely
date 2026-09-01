@@ -363,7 +363,7 @@ var ROLE_VAL=["本人","家屬","陪病者／看護"], AGE_VAL=["<25","25-39","4
    留空時只在 console 記錄，不影響遊戲運作。 */
 /* 資料收集端：貼上你的 Google Apps Script 網頁應用程式網址（.../exec）。
    留空時只在 console 記錄，不影響遊戲運作。 */
-var ENDPOINT="";
+var ENDPOINT="https://script.google.com/macros/s/AKfycbyck_i5rPDh5tBs8jsmtAVv-r9xgR1OABsde65edgdZcHP0HHyls6UKWCczyUgBHzv0/exec";
 
 function getParam(k){try{return new URLSearchParams(location.search).get(k)}catch(e){return null}}
 var URL_RID=getParam('rid'), SRC=getParam('src')||"direct";
