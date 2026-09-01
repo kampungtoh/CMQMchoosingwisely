@@ -1031,13 +1031,15 @@ var QZ={
  pre_intro:"ก่อนเริ่ม ขอถามหนึ่งคำถามสั้น ๆ",pre_note:"นี่ไม่ใช่การสอบ เพียงอยากทราบความคิดของคุณ คำตอบถูกบันทึกแบบไม่ระบุตัวตนเพื่อประเมินว่าหน้านี้ช่วยได้ไหม",enter:"เริ่มเรียนรู้ →",skip:"ข้ามไปดูเนื้อหา",thanks_pre:"ขอบคุณที่ตอบ! มาเรียนรู้ “แค่ 7 ก็พอ” กันต่อ"}
 };
 
-var ENDPOINT=""; /* TODO: 填入後端 API 位址（PostgreSQL 接收端）；留空時僅在 console 記錄 */
+var ENDPOINT=""; /* 貼上 Google Apps Script 網頁應用程式網址（.../exec）；留空時只在 console 記錄 */
 var RID=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():'r'+Date.now()+Math.random().toString(36).slice(2,8);
 var PREANS=null;
 function record(phase,ans){
   var z=QZ[lang];
-  var payload={response_id:RID,ts:new Date().toISOString(),instrument:"orbs_pre",item:"stable_low_hb",phase:phase,lang:lang,answer:ans,correct:(ans===z.correct)};
-  try{ if(ENDPOINT){fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});}else{console.log("[record]",payload);} }catch(e){}
+  var ok=(ans===z.correct);
+  var payload={response_id:RID,source:"orbs",ts:new Date().toISOString(),instrument:"orbs_pre",mode:"pre",
+    phase:"前測",lang:lang,pre_answer:(ans===null?"skip":ans),pre_correct:(ans===null?"":(ok?1:0))};
+  try{ if(ENDPOINT){fetch(ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});}else{console.log("[record]",payload);} }catch(e){}
 }
 function renderExtras(){
   var e=EX[lang];
@@ -1049,7 +1051,9 @@ function renderExtras(){
   document.getElementById('gift_body').innerHTML=e.precious.items.map(function(g){return '<div class="giftc"><div class="gb">'+g.big+'</div><div class="gl">'+g.lab+'</div></div>';}).join('');
   set('cta_h',e.cta.h);set('cta_sub',e.cta.sub);
   var btn=document.getElementById('cta_btn');btn.textContent=e.cta.btn;
-  btn.href=GAME_URL+"?src=orbs&rid="+encodeURIComponent(RID)+"&lang="+encodeURIComponent(lang);
+  var preOk=(PREANS===null)?"":((QZ[lang]&&PREANS===QZ[lang].correct)?1:0);
+  btn.href=GAME_URL+"?src=orbs&rid="+encodeURIComponent(RID)+"&lang="+encodeURIComponent(lang)
+    +"&pre="+encodeURIComponent(PREANS===null?"skip":PREANS)+"&pre_ok="+encodeURIComponent(preOk);
   btn.onclick=function(){ record("to_game",PREANS); };
 }
 function renderQuiz(){
