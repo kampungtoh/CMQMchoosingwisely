@@ -68,11 +68,8 @@ th{color:var(--soft);font-weight:600}
   </div>
 
   <div class="bar">
-    <input class="url" id="endpoint" placeholder="貼上 Apps Script 網址 (.../exec)">
-    <input id="key" placeholder="讀取密語 key" style="width:130px">
-    <button class="btn" id="load">讀取資料</button>
-    <button class="btn ghost" id="refresh">↻ 重新整理</button>
-    <span class="status" id="status">請填入網址與 key，或在程式碼頂端預設後直接開啟。</span>
+    <button class="btn" id="refresh">↻ 重新整理</button>
+    <span class="status" id="status">載入中…</span>
   </div>
 
   <div id="app" style="display:none">
@@ -122,7 +119,7 @@ th{color:var(--soft);font-weight:600}
 /* ====== 預設值：填好這兩個，開啟就自動讀，不用每次輸入 ======
    ENDPOINT = 你的 Apps Script 網頁應用程式網址 (.../exec)
    KEY      = 與 Apps Script 裡 READ_KEY 相同的密語        */
-var ENDPOINT="https://script.google.com/macros/s/AKfycbyck_i5rPDh5tBs8jsmtAVv-r9xgR1OABsde65edgdZcHP0HHyls6UKWCczyUgBHzv0/exec";
+var ENDPOINT="";
 var KEY="cmqm2026";
 
 var ROWS=[];
@@ -132,9 +129,8 @@ function pct(a,b){return b?Math.round(a/b*100):0}
 
 /* JSONP 讀取（避開跨網域限制） */
 function loadData(){
-  var ep=$('endpoint').value.trim()||ENDPOINT;
-  var key=$('key').value.trim()||KEY;
-  if(!ep){setStatus('請先貼上 Apps Script 網址。',true);return;}
+  var ep=ENDPOINT, key=KEY;
+  if(!ep){setStatus('請在程式碼頂端填入 ENDPOINT 網址後再開啟。',true);return;}
   setStatus('讀取中…',false);
   var cbName='__cmqm_cb_'+Date.now();
   var done=false;
@@ -250,10 +246,8 @@ function segBars(games,field,labels){
   }).join('');
 }
 
-$('load').onclick=loadData;
 $('refresh').onclick=loadData;
-$('endpoint').value=ENDPOINT; $('key').value=KEY;
-if(ENDPOINT){loadData();}
+loadData();
 </script>
 </body>
 </html>
