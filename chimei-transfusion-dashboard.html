@@ -3,390 +3,257 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>明智選擇成效儀表板｜我需要輸血嗎？</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<title>成效儀表板｜有 7 就好 · 奇美醫療財團法人奇美醫院</title>
 <style>
-  :root{
-    --ground:#F4F6F3;--panel:#FFFFFF;--ink:#15211D;--ink-soft:#4C5A54;--ink-faint:#7C8880;
-    --garnet:#96223A;--garnet-bg:#F7E9EC;--teal:#1F6E60;--teal-bg:#E4F1ED;
-    --amber:#A96A15;--amber-bg:#F7ECD9;--slate:#4F6A72;--slate-bg:#E7EEF0;
-    --line:#E1E5E0;--line-strong:#CBD2CC;
-    --serif:'Noto Serif TC',serif;--sans:'Noto Sans TC',sans-serif;--radius:14px;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
-    font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
-  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.35;margin:0}
-  p{margin:0}
+:root{
+  --bg:#f4f1ec; --card:#ffffff; --fg:#2d2a26; --soft:#5f594f; --mute:#938a7d; --line:#ece3d6;
+  --accent:#e23a63; --ok:#1f9e75; --ok-bg:#e7f7f0; --amber:#d9962a; --blue:#3b7bd0; --purple:#7b62cf;
+  --r:16px; --r-lg:22px;
+  --font:'PingFang TC','Noto Sans TC','Microsoft JhengHei',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);line-height:1.6;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding:22px 18px 60px}
+h1{font-size:24px;margin:0} h2{font-size:17px;margin:0 0 14px}
+.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.top .sub{color:var(--mute);font-size:13px;width:100%}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0 20px}
+.bar input{font-family:var(--font);font-size:13px;border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:#fff;color:var(--fg)}
+.bar input.url{flex:1;min-width:260px}
+.btn{font-family:var(--font);font-size:14px;font-weight:600;border:none;border-radius:9px;padding:9px 16px;cursor:pointer;background:var(--accent);color:#fff}
+.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--soft)}
+.status{font-size:13px;color:var(--mute)}
+.status.err{color:var(--accent)}
 
-  .top{background:var(--panel);border-bottom:1px solid var(--line);padding:22px 0}
-  .brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:13.5px;color:var(--ink-soft);margin-bottom:10px}
-  .brand svg{width:19px;height:19px}
-  .top h1{font-size:clamp(22px,3.6vw,28px)}
-  .top .sub{color:var(--ink-faint);font-size:14px;margin-top:6px}
-  .controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
-  .controls button,.controls label{font-family:var(--sans);font-size:13.5px;font-weight:600;
-    border:1px solid var(--line-strong);background:var(--ground);color:var(--ink-soft);
-    padding:8px 14px;border-radius:9px;cursor:pointer;transition:.14s}
-  .controls button:hover,.controls label:hover{border-color:var(--garnet);color:var(--garnet)}
-  .controls button.pri{background:var(--garnet);border-color:var(--garnet);color:#fff}
-  .controls button.pri:hover{background:#7d1c30;color:#fff}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}
+@media(max-width:820px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--card);border-radius:var(--r);padding:16px;box-shadow:0 4px 16px rgba(45,42,38,.05)}
+.kpi .n{font-size:30px;font-weight:800;line-height:1.1;color:var(--accent)}
+.kpi .l{font-size:12.5px;color:var(--soft);margin-top:5px}
+.kpi.g .n{color:var(--ok)}
 
-  section{padding:30px 0;border-top:1px solid var(--line)}
-  .stitle{display:flex;align-items:center;gap:9px;margin-bottom:4px}
-  .stitle .tick{width:7px;height:22px;background:var(--garnet);border-radius:2px}
-  .stitle h2{font-size:20px}
-  .snote{color:var(--ink-faint);font-size:13.5px;margin:2px 0 18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--card);border-radius:var(--r-lg);padding:20px;box-shadow:0 4px 16px rgba(45,42,38,.05);margin-bottom:16px}
+.panel.full{grid-column:1 / -1}
 
-  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
-  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
-  .kpi .lab{font-size:13px;color:var(--ink-faint);font-weight:600}
-  .kpi .prepost{display:flex;align-items:baseline;gap:8px;margin-top:8px}
-  .kpi .v{font-family:var(--serif);font-size:30px;font-weight:700}
-  .kpi .v.post{color:var(--garnet)}
-  .kpi .arrow{color:var(--ink-faint);font-size:15px}
-  .kpi .delta{margin-top:8px;font-size:13.5px;font-weight:600}
-  .kpi .delta.up{color:var(--teal)}
-  .kpi .delta.down{color:var(--garnet)}
-  .kpi .p{font-size:12px;color:var(--ink-faint);font-weight:400;margin-left:4px}
-  .kpi.warn{border-color:#E7C9A0;background:var(--amber-bg)}
-  .kpi.warn .lab{color:var(--amber)}
+.row{display:flex;align-items:center;gap:10px;margin:9px 0}
+.row .lab{width:150px;font-size:13.5px;color:var(--soft);flex:none;text-align:right}
+.track{flex:1;background:#f0ebe2;border-radius:8px;height:22px;position:relative;overflow:hidden}
+.fill{height:100%;border-radius:8px;background:var(--accent);transition:width .5s}
+.fill.ok{background:var(--ok)} .fill.amber{background:var(--amber)} .fill.blue{background:var(--blue)} .fill.purple{background:var(--purple)}
+.val{width:66px;font-size:13px;font-weight:700;flex:none}
 
-  .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
-  .bars{display:flex;flex-direction:column;gap:14px;margin-top:4px}
-  .barrow .blab{font-size:14px;margin-bottom:6px;display:flex;justify-content:space-between}
-  .barrow .blab .qn{font-weight:500;color:var(--ink)}
-  .barrow .blab .qd{color:var(--ink-faint);font-size:12.5px}
-  .track{position:relative;height:26px}
-  .pair{display:flex;flex-direction:column;gap:5px}
-  .bg{background:var(--ground);border-radius:6px;height:12px;position:relative;overflow:hidden}
-  .fill{height:100%;border-radius:6px;transition:width .5s}
-  .fill.pre{background:var(--slate)}
-  .fill.post{background:var(--garnet)}
-  .minikey{display:flex;gap:16px;font-size:12.5px;color:var(--ink-faint);margin-bottom:16px}
-  .minikey span{display:inline-flex;align-items:center;gap:6px}
-  .sw{width:12px;height:12px;border-radius:3px}
-  .sw.pre{background:var(--slate)}.sw.post{background:var(--garnet)}
-  .pct{font-size:12px;color:var(--ink-soft);min-width:38px}
+.prepost{display:flex;gap:18px;align-items:flex-end;justify-content:center;padding:10px 0 4px}
+.ppcol{text-align:center;width:120px}
+.ppbar{width:70px;margin:0 auto;background:#f0ebe2;border-radius:10px 10px 0 0;position:relative;height:180px;display:flex;align-items:flex-end}
+.ppbar span{display:block;width:100%;border-radius:10px 10px 0 0;background:var(--accent)}
+.ppcol.post .ppbar span{background:var(--ok)}
+.ppcol .cap{font-size:13px;color:var(--soft);margin-top:8px} .ppcol .pv{font-weight:800;font-size:18px;margin-top:4px}
 
-  .lk{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px dashed var(--line)}
-  .lk:first-child{border-top:none}
-  .lk .lqt{font-size:14px;flex:1}
-  .lkbar{display:flex;height:20px;border-radius:5px;overflow:hidden;width:260px;max-width:45%}
-  .lkbar i{display:block}
-  .lk .mean{font-family:var(--serif);font-weight:700;color:var(--garnet);min-width:34px;text-align:right}
-
-  .seg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-  .segbox{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
-  .segbox h3{font-size:15px;margin-bottom:12px}
-  .segrow{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13.5px}
-  .segrow .sname{width:74px;color:var(--ink-soft);flex:none}
-  .segrow .sbar{flex:1;background:var(--ground);border-radius:5px;height:20px;overflow:hidden;position:relative}
-  .segrow .sfill{height:100%;background:var(--teal);border-radius:5px}
-  .segrow .sval{width:52px;text-align:right;font-weight:600;flex:none;font-size:12.5px}
-
-  .clin{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-  .clincard{background:var(--panel);border:1px dashed var(--line-strong);border-radius:12px;padding:16px 18px}
-  .clincard .ct{font-size:14px;font-weight:600;margin-bottom:4px}
-  .clincard .cd{font-size:12.5px;color:var(--ink-faint);line-height:1.6}
-  .clincard .src{display:inline-block;margin-top:8px;font-size:11.5px;background:var(--slate-bg);color:var(--slate);
-    padding:2px 8px;border-radius:999px;font-weight:600}
-
-  .method{background:var(--slate-bg);border-radius:var(--radius);padding:18px 22px;font-size:13.5px;color:#33474E;line-height:1.75}
-  .method b{color:var(--ink)}
-  .foot{color:var(--ink-faint);font-size:12.5px;padding:26px 0 50px;line-height:1.7}
+.note{font-size:12.5px;color:var(--mute);margin-top:10px;line-height:1.6}
+.empty{text-align:center;color:var(--mute);padding:50px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line)}
+th{color:var(--soft);font-weight:600}
+.pill{display:inline-block;font-size:11px;padding:2px 9px;border-radius:999px;background:var(--ok-bg);color:var(--ok);font-weight:700}
 </style>
 </head>
 <body>
+<div class="wrap">
+  <div class="top">
+    <h1>成效儀表板 · 有 7 就好</h1>
+    <span class="pill" id="livepill" style="display:none">LIVE</span>
+    <span class="sub">前測(衛教頁) × 後測(闖關遊戲) 即時彙整 · 奇美醫療財團法人奇美醫院 品質管理部</span>
+  </div>
 
-<div class="top">
-  <div class="wrap">
-    <div class="brand">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 5 10.5 5 15a7 7 0 0 0 14 0c0-4.5-7-13-7-13Z" fill="#96223A"/></svg>
-      奇美醫療體系 · 明智選擇 Choosing Wisely
-    </div>
-    <h1>「我需要輸血嗎？」衛教成效儀表板</h1>
-    <p class="sub" id="datainfo">示範資料　·　前測與後測比較</p>
-    <div class="controls">
-      <button class="pri" id="demo">使用示範資料</button>
-      <label>匯入資料（CSV／JSON）<input type="file" id="file" accept=".csv,.json" hidden></label>
-      <button id="tmpl">下載範例 CSV</button>
-      <button id="expo">下載目前資料</button>
+  <div class="bar">
+    <input class="url" id="endpoint" placeholder="貼上 Apps Script 網址 (.../exec)">
+    <input id="key" placeholder="讀取密語 key" style="width:130px">
+    <button class="btn" id="load">讀取資料</button>
+    <button class="btn ghost" id="refresh">↻ 重新整理</button>
+    <span class="status" id="status">請填入網址與 key，或在程式碼頂端預設後直接開啟。</span>
+  </div>
+
+  <div id="app" style="display:none">
+    <div class="kpis" id="kpis"></div>
+    <div class="grid">
+      <div class="panel">
+        <h2>前測 → 後測：情境題答對率</h2>
+        <div class="prepost" id="prepost"></div>
+        <div class="note">前測那題與遊戲的情境題(阿嬤 Hb 7.6)是同一題，可直接比較。後測為玩過遊戲者在該題的答對率。</div>
+      </div>
+      <div class="panel">
+        <h2>五題知識 · 各題答對率(後測)</h2>
+        <div id="itemRates"></div>
+        <div class="note">k1 血品分辨 · k2 門檻 · k3 情境 · k4 迷思 · k5 一袋再評估</div>
+      </div>
+      <div class="panel">
+        <h2>自我效能：敢不敢問醫師</h2>
+        <div id="selfeff"></div>
+      </div>
+      <div class="panel">
+        <h2>材料清晰度回饋</h2>
+        <div id="clarity"></div>
+      </div>
+      <div class="panel">
+        <h2>有看衛教頁 vs 直接玩(平均分)</h2>
+        <div id="bysource"></div>
+        <div class="note">來源 orbs = 從衛教頁進入(先看過)；direct = 直接開遊戲。分數為五題知識答對數(滿分 5)。</div>
+      </div>
+      <div class="panel">
+        <h2>分眾平均分</h2>
+        <div id="byseg"></div>
+      </div>
+      <div class="panel full">
+        <h2>迷思與平衡指標</h2>
+        <div id="balance"></div>
+      </div>
+      <div class="panel full">
+        <h2>最近 10 筆</h2>
+        <div id="recent"></div>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="wrap">
-
-  <!-- KPI -->
-  <section>
-    <div class="stitle"><span class="tick"></span><h2>核心成效指標</h2></div>
-    <p class="snote">前測（宣導前）與後測（宣導後）比較。p 值為指示性，正式發表請以統計軟體複核。</p>
-    <div class="kpis" id="kpis"></div>
-  </section>
-
-  <!-- per item -->
-  <section>
-    <div class="stitle"><span class="tick"></span><h2>各題答對率：前測 vs 後測</h2></div>
-    <p class="snote">看出哪一個觀念真正被建立起來，哪一個還需要加強。</p>
-    <div class="minikey">
-      <span><span class="sw pre"></span>前測</span>
-      <span><span class="sw post"></span>後測</span>
-    </div>
-    <div class="panel"><div class="bars" id="itembars"></div></div>
-  </section>
-
-  <!-- likert -->
-  <section>
-    <div class="stitle"><span class="tick"></span><h2>衛教資訊品質（後測）</h2></div>
-    <p class="snote">材料本身的清晰度與幫助度，屬於過程指標，不當作知識分數。</p>
-    <div class="panel" id="likert"></div>
-  </section>
-
-  <!-- segmentation -->
-  <section>
-    <div class="stitle"><span class="tick"></span><h2>分群分析：誰接收到訊息了？</h2></div>
-    <p class="snote">後測知識分數（滿分 5）依族群拆解，找出訊息還沒觸及的對象。這關係到高齡與外籍照顧者的公平性。</p>
-    <div class="seg" id="seg"></div>
-  </section>
-
-  <!-- clinical link -->
-  <section>
-    <div class="stitle"><span class="tick"></span><h2>臨床層指標（需接 HIS 或醫囑系統）</h2></div>
-    <p class="snote">問卷改變的是知識與意向，真正要證明的是這些臨床行為有沒有改變。這一區的資料不來自問卷，需另接資料源。</p>
-    <div class="clin" id="clin"></div>
-  </section>
-
-  <!-- method -->
-  <section>
-    <div class="stitle"><span class="tick"></span><h2>統計方法與設計備註</h2></div>
-    <div class="method" id="method"></div>
-  </section>
-
-  <p class="foot" id="foot"></p>
+  <div id="emptyState" class="empty" style="display:none">目前沒有資料。等第一位民眾玩完送出後，這裡就會出現。</div>
 </div>
 
 <script>
-/* ---------------- stats helpers ---------------- */
-function mean(a){return a.length?a.reduce(function(x,y){return x+y},0)/a.length:0}
-function normalCDF(z){ // Abramowitz-Stegun
-  var t=1/(1+0.2316419*Math.abs(z));
-  var d=0.3989423*Math.exp(-z*z/2);
-  var p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));
-  return z>0?1-p:p;
-}
-function twoPropP(x1,n1,x2,n2){
-  if(!n1||!n2)return NaN;
-  var p1=x1/n1,p2=x2/n2,pbar=(x1+x2)/(n1+n2);
-  var se=Math.sqrt(pbar*(1-pbar)*(1/n1+1/n2)); if(!se)return NaN;
-  var z=(p2-p1)/se; return 2*(1-normalCDF(Math.abs(z)));
-}
-function twoMeanP(a,b){
-  if(a.length<2||b.length<2)return NaN;
-  var ma=mean(a),mb=mean(b);
-  var va=mean(a.map(function(x){return (x-ma)*(x-ma)}))*a.length/(a.length-1);
-  var vb=mean(b.map(function(x){return (x-mb)*(x-mb)}))*b.length/(b.length-1);
-  var se=Math.sqrt(va/a.length+vb/b.length); if(!se)return NaN;
-  var z=(mb-ma)/se; return 2*(1-normalCDF(Math.abs(z)));
-}
-function pfmt(p){return isNaN(p)?"":(p<0.001?"p<0.001":"p="+p.toFixed(3))}
+/* ====== 預設值：填好這兩個，開啟就自動讀，不用每次輸入 ======
+   ENDPOINT = 你的 Apps Script 網頁應用程式網址 (.../exec)
+   KEY      = 與 Apps Script 裡 READ_KEY 相同的密語        */
+var ENDPOINT="";
+var KEY="cmqm2026";
 
-/* ---------------- scoring ---------------- */
-var KEY={k1:'rbc',k2:'7',k3:'b',k4:'c',k5:'a'};
-function correct(r,q){return r[q]===KEY[q]?1:0}
-function score(r){return correct(r,'k1')+correct(r,'k2')+correct(r,'k3')+correct(r,'k4')+correct(r,'k5')}
-function misconception(r){return (r.k4==='a'||r.k4==='b')?1:0}
+var ROWS=[];
+function $(id){return document.getElementById(id)}
+function num(v){var n=parseFloat(v);return isNaN(n)?null:n}
+function pct(a,b){return b?Math.round(a/b*100):0}
 
-/* ---------------- sample data ---------------- */
-function pick(w){var r=Math.random(),c=0;for(var k in w){c+=w[k];if(r<c)return k}return Object.keys(w)[0]}
-function genSample(){
-  var rows=[],units=['ICU','血液腫瘤','一般外科','心臟內科','婦產科'],langs=['zh','zh','zh','en','vi','id'];
-  function one(mode){
-    var age=pick({'<40':.2,'40-64':.45,'65+':.35});
-    var good=mode==='post';
-    // post answers skew correct; elderly & non-zh lag a bit
-    var lag=(age==='65+'?0.15:0)+0;
-    var pc=good?0.72-lag:0.34;   // base prob correct
-    function ans(right,wrongs){return Math.random()<pc?right:wrongs[Math.floor(Math.random()*wrongs.length)]}
-    var lang=langs[Math.floor(Math.random()*langs.length)];
-    if(lang!=='zh'&&good)pc-=0.12;
-    return {
-      response_id:Math.random().toString(36).slice(2,9),
-      timestamp:new Date(Date.now()-Math.random()*30*864e5).toISOString().slice(0,10),
-      wave:'W1',unit:units[Math.floor(Math.random()*units.length)],lang:lang,mode:mode,
-      role:pick({'病人本人':.5,'家屬':.35,'陪病者／看護':.15}),age:age,
-      exp:pick({'有':.4,'沒有':.45,'不確定':.15}),
-      k1:ans('rbc',['plt','ffp','all']),
-      k2:ans('7',['10','9','dk']),
-      k3:ans('b',['a','c','dk']),
-      k4:ans('c',['a','b','dk']),
-      k5:ans('a',['b','c','dk']),
-      act1:good?pick({'會':.6,'也許':.3,'不會':.1}):pick({'會':.35,'也許':.4,'不會':.25}),
-      act2:good?pick({'知道':.7,'不知道':.3}):pick({'知道':.4,'不知道':.6}),
-      q_clear:good?String(4+Math.round(Math.random())):'',
-      q_help:good?String(4+Math.round(Math.random())):'',
-      q_talk:good?String(3+Math.round(Math.random()*2)):'',
-      open:''
-    };
-  }
-  for(var i=0;i<130;i++)rows.push(one('pre'));
-  for(var j=0;j<155;j++)rows.push(one('post'));
-  return rows;
+/* JSONP 讀取（避開跨網域限制） */
+function loadData(){
+  var ep=$('endpoint').value.trim()||ENDPOINT;
+  var key=$('key').value.trim()||KEY;
+  if(!ep){setStatus('請先貼上 Apps Script 網址。',true);return;}
+  setStatus('讀取中…',false);
+  var cbName='__cmqm_cb_'+Date.now();
+  var done=false;
+  window[cbName]=function(res){done=true;cleanup();
+    if(!res||!res.ok){setStatus('讀取失敗：'+((res&&res.error)||'unknown')+'（檢查 key 是否正確、是否已部署最新版）',true);return;}
+    ROWS=res.rows||[];render();
+    setStatus('已更新 · 共 '+ROWS.length+' 筆 · '+new Date().toLocaleString('zh-TW'),false);
+    $('livepill').style.display='inline-block';
+  };
+  var s=document.createElement('script');
+  s.src=ep+(ep.indexOf('?')>=0?'&':'?')+'key='+encodeURIComponent(key)+'&callback='+cbName+'&_t='+Date.now();
+  s.onerror=function(){cleanup();setStatus('無法連線到該網址，請確認網址正確且已部署為「任何人」可存取。',true);};
+  function cleanup(){try{delete window[cbName]}catch(e){window[cbName]=null}if(s.parentNode)s.parentNode.removeChild(s);}
+  document.body.appendChild(s);
+  setTimeout(function(){if(!done){cleanup();setStatus('讀取逾時，請重試或檢查部署設定。',true);}},15000);
 }
+function setStatus(t,err){var e=$('status');e.textContent=t;e.className='status'+(err?' err':'');}
 
-/* ---------------- render ---------------- */
-var DATA=[];
-function splitPP(){return {pre:DATA.filter(function(r){return r.mode==='pre'}),post:DATA.filter(function(r){return r.mode==='post'})}}
+/* ---- 分類 ---- */
+function isGame(r){return (r.instrument==='game')}
+function isPre(r){return (r.instrument==='orbs_pre'||r.phase==='前測')}
 
 function render(){
-  var s=splitPP(),pre=s.pre,post=s.post;
-  document.getElementById('datainfo').textContent=
-    '共 '+DATA.length+' 筆　·　前測 '+pre.length+'　·　後測 '+post.length;
+  var games=ROWS.filter(isGame), pres=ROWS.filter(isPre);
+  if(ROWS.length===0){$('app').style.display='none';$('emptyState').style.display='block';return;}
+  $('emptyState').style.display='none';$('app').style.display='block';
 
-  /* KPIs */
-  var kScorePre=mean(pre.map(score)),kScorePost=mean(post.map(score));
-  var misPre=pre.filter(misconception).length,misPost=post.filter(misconception).length;
-  var misRpre=pre.length?misPre/pre.length*100:0,misRpost=post.length?misPost/post.length*100:0;
-  var intentPost=post.filter(function(r){return r.act1==='會'}).length;
-  var intentR=post.length?intentPost/post.length*100:0;
-  var altPost=post.filter(function(r){return r.act2==='知道'}).length;
-  var altR=post.length?altPost/post.length*100:0;
+  /* KPI */
+  var scores=games.map(function(r){return num(r.score)}).filter(function(v){return v!==null});
+  var avgScore=scores.length?(scores.reduce(function(a,b){return a+b},0)/scores.length):0;
+  // 前測答對率：優先用前測列的 pre_correct；沒有前測列則用遊戲列帶進來的 pre_correct
+  var preSrc = pres.length? pres : games;
+  var preAns = preSrc.map(function(r){return r.pre_correct!==''&&r.pre_correct!=null?num(r.pre_correct):null});
+  // 前測列本身用 pre_correct 欄；orbs_pre 也是存 pre_correct
+  var preVals=preSrc.map(function(r){var v=r.pre_correct; if(v===''||v==null)return null; return num(v);}).filter(function(v){return v!==null});
+  var preRate=preVals.length?pct(preVals.filter(function(v){return v===1}).length,preVals.length):0;
+  var postScenario=games.map(function(r){return num(r.k3_ok)}).filter(function(v){return v!==null});
+  var postScenRate=postScenario.length?pct(postScenario.filter(function(v){return v===1}).length,postScenario.length):0;
+  var myth=games.map(function(r){return num(r.misconception)}).filter(function(v){return v!==null});
+  var mythRate=myth.length?pct(myth.filter(function(v){return v===1}).length,myth.length):0;
 
-  var pScore=twoMeanP(pre.map(score),post.map(score));
-  var pMis=twoPropP(misPre,pre.length,misPost,post.length);
+  $('kpis').innerHTML=
+    kpi(games.length,'遊戲完成數',false)+
+    kpi(pres.length,'前測作答數',false)+
+    kpi(avgScore.toFixed(1)+' / 5','後測平均知識分',true)+
+    kpi(preRate+'%','前測情境題答對率',false)+
+    kpi(mythRate+'%','仍有「低於7一定要輸」迷思',false);
 
-  var khtml='';
-  khtml+=kpi('知識總分（滿分 5）',kScorePre.toFixed(2),kScorePost.toFixed(2),
-    (kScorePost-kScorePre>=0?'+':'')+(kScorePost-kScorePre).toFixed(2)+' 分',kScorePost>=kScorePre,pScore,false);
-  khtml+=kpi('安全性誤解率',misRpre.toFixed(0)+'%',misRpost.toFixed(0)+'%',
-    (misRpost-misRpre<=0?'':'+')+(misRpost-misRpre).toFixed(0)+' 個百分點',misRpost<=misRpre,pMis,true);
-  khtml+=kpiSingle('願意主動問醫師（後測）',intentR.toFixed(0)+'%','行為意向指標');
-  khtml+=kpiSingle('知道有輸血替代方法（後測）',altR.toFixed(0)+'%','行為意向指標');
-  document.getElementById('kpis').innerHTML=khtml;
+  /* 前測 vs 後測情境題 */
+  $('prepost').innerHTML=
+    ppcol('前測',preRate,'pre')+ppcol('後測',postScenRate,'post');
 
-  /* per item bars */
-  var items=[
-    ['k1','血品區分','有7就好只講紅血球'],
-    ['k2','門檻認知','Hb 低於 7 才評估'],
-    ['k3','情境判斷','7.6 穩定可先不輸'],
-    ['k4','安全性認知','7 是參考非硬門檻'],
-    ['k5','單袋原則','先一袋再評估']
-  ];
-  var ib='';
-  items.forEach(function(it){
-    var q=it[0];
-    var cp=pre.length?pre.filter(function(r){return correct(r,q)}).length/pre.length*100:0;
-    var co=post.length?post.filter(function(r){return correct(r,q)}).length/post.length*100:0;
-    ib+='<div class="barrow"><div class="blab"><span class="qn">'+it[1]+'</span><span class="qd">'+it[2]+'</span></div>'+
-      '<div class="pair">'+
-      '<div style="display:flex;align-items:center;gap:8px"><div class="bg" style="flex:1"><div class="fill pre" style="width:'+cp+'%"></div></div><span class="pct">'+cp.toFixed(0)+'%</span></div>'+
-      '<div style="display:flex;align-items:center;gap:8px"><div class="bg" style="flex:1"><div class="fill post" style="width:'+co+'%"></div></div><span class="pct">'+co.toFixed(0)+'%</span></div>'+
-      '</div></div>';
-  });
-  document.getElementById('itembars').innerHTML=ib;
-
-  /* likert */
-  var lks=[['q_clear','資訊清楚易懂'],['q_help','對我有幫助'],['q_talk','更知道怎麼和醫師討論']];
-  var colors=['#D9DED9','#C3CBC4','#8FB3A8','#4E9584','#1F6E60'];
-  var lh='';
-  lks.forEach(function(l){
-    var vals=post.map(function(r){return parseInt(r[l[0]])}).filter(function(x){return x>=1&&x<=5});
-    var counts=[0,0,0,0,0];vals.forEach(function(v){counts[v-1]++});
-    var tot=vals.length||1;
-    var seg=counts.map(function(c,i){return '<i style="width:'+(c/tot*100)+'%;background:'+colors[i]+'"></i>'}).join('');
-    lh+='<div class="lk"><span class="lqt">'+l[1]+'</span><div class="lkbar">'+seg+'</div><span class="mean">'+mean(vals).toFixed(1)+'</span></div>';
-  });
-  document.getElementById('likert').innerHTML=lh;
-
-  /* segmentation by age, role, exp (post knowledge score) */
-  document.getElementById('seg').innerHTML=
-    segBox('依年齡',post,'age',['<40','40-64','65+'],{'<40':'未滿40','40-64':'40-64','65+':'65以上'})+
-    segBox('依身分',post,'role',['病人本人','家屬','陪病者／看護'],{'病人本人':'病人','家屬':'家屬','陪病者／看護':'陪病/看護'})+
-    segBox('依語言版本',post,'lang',['zh','en','vi','id'],{zh:'中文',en:'English',vi:'越南文',id:'印尼文'});
-
-  /* clinical placeholders */
-  var clin=[
-    ['單袋輸血率','單次開立 1 袋紅血球的比例','醫囑系統'],
-    ['輸血前 Hb≥8 比例','穩定、無出血病人中輸血前 Hb≥8 的比例','檢驗＋醫囑'],
-    ['第二袋前再評估率','開立第二袋前完成症狀與 Hb 再評估的比例','醫囑系統'],
-    ['每千住院人日紅血球用量','紅血球使用量 ÷ 住院人日 ×1000','血庫'],
-    ['適當例外紀錄比例','低門檻輸血中有記錄合理原因的比例','病歷'],
-    ['平衡指標','緊急補輸、非預期 ICU、院內死亡、再住院','HIS']
-  ];
-  document.getElementById('clin').innerHTML=clin.map(function(c){
-    return '<div class="clincard"><p class="ct">'+c[0]+'</p><p class="cd">'+c[1]+'</p><span class="src">資料來源：'+c[2]+'</span></div>';
+  /* 各題答對率 */
+  var items=[['k1_ok','k1 血品分辨'],['k2_ok','k2 門檻(7)'],['k3_ok','k3 情境判斷'],['k4_ok','k4 破除迷思'],['k5_ok','k5 一袋再評估']];
+  $('itemRates').innerHTML=items.map(function(it){
+    var vals=games.map(function(r){return num(r[it[0]])}).filter(function(v){return v!==null});
+    var r=vals.length?pct(vals.filter(function(v){return v===1}).length,vals.length):0;
+    return bar(it[1],r,r+'%','ok');
   }).join('');
 
-  /* method note */
-  document.getElementById('method').innerHTML=
-    '<b>前後測比較。</b>知識分數用兩組平均數檢定，各題答對率與安全性誤解率用兩組比率檢定。本頁 p 值以常態近似計算，屬指示性，正式分析請用 R 或 SPSS。<br>'+
-    '<b>配對問題。</b>純匿名問卷無法把同一個人的前後測配對，預設採「後測 vs 前測兩批相似樣本」的獨立比較。若要配對，可讓填答者自建不含身分的代碼（例如出生月＋母親姓氏首字），再改用配對檢定（分數用 paired t，誤解率用 McNemar）。<br>'+
-    '<b>樣本量。</b>要偵測比率差異（例如誤解率從 40% 降到 25%），每組約需 150 至 200 份才有足夠檢定力，可依此規劃各波收案目標。<br>'+
-    '<b>兩層並看。</b>問卷證明知識與意向改變，臨床層指標證明行為改變，兩者一起才是完整的 Choosing Wisely 成效，也才適合投稿。';
+  /* 自我效能 1-4 */
+  var seLabels=['很沒把握','有點怕','還可以','很有信心'];
+  var seCounts=[0,0,0,0],seN=0;
+  games.forEach(function(r){var v=num(r.self_efficacy);if(v>=1&&v<=4){seCounts[v-1]++;seN++;}});
+  $('selfeff').innerHTML=seLabels.map(function(l,i){
+    return bar(l,seN?pct(seCounts[i],seN):0,seCounts[i]+' 人','blue');
+  }).join('')||'<div class="note">尚無資料</div>';
 
-  document.getElementById('foot').innerHTML=
-    '資料落地建議：正式研究以 REDCap 或院內問卷系統收案（符合 IRB 與資料治理），本儀表板可讀取其匯出檔。範例 CSV 的欄位即為建議的資料模型。';
+  /* 清晰度 */
+  var clMap={clear:'很好懂',ok:'還可以',hard:'有點難'};
+  var clCounts={clear:0,ok:0,hard:0},clN=0;
+  games.forEach(function(r){if(clMap[r.clarity]){clCounts[r.clarity]++;clN++;}});
+  $('clarity').innerHTML=Object.keys(clMap).map(function(k){
+    return bar(clMap[k],clN?pct(clCounts[k],clN):0,clCounts[k]+' 人',k==='clear'?'ok':(k==='ok'?'amber':'accent'));
+  }).join('')||'<div class="note">尚無資料</div>';
+
+  /* 來源 orbs vs direct 平均分 */
+  $('bysource').innerHTML=segBars(games,'source',{orbs:'有看衛教頁',direct:'直接玩'});
+
+  /* 分眾：角色 / 年齡 / 語言 */
+  var roleH='<div class="note" style="margin:0 0 6px">依身分</div>'+segBars(games,'role',null);
+  var ageH='<div class="note" style="margin:12px 0 6px">依年齡</div>'+segBars(games,'age',null);
+  var langH='<div class="note" style="margin:12px 0 6px">依語言</div>'+segBars(games,'lang',null);
+  $('byseg').innerHTML=roleH+ageH+langH;
+
+  /* 平衡指標 */
+  $('balance').innerHTML=
+    '<div class="row"><div class="lab">仍有迷思比率</div>'+track(mythRate,'accent')+'<div class="val">'+mythRate+'%</div></div>'+
+    '<div class="note">「仍有迷思」= 在對錯題仍認為「血紅素低於 7 就一定要輸血」。此比率越低越好，是衛教是否打中核心錯誤觀念的關鍵指標。</div>';
+
+  /* 最近 10 筆 */
+  var recent=ROWS.slice(-10).reverse();
+  var rows=recent.map(function(r){
+    return '<tr><td>'+(r.server_ts||r.ts||'')+'</td><td>'+(isGame(r)?'遊戲':(isPre(r)?'前測':(r.instrument||'')))+'</td>'+
+      '<td>'+(r.source||'')+'</td><td>'+(r.lang||'')+'</td><td>'+(r.role||'')+'</td>'+
+      '<td>'+(r.score!==''&&r.score!=null?r.score:'')+'</td></tr>';
+  }).join('');
+  $('recent').innerHTML='<table><thead><tr><th>時間</th><th>類型</th><th>來源</th><th>語言</th><th>身分</th><th>分數</th></tr></thead><tbody>'+rows+'</tbody></table>';
 }
 
-function kpi(lab,preV,postV,delta,good,p,warn){
-  return '<div class="kpi'+(warn?' warn':'')+'"><p class="lab">'+lab+'</p>'+
-    '<div class="prepost"><span class="v">'+preV+'</span><span class="arrow">→</span><span class="v post">'+postV+'</span></div>'+
-    '<p class="delta '+(good?'up':'down')+'">'+delta+'<span class="p">'+pfmt(p)+'</span></p></div>';
-}
-function kpiSingle(lab,v,tag){
-  return '<div class="kpi"><p class="lab">'+lab+'</p>'+
-    '<div class="prepost"><span class="v post">'+v+'</span></div>'+
-    '<p class="delta up" style="color:var(--ink-faint)">'+tag+'</p></div>';
-}
-function segBox(title,rows,field,order,labels){
-  var h='<div class="segbox"><h3>'+title+'</h3>';
-  order.forEach(function(k){
-    var sub=rows.filter(function(r){return r[field]===k});
-    var m=sub.length?mean(sub.map(score)):0;
-    h+='<div class="segrow"><span class="sname">'+labels[k]+'</span>'+
-       '<span class="sbar"><span class="sfill" style="width:'+(m/5*100)+'%"></span></span>'+
-       '<span class="sval">'+m.toFixed(1)+' ('+sub.length+')</span></div>';
-  });
-  return h+'</div>';
+function kpi(n,l,green){return '<div class="kpi'+(green?' g':'')+'"><div class="n">'+n+'</div><div class="l">'+l+'</div></div>'}
+function track(p,cls){return '<div class="track"><div class="fill '+(cls||'')+'" style="width:'+Math.max(p,1)+'%"></div></div>'}
+function bar(lab,p,val,cls){return '<div class="row"><div class="lab">'+lab+'</div>'+track(p,cls)+'<div class="val">'+val+'</div></div>'}
+function ppcol(cap,p,cls){return '<div class="ppcol '+cls+'"><div class="ppbar"><span style="height:'+Math.max(p,2)+'%"></span></div><div class="pv">'+p+'%</div><div class="cap">'+cap+'</div></div>'}
+function segBars(games,field,labels){
+  var g={};games.forEach(function(r){var k=r[field];if(k===''||k==null)return;(g[k]=g[k]||[]).push(num(r.score))});
+  var keys=Object.keys(g);if(!keys.length)return '<div class="note">尚無資料</div>';
+  return keys.map(function(k){
+    var vals=g[k].filter(function(v){return v!==null});
+    var avg=vals.length?(vals.reduce(function(a,b){return a+b},0)/vals.length):0;
+    var lab=(labels&&labels[k])?labels[k]:k;
+    return bar(lab+' ('+g[k].length+')',pct(avg,5),avg.toFixed(1)+'/5','purple');
+  }).join('');
 }
 
-/* ---------------- import / export ---------------- */
-function parseCSV(t){
-  var lines=t.trim().split(/\r?\n/),head=lines[0].split(',').map(function(s){return s.trim()});
-  return lines.slice(1).map(function(l){
-    var c=l.split(','),o={};head.forEach(function(h,i){o[h]=(c[i]||'').trim()});return o;
-  });
-}
-document.getElementById('file').addEventListener('change',function(e){
-  var f=e.target.files[0]; if(!f)return;
-  var rd=new FileReader();
-  rd.onload=function(){
-    try{
-      var txt=rd.result;
-      DATA=f.name.endsWith('.json')?JSON.parse(txt):parseCSV(txt);
-      document.getElementById('datainfo').style.color='';
-      render();
-    }catch(err){alert('讀取失敗，請確認檔案格式。')}
-  };
-  rd.readAsText(f);
-});
-var COLS=['response_id','timestamp','wave','unit','lang','mode','role','age','exp','k1','k2','k3','k4','k5','act1','act2','q_clear','q_help','q_talk','open'];
-function toCSV(rows){
-  return COLS.join(',')+'\n'+rows.map(function(r){return COLS.map(function(c){return (r[c]!=null?r[c]:'')}).join(',')}).join('\n');
-}
-function dl(name,text){
-  var b=new Blob([text],{type:'text/csv;charset=utf-8'}),u=URL.createObjectURL(b);
-  var a=document.createElement('a');a.href=u;a.download=name;a.click();URL.revokeObjectURL(u);
-}
-document.getElementById('tmpl').addEventListener('click',function(){dl('transfusion_survey_template.csv',toCSV([genSample()[0]]))});
-document.getElementById('expo').addEventListener('click',function(){dl('transfusion_survey_data.csv',toCSV(DATA))});
-document.getElementById('demo').addEventListener('click',function(){DATA=genSample();render()});
-
-/* init */
-DATA=genSample();render();
+$('load').onclick=loadData;
+$('refresh').onclick=loadData;
+$('endpoint').value=ENDPOINT; $('key').value=KEY;
+if(ENDPOINT){loadData();}
 </script>
 </body>
 </html>
